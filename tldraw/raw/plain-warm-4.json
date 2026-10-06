@@ -1,0 +1,199 @@
+{
+  "mode": "plain",
+  "temp": "warm",
+  "loadavgStart": 1.83056640625,
+  "errors": [
+    "[hmr-toolbar-1] %o %s %s Error: useTools must be used within a ToolProvider at useActions (http://localhost:5440/@fs<tldraw>/packages/tldraw/src/lib/ui/context/actions.tsx:1772:9) at useKeyboardShortcuts (http://localhost:5440/@fs<tldraw>/packages/tldraw/src/lib/ui/hooks/",
+    "[hmr-toolbar-2] could not draw a shape; reloading the page to recover",
+    "[hmr-toolbar-2] %o %s %s Error: useTools must be used within a ToolProvider at useActions (http://localhost:5440/@fs<tldraw>/packages/tldraw/src/lib/ui/context/actions.tsx?t=1791274396635:1772:9) at useKeyboardShortcuts (http://localhost:5440/@fs<tldraw>/packages/tldraw/s",
+    "[hmr-toolbar-3] could not draw a shape; reloading the page to recover",
+    "[hmr-toolbar-3] %o %s %s Error: useTools must be used within a ToolProvider at useActions (http://localhost:5440/@fs<tldraw>/packages/tldraw/src/lib/ui/context/actions.tsx?t=1791274404259:1772:9) at useKeyboardShortcuts (http://localhost:5440/@fs<tldraw>/packages/tldraw/s",
+    "[hmr-toolbar-4] could not draw a shape; reloading the page to recover",
+    "[hmr-toolbar-4] %o %s %s Error: useTools must be used within a ToolProvider at useActions (http://localhost:5440/@fs<tldraw>/packages/tldraw/src/lib/ui/context/actions.tsx?t=1791274411254:1772:9) at useKeyboardShortcuts (http://localhost:5440/@fs<tldraw>/packages/tldraw/s",
+    "[hmr-toolbar-5] could not draw a shape; reloading the page to recover",
+    "[hmr-toolbar-5] %o %s %s Error: useTools must be used within a ToolProvider at useActions (http://localhost:5440/@fs<tldraw>/packages/tldraw/src/lib/ui/context/actions.tsx?t=1791274418222:1772:9) at useKeyboardShortcuts (http://localhost:5440/@fs<tldraw>/packages/tldraw/s",
+    "[hmr-toolbar-5] %o %s %s Error: useTools must be used within a ToolProvider at useActions (http://localhost:5440/@fs<tldraw>/packages/tldraw/src/lib/ui/context/actions.tsx?t=1791274418222:1772:9) at useKeyboardShortcuts (http://localhost:5440/@fs<tldraw>/packages/tldraw/s",
+    "[hmr-editor-1] could not draw a shape; reloading the page to recover"
+  ],
+  "serverErrors": [
+    "\u001b[2m4:13:16 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useTools must be used within a ToolProvider",
+    "The above error occurred in the <TldrawUiInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.",
+    "\u001b[2m4:13:23 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useTools must be used within a ToolProvider",
+    "The above error occurred in the <TldrawUiInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.",
+    "\u001b[2m4:13:30 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useTools must be used within a ToolProvider",
+    "The above error occurred in the <TldrawUiInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.",
+    "\u001b[2m4:13:37 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useTools must be used within a ToolProvider",
+    "The above error occurred in the <TldrawUiInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.",
+    "\u001b[2m4:13:44 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useTools must be used within a ToolProvider",
+    "The above error occurred in the <TldrawUiInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.",
+    "\u001b[2m4:13:45 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useTools must be used within a ToolProvider",
+    "The above error occurred in the <TldrawUiInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary."
+  ],
+  "serverReadyLogMs": 189,
+  "firstReadyMs": 1448,
+  "firstLoad": {
+    "requests": 1066,
+    "kb": 28233
+  },
+  "reloadMs": [
+    346,
+    350,
+    322,
+    320,
+    347,
+    376,
+    315,
+    316,
+    317,
+    317
+  ],
+  "reload": {
+    "requests": 1048,
+    "kb": 176
+  },
+  "otherPages": {
+    "xkcd-dependency": 1785,
+    "layer-panel": 1120,
+    "rich-text-font-extensions": 1127,
+    "cubic-bezier-shape": 507
+  },
+  "hmr": {
+    "example": [
+      {
+        "ms": 154,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 161,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 57,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 159,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 163,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      }
+    ],
+    "toolbar": [
+      {
+        "ms": 576,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": false
+      },
+      {
+        "ms": 139,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": false
+      },
+      {
+        "ms": 141,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": false
+      },
+      {
+        "ms": 140,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": false
+      },
+      {
+        "ms": 139,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": false
+      }
+    ],
+    "editor": [
+      {
+        "ms": 396,
+        "failed": false,
+        "fullReload": true,
+        "shapeKept": false
+      },
+      {
+        "ms": 254,
+        "failed": false,
+        "fullReload": true,
+        "shapeKept": false
+      },
+      {
+        "ms": 287,
+        "failed": false,
+        "fullReload": true,
+        "shapeKept": false
+      },
+      {
+        "ms": 290,
+        "failed": false,
+        "fullReload": true,
+        "shapeKept": false
+      },
+      {
+        "ms": 304,
+        "failed": false,
+        "fullReload": true,
+        "shapeKept": false
+      }
+    ],
+    "css": [
+      {
+        "ms": 521,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 41,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 30,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 25,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 74,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      }
+    ]
+  },
+  "serverRssMb": 1529,
+  "loadavgEnd": 1.47021484375,
+  "serverHead": "build env: development\n\u001b[33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:\n  - `__dirname` (vite.config.ts:77:18). Use `import.meta.dirname` instead\nSet `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.\u001b[39m\n\n  \u001b[32m\u001b[1mVITE\u001b[22m v8.3.3\u001b[39m  \u001b[2mready in \u001b[0m\u001b[1m118\u001b[22m\u001b[2m\u001b[0m ms\u001b[22m\n\n  \u001b[32m➜\u001b[39m  \u001b[1mLocal\u001b[22m:   \u001b[36mhttp://localhost:\u001b[1m5440\u001b[22m/\u001b[39m\n\u001b[2m  \u001b[32m➜\u001b[39m  \u001b[1mNetwork\u001b[22m\u001b[2m: use \u001b[22m\u001b[1m--host\u001b[22m\u001b[2m to expose\u001b[22m\n\u001b[2m4:12:59 PM\u001b[22m \u001b"
+}

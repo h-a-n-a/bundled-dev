@@ -1,0 +1,196 @@
+{
+  "mode": "bundled",
+  "temp": "warm",
+  "loadavgStart": 1.94873046875,
+  "errors": [
+    "[first-load] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[first-load] CDP 404 Other http://localhost:5440/favicon.ico",
+    "[hmr-editor-1] %o %s %s Error: useAssetUrls must be used within an AssetUrlsProvider at useAssetUrls (http://localhost:5440/assets/index.js:112983:9) at TldrawUIIconInner (http://localhost:5440/assets/index.js:140217:20) at Object.react_stack_bottom_frame (http://localhost:5440/assets/index.js:24802:12) at renderW",
+    "[hmr-editor-2] %o %s %s Error: useAssetUrls must be used within an AssetUrlsProvider at useAssetUrls (http://localhost:5440/assets/index.js:112984:9) at TldrawUIIconInner (http://localhost:5440/assets/index.js:140218:20) at Object.react_stack_bottom_frame (http://localhost:5440/assets/index.js:24802:12) at renderW",
+    "[hmr-editor-3] %o %s %s Error: useAssetUrls must be used within an AssetUrlsProvider at useAssetUrls (http://localhost:5440/assets/index.js:112984:9) at TldrawUIIconInner (http://localhost:5440/assets/index.js:140218:20) at Object.react_stack_bottom_frame (http://localhost:5440/assets/index.js:24802:12) at renderW",
+    "[hmr-editor-4] %o %s %s Error: useAssetUrls must be used within an AssetUrlsProvider at useAssetUrls (http://localhost:5440/assets/index.js:112984:9) at TldrawUIIconInner (http://localhost:5440/assets/index.js:140218:20) at Object.react_stack_bottom_frame (http://localhost:5440/assets/index.js:24802:12) at renderW",
+    "[hmr-editor-5] %o %s %s Error: useAssetUrls must be used within an AssetUrlsProvider at useAssetUrls (http://localhost:5440/assets/index.js:112984:9) at TldrawUIIconInner (http://localhost:5440/assets/index.js:140218:20) at Object.react_stack_bottom_frame (http://localhost:5440/assets/index.js:24802:12) at renderW",
+    "[hmr-editor-5] %o %s %s Error: useAssetUrls must be used within an AssetUrlsProvider at useAssetUrls (http://localhost:5440/assets/index.js:112984:9) at TldrawUIIconInner (http://localhost:5440/assets/index.js:140218:20) at Object.react_stack_bottom_frame (http://localhost:5440/assets/index.js:24802:12) at renderW"
+  ],
+  "serverErrors": [
+    "\u001b[2m4:07:46 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useAssetUrls must be used within an AssetUrlsProvider",
+    "The above error occurred in the <TldrawUIIconInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.",
+    "\u001b[2m4:07:48 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useAssetUrls must be used within an AssetUrlsProvider",
+    "The above error occurred in the <TldrawUIIconInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.",
+    "\u001b[2m4:07:49 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useAssetUrls must be used within an AssetUrlsProvider",
+    "The above error occurred in the <TldrawUIIconInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.",
+    "\u001b[2m4:07:51 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useAssetUrls must be used within an AssetUrlsProvider",
+    "The above error occurred in the <TldrawUIIconInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.",
+    "\u001b[2m4:07:53 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useAssetUrls must be used within an AssetUrlsProvider",
+    "The above error occurred in the <TldrawUIIconInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.",
+    "\u001b[2m4:07:54 PM\u001b[22m \u001b[31m\u001b[1m[vite]\u001b[22m\u001b[39m \u001b[31m\u001b[2m(client)\u001b[22m\u001b[39m \u001b[2m[console.error] \u001b[22mError: useAssetUrls must be used within an AssetUrlsProvider",
+    "The above error occurred in the <TldrawUIIconInner> component.",
+    "React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary."
+  ],
+  "serverReadyLogMs": 170,
+  "firstReadyMs": 1292,
+  "firstLoad": {
+    "requests": 68,
+    "kb": 10691
+  },
+  "reloadMs": [
+    397,
+    233,
+    179,
+    172,
+    178,
+    174,
+    176,
+    189,
+    182,
+    183
+  ],
+  "reload": {
+    "requests": 49,
+    "kb": 9087
+  },
+  "otherPages": {
+    "xkcd-dependency": 493,
+    "layer-panel": 461,
+    "rich-text-font-extensions": 420,
+    "cubic-bezier-shape": 398
+  },
+  "hmr": {
+    "example": [
+      {
+        "ms": 56,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 72,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 70,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 71,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 69,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      }
+    ],
+    "toolbar": [
+      {
+        "ms": 36,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 39,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 35,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 39,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 34,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      }
+    ],
+    "editor": [
+      {
+        "ms": 117,
+        "failed": false,
+        "fullReload": true,
+        "shapeKept": false
+      },
+      {
+        "ms": 94,
+        "failed": false,
+        "fullReload": true,
+        "shapeKept": false
+      },
+      {
+        "ms": 92,
+        "failed": false,
+        "fullReload": true,
+        "shapeKept": false
+      },
+      {
+        "ms": 94,
+        "failed": false,
+        "fullReload": true,
+        "shapeKept": false
+      },
+      {
+        "ms": 94,
+        "failed": false,
+        "fullReload": true,
+        "shapeKept": false
+      }
+    ],
+    "css": [
+      {
+        "ms": 33,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 61,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 57,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 40,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      },
+      {
+        "ms": 54,
+        "failed": false,
+        "fullReload": false,
+        "shapeKept": true
+      }
+    ]
+  },
+  "serverRssMb": 1813,
+  "loadavgEnd": 2.20751953125,
+  "serverHead": "build env: development\n\u001b[33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:\n  - `__dirname` (vite.config.ts:77:18). Use `import.meta.dirname` instead\nSet `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.\u001b[39m\n\n  \u001b[32m\u001b[1mVITE\u001b[22m v8.3.3\u001b[39m  \u001b[2mready in \u001b[0m\u001b[1m88\u001b[22m\u001b[2m\u001b[0m ms\u001b[22m\n\n  \u001b[32m➜\u001b[39m  \u001b[1mLocal\u001b[22m:   \u001b[36mhttp://localhost:\u001b[1m5440\u001b[22m/\u001b[39m\n\u001b[2m  \u001b[32m➜\u001b[39m  \u001b[1mNetwork\u001b[22m\u001b[2m: use \u001b[22m\u001b[1m--host\u001b[22m\u001b[2m to expose\u001b[22m\n\u001b[2m4:07:25 PM\u001b[22m \u001b["
+}

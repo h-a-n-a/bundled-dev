@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>tldraw bundled dev</title>
+<style>
+	:root {
+		--surface: #fcfcfb;
+		--text-primary: #0b0b0b;
+		--text-secondary: #52514e;
+		--text-muted: #7a7974;
+		--grid: #e6e5e1;
+		--plain: #2a78d6;
+		--bundled: #eb6834;
+	}
+	* { box-sizing: border-box; }
+	body {
+		margin: 0;
+		background: var(--surface);
+		color: var(--text-primary);
+		font: 14px/1.4 -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+	}
+	#root { width: 1200px; padding: 36px 40px 28px; }
+	h1 { font-size: 24px; margin: 0 0 6px; font-weight: 650; letter-spacing: -0.01em; }
+	.sub { color: var(--text-secondary); margin: 0 0 18px; }
+	.legend { display: flex; gap: 22px; margin-bottom: 18px; color: var(--text-secondary); }
+	.legend span { display: inline-flex; align-items: center; gap: 8px; }
+	.legend i { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+	.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; }
+	.panel h2 { font-size: 15px; margin: 0 0 2px; font-weight: 650; }
+	.panel .unit { color: var(--text-muted); font-size: 12.5px; margin: 0 0 10px; }
+	.row { display: grid; grid-template-columns: 170px 1fr 92px; align-items: center; column-gap: 10px; margin-bottom: 12px; }
+	.label { color: var(--text-secondary); font-size: 13px; line-height: 1.25; }
+	.label small { display: block; color: var(--text-muted); font-size: 11.5px; }
+	.bars { position: relative; display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--grid); }
+	.bar { display: flex; align-items: center; gap: 6px; height: 16px; }
+	.bar b { height: 16px; border-radius: 0 4px 4px 0; display: block; }
+	.bar em { font-style: normal; font-size: 12px; color: var(--text-secondary); font-variant-numeric: tabular-nums; white-space: nowrap; }
+	.ratio { font-size: 13px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+	.ratio.slower { color: var(--text-muted); font-weight: 500; }
+	.foot { margin-top: 22px; color: var(--text-muted); font-size: 12px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div id="root">
+	<h1>tldraw examples app: Vite dev vs Vite bundled dev</h1>
+	<p class="sub">Vite 8.3.3 · rolldown c532f8106 (1.2.12 + #11127 + #11126) · headless Chrome · median of 5 runs · lower is better</p>
+	<div class="legend">
+		<span><i style="background: var(--plain)"></i>Vite dev: <code>vite</code></span>
+		<span><i style="background: var(--bundled)"></i>Vite bundled dev: <code>vite --experimentalBundle</code></span>
+	</div>
+	<div class="grid" id="grid"></div>
+	<p class="foot">
+		* Plain dev: the edit applies, but the UI then crashes and the canvas drawing is lost (25 of 25 edits). Bundled dev keeps it.<br />
+		** Editing <code>Editor.ts</code> triggers a full page reload in both modes; the time is until the new code runs.
+	</p>
+</div>
+<script>
+	const panels = [
+		{
+			title: 'Start-up and reload',
+			unit: 'milliseconds until the canvas and toolbar are visible',
+			rows: [
+				['Start-up', 'cold cache', 1579, 1284],
+				['Start-up', 'warm cache', 1435, 1291],
+				['Reload', '1st after load', 352, 401],
+				['Reload', '2nd–10th', 319, 182],
+			],
+		},
+		{
+			title: 'Opening another example (first visit)',
+			unit: 'milliseconds until the canvas and toolbar are visible',
+			rows: [
+				['xkcd-dependency', '', 1792, 497],
+				['layer-panel', '', 1121, 464],
+				['rich-text-font-extensions', '', 1127, 420],
+				['cubic-bezier-shape', '', 511, 398],
+			],
+		},
+		{
+			title: 'HMR: time until an edit shows',
+			unit: 'milliseconds from saving the file',
+			rows: [
+				['Example file', 'BasicExample.tsx', 131, 68],
+				['Library component *', 'DefaultToolbar.tsx', 139, 38],
+				['Core class **', 'Editor.ts', 290, 94],
+				['CSS', 'styles.css', 125, 54],
+			],
+		},
+		{
+			title: 'Requests per page load',
+			unit: 'HTTP requests for /basic',
+			count: true,
+			rows: [
+				['First load', '', 1066, 68],
+				['Reload', '', 1048, 49],
+			],
+		},
+	]
+	const fmt = (n) => n.toLocaleString('en-US')
+	const grid = document.getElementById('grid')
+	for (const p of panels) {
+		const max = Math.max(...p.rows.flatMap((r) => [r[2], r[3]]))
+		const el = document.createElement('div')
+		el.className = 'panel'
+		el.innerHTML = `<h2>${p.title}</h2><p class="unit">${p.unit}</p>`
+		for (const [name, detail, plain, bundled] of p.rows) {
+			const w = (v) => `${Math.max(2, (v / max) * 190)}px`
+			const ratio = plain / bundled
+			const ratioText = p.count
+				? `${Math.round(ratio)}× fewer`
+				: ratio >= 1
+					? `${ratio.toFixed(1)}× faster`
+					: `${(1 / ratio).toFixed(1)}× slower`
+			const row = document.createElement('div')
+			row.className = 'row'
+			row.innerHTML = `
+				<div class="label">${name}${detail ? `<small>${detail}</small>` : ''}</div>
+				<div class="bars">
+					<div class="bar"><b style="width:${w(plain)};background:var(--plain)"></b><em>${fmt(plain)}</em></div>
+					<div class="bar"><b style="width:${w(bundled)};background:var(--bundled)"></b><em>${fmt(bundled)}</em></div>
+				</div>
+				<div class="ratio ${ratio < 1 ? 'slower' : ''}">${ratioText}</div>`
+			el.appendChild(row)
+		}
+		grid.appendChild(el)
+	}
+</script>
+</body>
+</html>

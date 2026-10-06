@@ -1,0 +1,18 @@
+{
+  "mode": "bundled",
+  "temp": "cold",
+  "loadavgStart": 6.23486328125,
+  "errors": [
+    "[first-load] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[first-load] CDP 404 Other http://localhost:5440/favicon.ico"
+  ],
+  "serverErrors": [],
+  "serverReadyLogMs": 271,
+  "firstReadyMs": 1281,
+  "firstLoad": {
+    "requests": 68,
+    "kb": 10691
+  },
+  "loadavgEnd": 6.2158203125,
+  "serverHead": "build env: development\n\u001b[33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:\n  - `__dirname` (vite.config.ts:77:18). Use `import.meta.dirname` instead\nSet `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.\u001b[39m\n\n  \u001b[32m\u001b[1mVITE\u001b[22m v8.3.3\u001b[39m  \u001b[2mready in \u001b[0m\u001b[1m70\u001b[22m\u001b[2m\u001b[0m ms\u001b[22m\n\n  \u001b[32m➜\u001b[39m  \u001b[1mLocal\u001b[22m:   \u001b[36mhttp://localhost:\u001b[1m5440\u001b[22m/\u001b[39m\n\u001b[2m  \u001b[32m➜\u001b[39m  \u001b[1mNetwork\u001b[22m\u001b[2m: use \u001b[22m\u001b[1m--host\u001b[22m\u001b[2m to expose\u001b[22m\n\u001b[2m4:15:39 PM\u001b[22m \u001b["
+}

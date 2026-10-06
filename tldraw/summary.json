@@ -1,0 +1,132 @@
+{
+  "plain": {
+    "runs": "5 cold, 5 warm, fatal: 0",
+    "loadavg": "1.5–6.5",
+    "serverReadyLogCold": "231 (167–250)",
+    "serverReadyLogWarm": "168 (165–189)",
+    "firstReadyCold": "1579 (1522–1611)",
+    "firstReadyWarm": "1435 (1419–1455)",
+    "firstLoadRequests": "1066 (1066–1066)",
+    "firstLoadKB": "28233 (28233–28233)",
+    "reloadRequests": "1048 (1048–1066)",
+    "reloadKB": "176 (176–177)",
+    "reload1st": "352 (340–387)",
+    "reload2to10": "median 319, p90 368, n=45",
+    "otherPages": {
+      "xkcd-dependency": "1792 (1785–2272)",
+      "layer-panel": "1121 (1120–1137)",
+      "rich-text-font-extensions": "1127 (1120–1131)",
+      "cubic-bezier-shape": "511 (507–515)"
+    },
+    "hmr": {
+      "example": {
+        "ms": "median 131, p90 161",
+        "edits": 25,
+        "failed": 0,
+        "fullReload": 0,
+        "shapeLost": 0,
+        "couldNotDraw": 0
+      },
+      "toolbar": {
+        "ms": "median 139, p90 255",
+        "edits": 25,
+        "failed": 0,
+        "fullReload": 0,
+        "shapeLost": 25,
+        "couldNotDraw": 0
+      },
+      "editor": {
+        "ms": "median 290, p90 725",
+        "edits": 25,
+        "failed": 0,
+        "fullReload": 25,
+        "shapeLost": 25,
+        "couldNotDraw": 0
+      },
+      "css": {
+        "ms": "median 125, p90 488",
+        "edits": 25,
+        "failed": 0,
+        "fullReload": 0,
+        "shapeLost": 0,
+        "couldNotDraw": 0
+      }
+    },
+    "serverRssMb": "1541 (1509–1631)",
+    "errors": {
+      "[hmr-toolbar] %o %s %s Error: useTools must be used within a ToolProvider at useActions (http://localhost:5440/@fs<tldraw>/packages/tldraw/src/lib/ui/context/actions.tsx) at useKeyboardShortcuts (ht": 30,
+      "[hmr-toolbar] could not draw a shape; reloading the page to recover": 20,
+      "[hmr-editor] could not draw a shape; reloading the page to recover": 5
+    },
+    "serverErrors": [
+      "[vite] (client) [console.error] Error: useTools must be used within a ToolProvider",
+      "error occurred in the <TldrawUiInner> component.",
+      "try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary."
+    ]
+  },
+  "bundled": {
+    "runs": "5 cold, 5 warm, fatal: 0",
+    "loadavg": "1.6–6.2",
+    "serverReadyLogCold": "248 (167–271)",
+    "serverReadyLogWarm": "173 (168–195)",
+    "firstReadyCold": "1284 (1279–1301)",
+    "firstReadyWarm": "1291 (1288–1305)",
+    "firstLoadRequests": "68 (68–68)",
+    "firstLoadKB": "10691 (10691–10691)",
+    "reloadRequests": "49 (49–49)",
+    "reloadKB": "9087 (9087–9087)",
+    "reload1st": "401 (397–403)",
+    "reload2to10": "median 182, p90 230, n=45",
+    "otherPages": {
+      "xkcd-dependency": "497 (489–508)",
+      "layer-panel": "464 (461–482)",
+      "rich-text-font-extensions": "420 (419–431)",
+      "cubic-bezier-shape": "398 (395–416)"
+    },
+    "hmr": {
+      "example": {
+        "ms": "median 68, p90 71",
+        "edits": 25,
+        "failed": 0,
+        "fullReload": 0,
+        "shapeLost": 0,
+        "couldNotDraw": 0
+      },
+      "toolbar": {
+        "ms": "median 38, p90 40",
+        "edits": 25,
+        "failed": 0,
+        "fullReload": 0,
+        "shapeLost": 0,
+        "couldNotDraw": 0
+      },
+      "editor": {
+        "ms": "median 94, p90 111",
+        "edits": 25,
+        "failed": 0,
+        "fullReload": 25,
+        "shapeLost": 25,
+        "couldNotDraw": 0
+      },
+      "css": {
+        "ms": "median 54, p90 58",
+        "edits": 25,
+        "failed": 0,
+        "fullReload": 0,
+        "shapeLost": 0,
+        "couldNotDraw": 0
+      }
+    },
+    "serverRssMb": "1908 (1813–2107)",
+    "errors": {
+      "[first-load] Failed to load resource: the server responded with a status of 404 (Not Found)": 10,
+      "[first-load] CDP 404 Other http://localhost:5440/favicon.ico": 10,
+      "[hmr-editor] %o %s %s Error: useAssetUrls must be used within an AssetUrlsProvider at useAssetUrls (http://localhost:5440/assets/index.js) at TldrawUIIconInner (http://localhost:5440/assets/index.js) at Object.react_stac": 30
+    },
+    "serverErrors": [
+      "[vite] (client) [console.error] Error: useAssetUrls must be used within an AssetUrlsProvider",
+      "error occurred in the <TldrawUIIconInner> component.",
+      "try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary."
+    ]
+  }
+}
