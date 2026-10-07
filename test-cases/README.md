@@ -13,7 +13,7 @@ Goal: replace every `skipIf(isBundledDev)` and every `bundledDevExclude` entry w
 
 - Go one dir at a time. Agree on the tag and the reason for each case before editing.
 - If the skip comment does not say whether the skip is by design, ask before choosing a tag.
-- Leave `skipIf(isBundledDev && isWindows)` as it is.
+- Treat `skipIf(isBundledDev && isWindows)` like any other skip: remove it, or replace it with a tag.
 - A tag cannot cancel `runIf` or `test.skip`. Turn `runIf(isServe && !isBundledDev)` into `runIf(isServe)` + tag.
 - Never tag a block that is limited to another mode: a `todo` tag wins over `describe.runIf(false)`.
 - A whole excluded file becomes `/** @module-tag … */`.
@@ -33,6 +33,7 @@ Goal: replace every `skipIf(isBundledDev)` and every `bundledDevExclude` entry w
    ```
 3. Agree on the tag and the reason for the case, then edit it.
 4. When the dir is done, tick it in the list below. Then remind me to update the two issue comments (see "Issue comments to update"). Show me a draft of each change, and post only after I allow it.
+5. Record every PR of the dir in "PRs per dir": the tagging PR, and each fix PR that removes one of its tags.
 
 ## Issue comments to update
 
@@ -51,12 +52,36 @@ Both comments are on vitejs/vite#23028 and belong to me (`h-a-n-a`). Before post
   - Each gap lists: what breaks, its tests, the code location if known, the tracking issue (or "No issue yet"), and the effort.
   - Update the counts, causes and test lists that this dir's work changed. Leave out test-only fixes (a bundled-dev branch in the expected value), because they are not gaps.
 
+## PRs per dir
+
+Only PRs opened as part of this work, starting with #23680. All PRs are in vitejs/vite and form one stack, in table order: each one targets the branch of the row above it.
+
+| Dir | PR | Kind | Branch | What it does | State |
+|---|---|---|---|---|---|
+| `assets` | #23680 | tags | `test/bundled-dev-skip-tags` | tags the 35 skips | open (draft) |
+| `backend-integration` | #23681 | tags | `test/bundled-dev-skip-tags-backend-integration` | tags the 6 skips; Windows-only `todo` (`windowsTodo`) | open (draft) |
+| `backend-integration` | #23683 | fix | `fix/bundled-dev-server-origin` | applies `server.origin` to asset URLs; removes 2 `todo` | open (draft) |
+| `backend-integration` | #23684 | fix | `fix/bundled-dev-windows-file-names` | normalizes memory-file keys (`\` on Windows); removes `windowsTodo` | open (draft) |
+
+## When I ask you to check the PRs
+
+1. For each row that is not merged, run `gh pr view <number> --repo vitejs/vite --json state,mergedAt,baseRefName`.
+2. If a PR is merged:
+   - Set its State to `merged <date>` in "PRs per dir".
+   - Update the dir's line in the checklist below if it changes (for example, "no tags left").
+   - Check that the next PR in the stack now targets the right base (`main` once everything below it is merged).
+3. Update the remote tracking (the two issue comments, see "Issue comments to update"):
+   - **Checklist:** take the new numbers from `pnpm run test-serve-bundled playground/<dir>/` and `pnpm run test-serve playground/<dir>/` on an up-to-date `main`. Drop the "with #…" part once those fixes are merged. Check the box only when every remaining gap is by design.
+   - **Details:** for a merged fix, change its item from `- [ ]` and "Fix open in #N" to `- [x]` and "Fixed in #N", like the `GET /.env` item under `assets`.
+   - Show me the drafts, and post only after I allow it.
+4. If a PR was closed without merging, tell me. Do not change anything for it.
+
 ## Dirs with bundled-dev skips (25)
 
 Counts are from `main` @ `8a4c19cfc`: 141 skip sites and 5 excluded spec files.
 
 - [x] `assets` — 5 specs · 35 skips → 18 `todo` (14 postfix dropped, 3 `?url` CSS #22863, 1 inline `<style>` `@import` HMR) · 17 run (bundled-dev branch in the expected value, `runtime-base`) · `?raw import` log guard (`if (!isBundled)`) kept
-- [ ] `backend-integration` — 1 spec · 4 skips · 2 Windows-only (keep)
+- [x] `backend-integration` — 1 spec · 4 skips + 2 Windows-only · vitejs/vite#23681: 2 `todo` (`server.origin` not applied to emitted asset URLs), 2 run (bundled-dev branch in the expected value: CSS HMR uses `<style>`, `hot updated` log), Windows-only `todo` (`windowsTodo`) on the tests that load the page · fixes: vitejs/vite#23683 (`server.origin`), vitejs/vite#23684 (Windows: memory-file keys keep `\` from input keys) → no tags left · issue comments: 5/7, 7/7 with both fixes; P0 Windows 404, P1 entry URL not documented, P1 `server.origin`
 - [ ] `chunk-importmap` — 1 spec · excluded: `chunk-importmap.spec.ts`
 - [ ] `csp` — 1 spec · 5 skips
 - [ ] `css` — 6 specs · 1 skip
