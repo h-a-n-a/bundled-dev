@@ -1,0 +1,39 @@
+name: Deploy
+
+permissions: {}
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  workflow_call:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  deploy-void:
+    name: Deploy to Void
+    runs-on: ubuntu-latest
+    # `void deploy` authenticates via GitHub OIDC: with id-token:write (and no VOID_TOKEN set)
+    # it exchanges an OIDC token for a short-lived, project-scoped deploy token.
+    # The repo must first be authorized once with `void github connect`.
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # When called after `Commit results`, deploy the new commit, not the one that started the run.
+          ref: main
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Deploy to Void
+        run: pnpm void deploy --platform void
+        env:
+          VOID_PROJECT: bundled-dev

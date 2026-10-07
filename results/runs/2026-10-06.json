@@ -1,0 +1,5755 @@
+{
+  "date": "2026-10-06T09:35:12.233Z",
+  "viteCommit": "fea5b21dd9524ed7308632407b996f1fe5942c9c",
+  "rolldownVersion": "1.2.11",
+  "summary": {
+    "total": 1140,
+    "passed": 781,
+    "files": 91,
+    "filesPassing": 54
+  },
+  "files": [
+    {
+      "file": "playground/alias/__tests__/alias.spec.ts",
+      "playground": "alias",
+      "total": 10,
+      "passed": 10,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "fs",
+          "status": "pass"
+        },
+        {
+          "name": "fs directory",
+          "status": "pass"
+        },
+        {
+          "name": "regex",
+          "status": "pass"
+        },
+        {
+          "name": "dependency",
+          "status": "pass"
+        },
+        {
+          "name": "js via script src",
+          "status": "pass"
+        },
+        {
+          "name": "css via link",
+          "status": "pass"
+        },
+        {
+          "name": "optimized dep",
+          "status": "pass"
+        },
+        {
+          "name": "aliased module",
+          "status": "pass"
+        },
+        {
+          "name": "url conflict alias",
+          "status": "pass"
+        },
+        {
+          "name": "custom resolver",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets-sanitize/__tests__/assets-sanitize.spec.ts",
+      "playground": "assets-sanitize",
+      "total": 2,
+      "passed": 1,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "importing asset with special char in filename works in dev",
+          "status": "not-run"
+        },
+        {
+          "name": "denied .env",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/assets.spec.ts",
+      "playground": "assets",
+      "total": 84,
+      "passed": 74,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "fail",
+          "error": "expected 'Failed to load resource: the server r…' not to match '404'"
+        },
+        {
+          "name": "should get a 404 when using incorrect case",
+          "status": "pass"
+        },
+        {
+          "name": "should fallback to index.html when accessing non-existent html file",
+          "status": "pass"
+        },
+        {
+          "name": "outside base > should get a 404 with html",
+          "status": "pass"
+        },
+        {
+          "name": "outside base > should get a 404 with text",
+          "status": "pass"
+        },
+        {
+          "name": "injected scripts > @vite/client",
+          "status": "pass"
+        },
+        {
+          "name": "injected scripts > html-proxy",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public (json)",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public (js)",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public (ts)",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public (mts)",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > encoded",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with base64",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with gradient",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with multiple descriptor",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with multiple descriptor as inline style",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set and url exist at the same time.",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > base64 inline",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > no base64 inline for modulepreload links",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > no base64 inline for preload and prefetch links",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > no base64 inline for icon and manifest links",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > preinlined SVG",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > url() with svg",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set() with svg",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > url() with svg in .css?url",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5176/nested/fra…' to match /data:image\\/svg\\+xml,.+/svg\\+xml,.+"
+        },
+        {
+          "name": "css url() references > non inlined url() HMR",
+          "status": "pass"
+        },
+        {
+          "name": "image > src",
+          "status": "pass"
+        },
+        {
+          "name": "image > src inline",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset (public)",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset (mixed)",
+          "status": "pass"
+        },
+        {
+          "name": "meta > og image",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "fail",
+          "error": "expected '/foo/bar/assets/fragment-BMHXyfjN.svg' to match /svg#icon-clock-view$/"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5176/foo/bar/as…' to match /svg#icon-clock-view\"\\)$/"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > url with an alias",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5176/foo/bar/as…' to match /\\.svg#icon-clock-view\"\\)$/"
+        },
+        {
+          "name": "Unknown extension assets import",
+          "status": "pass"
+        },
+        {
+          "name": "Unknown extension assets import with ?inline",
+          "status": "pass"
+        },
+        {
+          "name": "Asset matched by a relative path in assetsInclude import",
+          "status": "pass"
+        },
+        {
+          "name": "Asset matched by a relative path in assetsInclude import with ?inline",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?no-inline svg import",
+          "status": "pass"
+        },
+        {
+          "name": "?no-inline svg import -- multiple postfix",
+          "status": "fail",
+          "error": "expected '/foo/bar/assets/fragment-BMHXyfjN.svg' to match /\\/foo\\/bar\\/assets\\/fragment-[-\\w…/foo\\"
+        },
+        {
+          "name": "?inline png import",
+          "status": "pass"
+        },
+        {
+          "name": "?inline public png import",
+          "status": "pass"
+        },
+        {
+          "name": "?inline public json import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import on css",
+          "status": "fail",
+          "error": "expected 'data:text/css;base64,aW1nIHsKICB3aWR0…' to match '/foo/bar/css/icons.css'"
+        },
+        {
+          "name": "unicode url > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(\"@/...\", import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(\"/...\", import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(\"data:...\", import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url) without extension",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`./${dynamic}?abc`, import.meta.url)",
+          "status": "fail",
+          "error": "expected 'http://localhost:5176/foo/bar/assets/…' to match /\\/foo\\/bar\\/assets\\/asset-[-\\w]{8…/foo\\"
+        },
+        {
+          "name": "new URL(`./${1 === 0 ? static : dynamic}?abc`, import.meta.url)",
+          "status": "fail",
+          "error": "expected 'http://localhost:5176/foo/bar/assets/…' to match /\\/foo\\/bar\\/assets\\/asset-[-\\w]{8…/foo\\"
+        },
+        {
+          "name": "new URL(/* @vite-ignore */ 'non-existent', import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url) (multiline)",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "pass"
+        },
+        {
+          "name": "@import in html style tag hmr",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        },
+        {
+          "name": "url() contains file in publicDir, in <style> tag",
+          "status": "pass"
+        },
+        {
+          "name": "url() contains file in publicDir, as inline style",
+          "status": "pass"
+        },
+        {
+          "name": "should not rewrite non-relative urls in html",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/encoded-base/assets-encoded-base.spec.ts",
+      "playground": "assets",
+      "total": 32,
+      "passed": 30,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "fail",
+          "error": "expected '/foo bar/assets/fragment-BMHXyfjN.svg' to match /svg#icon-clock-view$/"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:9524/foo%20bar/…' to match /svg#icon-clock-view\"\\)$/"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import on css",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`non-existent`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "pass"
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/relative-base/assets-relative-base.spec.ts",
+      "playground": "assets",
+      "total": 33,
+      "passed": 31,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > nested manual chunks",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "fail",
+          "error": "expected '/assets/fragment-BMHXyfjN.svg' to match /svg#icon-clock-view$/"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5181/assets/fra…' to match /svg#icon-clock-view\"\\)$/"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import on css",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`non-existent`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "pass"
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/runtime-base/assets-runtime-base.spec.ts",
+      "playground": "assets",
+      "total": 32,
+      "passed": 13,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "fail",
+          "error": "expected '/assets/asset-C1hss4aq.png' to match '/nested/asset.png'"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "fail",
+          "error": "expected '/assets/asset-C1hss4aq.png' to match '/nested/asset.png'"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "fail",
+          "error": "expected 'image-set(url(\"http://localhost:5173/…' to match '/nested/asset.png'"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "fail",
+          "error": "expected 'image-set(url(\"http://localhost:5173/…' to match '/nested/asset.png'"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "fail",
+          "error": "expected 'image-set(url(\"http://localhost:5173/…' to match '/nested/asset.png'"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "fail",
+          "error": "expected 'image-set(url(\"http://localhost:5173/…' to match '/nested/asset.png'"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
+        },
+        {
+          "name": "image > srcset",
+          "status": "fail",
+          "error": "expected '/assets/asset-C1hss4aq.png 1x' to match /\\.\\/nested\\/asset\\.png \\dx/nested\\"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "fail",
+          "error": "expected '/assets/fragment-BMHXyfjN.svg' to match /svg#icon-clock-view$/"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5173/assets/fra…' to match /svg#icon-clock-view\"\\)$/"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "fail",
+          "error": "expected '/assets/foo-B1Vn3RRq.js' to match '/foo.js'"
+        },
+        {
+          "name": "?url import on css",
+          "status": "fail",
+          "error": "expected '/assets/icons-BkHOfqnX.css' to match '/css/icons.css'"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "fail",
+          "error": "expected 'http://localhost:5173/assets/img-B3S4…' to match '/import-meta-url/img.png'"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "fail",
+          "error": "expected 'http://localhost:5173/assets/icon-BuL…' to match '/nested/icon.png'"
+        },
+        {
+          "name": "new URL(`non-existent`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/url-base/assets-url-base.spec.ts",
+      "playground": "assets",
+      "total": 32,
+      "passed": 30,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "fail",
+          "error": "expected '/assets/fragment-BMHXyfjN.svg' to match /svg#icon-clock-view$/"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "fail",
+          "error": "expected 'url(\"http://localhost:9525/assets/fra…' to match /svg#icon-clock-view\"\\)$/"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import on css",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`non-existent`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "pass"
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/backend-integration/__tests__/backend-integration.spec.ts",
+      "playground": "backend-integration",
+      "total": 7,
+      "passed": 3,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > file outside root",
+          "status": "fail",
+          "error": "expected '/dev/assets/logo-C1hss4aq.png' to match 'http://localhost:5009/dev/@fs/'"
+        },
+        {
+          "name": "serve > No ReferenceError",
+          "status": "pass"
+        },
+        {
+          "name": "serve > preserve the base in CSS HMR",
+          "status": "fail",
+          "error": "Cannot read properties of null (reading 'getAttribute')"
+        },
+        {
+          "name": "serve > server.origin is applied to non-public CSS url()",
+          "status": "fail",
+          "error": "expected 'url(\"/dev/assets/logo-C1hss4aq.png\")' to contain 'http://localhost:5009/dev/'"
+        },
+        {
+          "name": "serve > server.origin is applied to public CSS url()",
+          "status": "pass"
+        },
+        {
+          "name": "serve > CSS dependencies are tracked for HMR",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /global.css"
+        }
+      ]
+    },
+    {
+      "file": "playground/base-conflict/__tests__/base-conflict.spec.ts",
+      "playground": "base-conflict",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "absolute imports keep base prefix",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/build-old/__tests__/build-old.spec.ts",
+      "playground": "build-old",
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "syntax preserve > import.meta.url",
+          "status": "pass"
+        },
+        {
+          "name": "syntax preserve > dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "syntax is lowered > private field",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/chunk-importmap/__tests__/chunk-importmap.spec.ts",
+      "playground": "chunk-importmap",
+      "total": 10,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "fail",
+          "error": "expected 'Failed to load resource: the server r…' not to match '404'"
+        },
+        {
+          "name": "index js",
+          "status": "fail",
+          "error": "expected 'js: error' to be 'js: ok' // Object.is equality"
+        },
+        {
+          "name": "importmap",
+          "status": "fail",
+          "error": "expected '' to contain '\"/foo\": \"/bar\"'"
+        },
+        {
+          "name": "static js",
+          "status": "fail",
+          "error": "expected 'static-js: error' to be 'static-js: ok' // Object.is equality"
+        },
+        {
+          "name": "dynamic js",
+          "status": "fail",
+          "error": "expected 'dynamic-js: error' to be 'dynamic-js: ok' // Object.is equality"
+        },
+        {
+          "name": "static css",
+          "status": "fail",
+          "error": "expected 'black' to be 'red' // Object.is equality"
+        },
+        {
+          "name": "dynamic css",
+          "status": "fail",
+          "error": "expected 'black' to be 'red' // Object.is equality"
+        },
+        {
+          "name": "direct dynamic css",
+          "status": "fail",
+          "error": "expected 'black' to be 'red' // Object.is equality"
+        },
+        {
+          "name": "shared pure css chunk",
+          "status": "fail",
+          "error": "expected 'shared-js: error' to be 'shared-js: ok' // Object.is equality"
+        },
+        {
+          "name": "worker",
+          "status": "fail",
+          "error": "expected 'worker: ping' to be 'worker: pong' // Object.is equality"
+        }
+      ]
+    },
+    {
+      "file": "playground/cli-module/__tests__/cli-module.spec.ts",
+      "playground": "cli-module",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "cli should work in \"type\":\"module\" package",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/cli/__tests__/cli.spec.ts",
+      "playground": "cli",
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "cli should work",
+          "status": "pass"
+        },
+        {
+          "name": "should restart",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/client-reload/__tests__/client-reload.spec.ts",
+      "playground": "client-reload",
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "client-reload > default",
+          "status": "pass"
+        },
+        {
+          "name": "client-reload > custom hmr port",
+          "status": "pass"
+        },
+        {
+          "name": "client-reload > custom hmr port and cross origin isolation",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/csp/__tests__/csp.spec.ts",
+      "playground": "csp",
+      "total": 9,
+      "passed": 4,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "linked css",
+          "status": "fail",
+          "error": "expected 'black' to be 'blue' // Object.is equality"
+        },
+        {
+          "name": "inline style tag",
+          "status": "pass"
+        },
+        {
+          "name": "imported css",
+          "status": "fail",
+          "error": "expected 'black' to be 'blue' // Object.is equality"
+        },
+        {
+          "name": "dynamic css",
+          "status": "fail",
+          "error": "expected 'black' to be 'red' // Object.is equality"
+        },
+        {
+          "name": "script tag",
+          "status": "fail",
+          "error": "expected 'js: error' to be 'js: ok' // Object.is equality"
+        },
+        {
+          "name": "dynamic js",
+          "status": "fail",
+          "error": "expected 'dynamic-js: error' to be 'dynamic-js: ok' // Object.is equality"
+        },
+        {
+          "name": "inline js",
+          "status": "pass"
+        },
+        {
+          "name": "nonce attributes are not repeated",
+          "status": "pass"
+        },
+        {
+          "name": "meta[property=csp-nonce] is injected",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-codesplit/__tests__/css-codesplit.spec.ts",
+      "playground": "css-codesplit",
+      "total": 4,
+      "passed": 4,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load all stylesheets",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with inline",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with module",
+          "status": "pass"
+        },
+        {
+          "name": "style order should be consistent when style tag is inserted by JS",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-dynamic-import/__tests__/css-dynamic-import.spec.ts",
+      "playground": "css-dynamic-import",
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "doesn't duplicate dynamically imported css files when served with relative base",
+          "status": "pass"
+        },
+        {
+          "name": "doesn't duplicate dynamically imported css files when served with absolute base",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-lightningcss-proxy/__tests__/css-lightningcss-proxy.spec.ts",
+      "playground": "css-lightningcss-proxy",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "injected inline style > injected inline style is present",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-lightningcss-root/__tests__/css-lightningcss-root.spec.ts",
+      "playground": "css-lightningcss-root",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "url dependency",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-lightningcss/__tests__/css-lightningcss.spec.ts",
+      "playground": "css-lightningcss",
+      "total": 9,
+      "passed": 9,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "linked css",
+          "status": "pass"
+        },
+        {
+          "name": "css import from js",
+          "status": "pass"
+        },
+        {
+          "name": "@import external css",
+          "status": "pass"
+        },
+        {
+          "name": "css modules",
+          "status": "pass"
+        },
+        {
+          "name": "inline css modules",
+          "status": "pass"
+        },
+        {
+          "name": "css with external url",
+          "status": "pass"
+        },
+        {
+          "name": "nested css with relative asset",
+          "status": "pass"
+        },
+        {
+          "name": "aliased asset",
+          "status": "pass"
+        },
+        {
+          "name": "preinlined SVG",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-no-codesplit/__tests__/css-no-codesplit.spec.ts",
+      "playground": "css-no-codesplit",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load all stylesheets",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-sourcemap/__tests__/css-sourcemap.spec.ts",
+      "playground": "css-sourcemap",
+      "total": 10,
+      "passed": 10,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "serve > linked css",
+          "status": "pass"
+        },
+        {
+          "name": "serve > linked css with import",
+          "status": "pass"
+        },
+        {
+          "name": "serve > js .css request does not include sourcemap",
+          "status": "n/a"
+        },
+        {
+          "name": "serve > imported css",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported css with import",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported sass",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported sass module",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported less",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported stylus",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported sugarss",
+          "status": "pass"
+        },
+        {
+          "name": "serve > should not output missing source file warning",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-sourcemap/__tests__/lightningcss/lightningcss.spec.ts",
+      "playground": "css-sourcemap",
+      "total": 10,
+      "passed": 10,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "serve > linked css",
+          "status": "pass"
+        },
+        {
+          "name": "serve > linked css with import",
+          "status": "pass"
+        },
+        {
+          "name": "serve > js .css request does not include sourcemap",
+          "status": "n/a"
+        },
+        {
+          "name": "serve > imported css",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported css with import",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported sass",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported sass module",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported less",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported stylus",
+          "status": "pass"
+        },
+        {
+          "name": "serve > imported sugarss",
+          "status": "pass"
+        },
+        {
+          "name": "serve > should not output missing source file warning",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css/__tests__/css.spec.ts",
+      "playground": "css",
+      "total": 48,
+      "passed": 47,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "imported css",
+          "status": "pass"
+        },
+        {
+          "name": "linked css",
+          "status": "pass"
+        },
+        {
+          "name": "css import from js",
+          "status": "pass"
+        },
+        {
+          "name": "css import asset with space",
+          "status": "pass"
+        },
+        {
+          "name": "postcss config",
+          "status": "pass"
+        },
+        {
+          "name": "postcss plugin that injects url()",
+          "status": "pass"
+        },
+        {
+          "name": "sass",
+          "status": "pass"
+        },
+        {
+          "name": "less",
+          "status": "pass"
+        },
+        {
+          "name": "less-plugin",
+          "status": "pass"
+        },
+        {
+          "name": "stylus",
+          "status": "pass"
+        },
+        {
+          "name": "css modules",
+          "status": "pass"
+        },
+        {
+          "name": "css modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "sass modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "css modules w/ sass",
+          "status": "pass"
+        },
+        {
+          "name": "less modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "inline css modules",
+          "status": "pass"
+        },
+        {
+          "name": "layers",
+          "status": "pass"
+        },
+        {
+          "name": "@import external css",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ style entry",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ style export mapping",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency that @import another dependency",
+          "status": "pass"
+        },
+        {
+          "name": "@import scss dependency that has @import with a css extension pointing to another dependency",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass entry",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export mapping",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export mapping (deep)",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export wildcard to `_partial.scss`",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/out package scss",
+          "status": "pass"
+        },
+        {
+          "name": "async chunk",
+          "status": "pass"
+        },
+        {
+          "name": "treeshaken async chunk",
+          "status": "pass"
+        },
+        {
+          "name": "PostCSS dir-dependency",
+          "status": "pass"
+        },
+        {
+          "name": "import dependency includes css import",
+          "status": "pass"
+        },
+        {
+          "name": "URL separation",
+          "status": "pass"
+        },
+        {
+          "name": "inlined",
+          "status": "pass"
+        },
+        {
+          "name": "inlined-code",
+          "status": "pass"
+        },
+        {
+          "name": "minify css",
+          "status": "pass"
+        },
+        {
+          "name": "?url",
+          "status": "fail",
+          "error": "expected 'black' to be 'yellow' // Object.is equality"
+        },
+        {
+          "name": "?raw",
+          "status": "pass"
+        },
+        {
+          "name": "import css in less",
+          "status": "pass"
+        },
+        {
+          "name": "relative path rewritten in Less's data-uri",
+          "status": "pass"
+        },
+        {
+          "name": "PostCSS source.input.from includes query",
+          "status": "pass"
+        },
+        {
+          "name": "aliased css has content",
+          "status": "pass"
+        },
+        {
+          "name": "resolve imports field in CSS",
+          "status": "pass"
+        },
+        {
+          "name": "sugarss",
+          "status": "pass"
+        },
+        {
+          "name": "async css order",
+          "status": "pass"
+        },
+        {
+          "name": "async css order with css modules",
+          "status": "pass"
+        },
+        {
+          "name": "@import scss",
+          "status": "pass"
+        },
+        {
+          "name": "Scoped CSS should have a correct order",
+          "status": "pass"
+        },
+        {
+          "name": "postcss plugin that injects url() at OnceExit",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css/__tests__/lightningcss/lightningcss.spec.ts",
+      "playground": "css",
+      "total": 47,
+      "passed": 46,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "imported css",
+          "status": "pass"
+        },
+        {
+          "name": "linked css",
+          "status": "pass"
+        },
+        {
+          "name": "css import from js",
+          "status": "pass"
+        },
+        {
+          "name": "css import asset with space",
+          "status": "pass"
+        },
+        {
+          "name": "postcss config",
+          "status": "pass"
+        },
+        {
+          "name": "postcss plugin that injects url()",
+          "status": "pass"
+        },
+        {
+          "name": "sass",
+          "status": "pass"
+        },
+        {
+          "name": "less",
+          "status": "pass"
+        },
+        {
+          "name": "less-plugin",
+          "status": "pass"
+        },
+        {
+          "name": "stylus",
+          "status": "pass"
+        },
+        {
+          "name": "css modules",
+          "status": "pass"
+        },
+        {
+          "name": "css modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "sass modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "css modules w/ sass",
+          "status": "pass"
+        },
+        {
+          "name": "less modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "inline css modules",
+          "status": "pass"
+        },
+        {
+          "name": "layers",
+          "status": "pass"
+        },
+        {
+          "name": "@import external css",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ style entry",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ style export mapping",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency that @import another dependency",
+          "status": "pass"
+        },
+        {
+          "name": "@import scss dependency that has @import with a css extension pointing to another dependency",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass entry",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export mapping",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export mapping (deep)",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export wildcard to `_partial.scss`",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/out package scss",
+          "status": "pass"
+        },
+        {
+          "name": "async chunk",
+          "status": "pass"
+        },
+        {
+          "name": "treeshaken async chunk",
+          "status": "pass"
+        },
+        {
+          "name": "PostCSS dir-dependency",
+          "status": "pass"
+        },
+        {
+          "name": "import dependency includes css import",
+          "status": "pass"
+        },
+        {
+          "name": "URL separation",
+          "status": "pass"
+        },
+        {
+          "name": "inlined",
+          "status": "pass"
+        },
+        {
+          "name": "inlined-code",
+          "status": "pass"
+        },
+        {
+          "name": "minify css",
+          "status": "pass"
+        },
+        {
+          "name": "?url",
+          "status": "fail",
+          "error": "expected 'black' to be 'yellow' // Object.is equality"
+        },
+        {
+          "name": "?raw",
+          "status": "pass"
+        },
+        {
+          "name": "import css in less",
+          "status": "pass"
+        },
+        {
+          "name": "relative path rewritten in Less's data-uri",
+          "status": "pass"
+        },
+        {
+          "name": "PostCSS source.input.from includes query",
+          "status": "pass"
+        },
+        {
+          "name": "aliased css has content",
+          "status": "pass"
+        },
+        {
+          "name": "resolve imports field in CSS",
+          "status": "pass"
+        },
+        {
+          "name": "sugarss",
+          "status": "pass"
+        },
+        {
+          "name": "async css order",
+          "status": "pass"
+        },
+        {
+          "name": "async css order with css modules",
+          "status": "pass"
+        },
+        {
+          "name": "@import scss",
+          "status": "pass"
+        },
+        {
+          "name": "Scoped CSS should have a correct order",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css/__tests__/postcss-plugins-different-dir/css-postcss-plugins-different-dir.spec.ts",
+      "playground": "css",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "postcss plugins in different dir",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css/postcss-caching/css.spec.ts",
+      "playground": "css",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "postcss config",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/data-uri/__tests__/data-uri.spec.ts",
+      "playground": "data-uri",
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "plain",
+          "status": "pass"
+        },
+        {
+          "name": "base64",
+          "status": "pass"
+        },
+        {
+          "name": "svg data uri minify",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/define/__tests__/define.spec.ts",
+      "playground": "define",
+      "total": 6,
+      "passed": 5,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "string",
+          "status": "pass"
+        },
+        {
+          "name": "ignores constants in string literals",
+          "status": "pass"
+        },
+        {
+          "name": "replaces constants in template literal expressions",
+          "status": "pass"
+        },
+        {
+          "name": "replace constants on import.meta.env when it is a invalid json",
+          "status": "pass"
+        },
+        {
+          "name": "optional values are detected by pattern properly",
+          "status": "pass"
+        },
+        {
+          "name": "env import with query parameters works correctly",
+          "status": "fail",
+          "error": "expected 'error: __DEFINES__ is not defined' to be 'success' // Object.is equality"
+        }
+      ]
+    },
+    {
+      "file": "playground/dynamic-import/__tests__/dynamic-import.spec.ts",
+      "playground": "dynamic-import",
+      "total": 26,
+      "passed": 26,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load literal dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "should load full dynamic import from public",
+          "status": "pass"
+        },
+        {
+          "name": "should load data URL of `blob:`",
+          "status": "pass"
+        },
+        {
+          "name": "should load data URL of `data:`",
+          "status": "pass"
+        },
+        {
+          "name": "should have same reference on static and dynamic js import, .mxd",
+          "status": "pass"
+        },
+        {
+          "name": "should have same reference on static and dynamic js import, .mxd2",
+          "status": "pass"
+        },
+        {
+          "name": "should have same reference on static and dynamic js import, .mxdjson",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with css",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars ignored",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with double slash ignored",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars multiline",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars alias",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars subpath imports",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars raw",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars url",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars worker",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with css in package",
+          "status": "pass"
+        },
+        {
+          "name": "should work with load ../ and itself directory",
+          "status": "pass"
+        },
+        {
+          "name": "should work with load ../ and contain itself directory",
+          "status": "pass"
+        },
+        {
+          "name": "should load css of nested dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "should handle object rest destructuring of a dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "should work a load path that contains parentheses.",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import treeshaken log",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import syntax parsing",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/env-nested/__tests__/env-nested.spec.ts",
+      "playground": "env-nested",
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "mode",
+          "status": "pass"
+        },
+        {
+          "name": "mode file override",
+          "status": "pass"
+        },
+        {
+          "name": "should not load parent .env file",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/env/__tests__/env.spec.ts",
+      "playground": "env",
+      "total": 17,
+      "passed": 16,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "base",
+          "status": "pass"
+        },
+        {
+          "name": "mode",
+          "status": "pass"
+        },
+        {
+          "name": "dev",
+          "status": "pass"
+        },
+        {
+          "name": "prod",
+          "status": "pass"
+        },
+        {
+          "name": "custom",
+          "status": "pass"
+        },
+        {
+          "name": "custom in template literal expression",
+          "status": "pass"
+        },
+        {
+          "name": "custom-prefix",
+          "status": "pass"
+        },
+        {
+          "name": "mode file override",
+          "status": "pass"
+        },
+        {
+          "name": "inline variables",
+          "status": "pass"
+        },
+        {
+          "name": "define",
+          "status": "pass"
+        },
+        {
+          "name": "NODE_ENV",
+          "status": "pass"
+        },
+        {
+          "name": "expand",
+          "status": "pass"
+        },
+        {
+          "name": "ssr",
+          "status": "pass"
+        },
+        {
+          "name": "env object",
+          "status": "fail",
+          "error": "expected { BASE_URL: '/env/', …(14) } to match object { …(16) }"
+        },
+        {
+          "name": "env object in template literal expression",
+          "status": "pass"
+        },
+        {
+          "name": "relative url import script return import.meta.url",
+          "status": "pass"
+        },
+        {
+          "name": "ignores import.meta.env in string literals",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/environment-react-ssr/__tests__/environment-react-ssr.spec.ts",
+      "playground": "environment-react-ssr",
+      "total": 4,
+      "passed": 2,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "basic",
+          "status": "pass"
+        },
+        {
+          "name": "pre-bundling > client",
+          "status": "fail",
+          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/environment-react-ssr/node_modules/.vite/deps/_metadata.json'"
+        },
+        {
+          "name": "pre-bundling > ssr",
+          "status": "pass"
+        },
+        {
+          "name": "pre-bundling > deps reload",
+          "status": "fail",
+          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/environment-react-ssr/node_modules/.vite/deps/_metadata.json'"
+        }
+      ]
+    },
+    {
+      "file": "playground/extensions/__tests__/extensions.spec.ts",
+      "playground": "extensions",
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "not contain `.mjs`",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/external/__tests__/external.spec.ts",
+      "playground": "external",
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "importmap",
+          "status": "pass"
+        },
+        {
+          "name": "should have default exports",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/forward-console/__test__/forward-console.spec.ts",
+      "playground": "forward-console",
+      "total": 4,
+      "passed": 1,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "unhandled error",
+          "status": "fail",
+          "error": "expected '[Unhandled error] Error: this is test…' to contain '[Unhandled error] Error: this is test…'"
+        },
+        {
+          "name": "unhandled rejection",
+          "status": "fail",
+          "error": "expected '[Unhandled rejection] Error: this is …' to contain '[Unhandled rejection] Error: this is …'"
+        },
+        {
+          "name": "console.error",
+          "status": "pass"
+        },
+        {
+          "name": "dependency stack uses source map path",
+          "status": "fail",
+          "error": "expected '[Unhandled error] Error: this is test…' to contain '[Unhandled error] Error: this is test…'"
+        }
+      ]
+    },
+    {
+      "file": "playground/fs-serve/__tests__/base/fs-serve-base.spec.ts",
+      "playground": "fs-serve",
+      "total": 77,
+      "passed": 29,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "normal > default import",
+          "status": "pass"
+        },
+        {
+          "name": "normal > named import",
+          "status": "pass"
+        },
+        {
+          "name": "normal > nested entry",
+          "status": "pass"
+        },
+        {
+          "name": "normal > virtual svg module",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > safe fetch (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch in subdir (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch in subdir (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with special characters (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with special characters (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with special characters 2 (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with special characters 2 (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch imported (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch imported with query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe JSON fetch (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch outside root (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters (#8498) (normal)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters (#8498) (/@fs/)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters 2 (#8498) (normal)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters 2 (#8498) (/@fs/)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch raw query import (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch raw query import (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root 1 (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root 2 (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch with ?url query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch with ?url query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch ?.svg?import (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch ?.svg?import (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch .svg?import (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch .svg?import (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline wasm init (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline wasm init (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch with vite wasm instance query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch with relative path after query (normal)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > unsafe fetch with relative path after query (/@fs/)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > denied .env (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied env casing (normal)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > denied env casing (/@fs/)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > denied .env with raw query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with raw query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with url query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with url query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with inline query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with inline query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied env with ?.svg?.wasm?init (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied env with ?.svg?.wasm?init (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with import and raw query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with import and raw query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with vite wasm instance query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with vite wasm instance query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with NTFS ADS suffix (normal)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > denied .env with NTFS ADS suffix (/@fs/)",
+          "status": "pass"
+        },
+        {
+          "name": "fetch > serve with configured headers",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > fetch HTML file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > fetch JS file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > connect WebSocket with valid token",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > fetch with allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > connect WebSocket with valid token with allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > connect WebSocket without a token without the origin header",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > fetch HTML file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > fetch JS file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > connect WebSocket without token",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > connect WebSocket with invalid token",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > fetch with non-allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > connect WebSocket with valid token with non-allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "fetchModule via WebSocket > should not read files inside allowed directories as fetchModule is disabled",
+          "status": "pass"
+        },
+        {
+          "name": "fetchModule via WebSocket > should not read files outside allowed directories",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/fs-serve/__tests__/deny/fs-serve-deny.spec.ts",
+      "playground": "fs-serve",
+      "total": 6,
+      "passed": 6,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "main > **/deny/** should deny src/deny/deny.txt",
+          "status": "pass"
+        },
+        {
+          "name": "main > **/deny/** should deny src/deny/.deny",
+          "status": "pass"
+        },
+        {
+          "name": "main > **/deny/** should deny src/deny/deny.txt?raw",
+          "status": "pass"
+        },
+        {
+          "name": "main > **/deny/** should deny src/deny/deny.txt?url",
+          "status": "pass"
+        },
+        {
+          "name": "main > **/deny/** should deny src/deny/deny.txt?import&raw",
+          "status": "pass"
+        },
+        {
+          "name": "main > **/deny/** should deny src/deny/.deny?.svg?import",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/fs-serve/__tests__/fs-serve.spec.ts",
+      "playground": "fs-serve",
+      "total": 89,
+      "passed": 41,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "normal > default import",
+          "status": "pass"
+        },
+        {
+          "name": "normal > named import",
+          "status": "pass"
+        },
+        {
+          "name": "normal > nested entry",
+          "status": "pass"
+        },
+        {
+          "name": "normal > virtual svg module",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > safe fetch (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch in subdir (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch in subdir (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with special characters (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with special characters (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with special characters 2 (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch with special characters 2 (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch imported (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > safe fetch imported with query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '200' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe JSON fetch (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch outside root (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters (#8498) (normal)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters (#8498) (/@fs/)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters 2 (#8498) (normal)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters 2 (#8498) (/@fs/)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch raw query import (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch raw query import (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root 1 (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root 2 (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch with ?url query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch with ?url query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch ?.svg?import (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch ?.svg?import (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch .svg?import (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch .svg?import (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline wasm init (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline wasm init (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch with vite wasm instance query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > unsafe fetch with relative path after query (normal)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > unsafe fetch with relative path after query (/@fs/)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > denied .env (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied env casing (normal)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > denied env casing (/@fs/)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > denied .env with raw query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with raw query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with url query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with url query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with inline query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with inline query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied env with ?.svg?.wasm?init (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied env with ?.svg?.wasm?init (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with import and raw query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with import and raw query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with vite wasm instance query (normal)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with vite wasm instance query (/@fs/)",
+          "status": "fail",
+          "error": "expected '404' to be '403' // Object.is equality"
+        },
+        {
+          "name": "matrix > denied .env with NTFS ADS suffix (normal)",
+          "status": "pass"
+        },
+        {
+          "name": "matrix > denied .env with NTFS ADS suffix (/@fs/)",
+          "status": "pass"
+        },
+        {
+          "name": "fetch > serve with configured headers",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > fetch HTML file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > fetch JS file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > connect WebSocket with valid token",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > fetch with allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > connect WebSocket with valid token with allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > connect WebSocket without a token without the origin header",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > fetch HTML file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > fetch JS file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > connect WebSocket without token",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > connect WebSocket with invalid token",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > fetch with non-allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > connect WebSocket with valid token with non-allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "fetchModule via WebSocket > should not read files inside allowed directories as fetchModule is disabled",
+          "status": "pass"
+        },
+        {
+          "name": "fetchModule via WebSocket > should not read files outside allowed directories",
+          "status": "pass"
+        },
+        {
+          "name": "safe module paths > keeps root-relative module URLs separate from absolute filesystem paths",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > basic request",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > request with /@fs/",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > # in request-target",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > # in request-target with /@fs/",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > denied file with /.",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > denied file ending with \\",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > denied file ending with \\ with /@fs/",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > denied file with /. with /@fs/",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > denied optimize deps sourcemap handler",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > denied backslash optimize deps sourcemap handler",
+          "status": "pass"
+        },
+        {
+          "name": "invalid request > HTML outside root with relative path",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/glob-import/__tests__/glob-import.spec.ts",
+      "playground": "glob-import",
+      "total": 25,
+      "passed": 22,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should work",
+          "status": "pass"
+        },
+        {
+          "name": "import glob raw",
+          "status": "pass"
+        },
+        {
+          "name": "import property access",
+          "status": "pass"
+        },
+        {
+          "name": "import relative glob raw",
+          "status": "pass"
+        },
+        {
+          "name": "unassigned import processes",
+          "status": "pass"
+        },
+        {
+          "name": "import glob in package",
+          "status": "pass"
+        },
+        {
+          "name": "hmr for adding/removing files",
+          "status": "fail",
+          "error": "expected { …(7) } to strictly equal { '/dir/a.js': {}, …(7) }"
+        },
+        {
+          "name": "no hmr for adding/removing files",
+          "status": "pass"
+        },
+        {
+          "name": "hmr for adding/removing files in package",
+          "status": "fail",
+          "error": "expected [ '/pkg-pages/foo.js' ] to strictly equal [ '/pkg-pages/bar.js', …(1) ]"
+        },
+        {
+          "name": "hmr for adding/removing files with array patterns and exclusions",
+          "status": "fail",
+          "error": "expected { Object (./array-test-dir/included.js) } to strictly equal { …(2) }"
+        },
+        {
+          "name": "follow symlinks",
+          "status": "pass"
+        },
+        {
+          "name": "follow symlinks same reference",
+          "status": "pass"
+        },
+        {
+          "name": "alias exclusion",
+          "status": "pass"
+        },
+        {
+          "name": "array pattern with exclusions",
+          "status": "pass"
+        },
+        {
+          "name": "array pattern with sibling directories sharing a prefix",
+          "status": "pass"
+        },
+        {
+          "name": "tree-shake eager css",
+          "status": "pass"
+        },
+        {
+          "name": "escapes special chars in globs without mangling user supplied glob suffix",
+          "status": "pass"
+        },
+        {
+          "name": "escape literal parenthesis in glob pattern",
+          "status": "pass"
+        },
+        {
+          "name": "subpath imports",
+          "status": "pass"
+        },
+        {
+          "name": "subpath imports (sub dir)",
+          "status": "pass"
+        },
+        {
+          "name": "#alias imports",
+          "status": "pass"
+        },
+        {
+          "name": "import base glob raw",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.glob and dynamic import vars transformations should be visible to post transform plugins",
+          "status": "pass"
+        },
+        {
+          "name": "caseSensitiveMatch option",
+          "status": "pass"
+        },
+        {
+          "name": "absolute base with files outside of root",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/hmr-full-bundle-mode/__tests__/build-hooks.spec.ts",
+      "playground": "hmr-full-bundle-mode",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "full bundle mode build hooks > buildStart and buildEnd are each called only once",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/hmr-full-bundle-mode/__tests__/hmr-full-bundle-mode.spec.ts",
+      "playground": "hmr-full-bundle-mode",
+      "total": 20,
+      "passed": 20,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "show bundling in progress",
+          "status": "pass"
+        },
+        {
+          "name": "loads the rolldown runtime from the server",
+          "status": "pass"
+        },
+        {
+          "name": "handle bundle error",
+          "status": "pass"
+        },
+        {
+          "name": "update bundle",
+          "status": "pass"
+        },
+        {
+          "name": "debounce bundle",
+          "status": "pass"
+        },
+        {
+          "name": "handle generate hmr patch error",
+          "status": "pass"
+        },
+        {
+          "name": "generate hmr patch",
+          "status": "pass"
+        },
+        {
+          "name": "continuous generate hmr patch",
+          "status": "pass"
+        },
+        {
+          "name": "hmr patch serves a newly emitted asset",
+          "status": "pass"
+        },
+        {
+          "name": "worker with ?worker query",
+          "status": "pass"
+        },
+        {
+          "name": "worker with new URL",
+          "status": "pass"
+        },
+        {
+          "name": "worker updated through an HMR patch is served",
+          "status": "pass"
+        },
+        {
+          "name": "nested worker updated through an HMR patch is served",
+          "status": "pass"
+        },
+        {
+          "name": "lazy bundling",
+          "status": "pass"
+        },
+        {
+          "name": "preserves import.meta.hot.data across updates",
+          "status": "pass"
+        },
+        {
+          "name": "invalidate",
+          "status": "pass"
+        },
+        {
+          "name": "never-executed accept falls back to a full reload",
+          "status": "pass"
+        },
+        {
+          "name": "a full reload navigates once, onto the rebuilt bundle",
+          "status": "pass"
+        },
+        {
+          "name": "editing a worker-only module without accept reloads the page",
+          "status": "pass"
+        },
+        {
+          "name": "lazy bundling errors return 500",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/hmr-root/__tests__/hmr-root.spec.ts",
+      "playground": "hmr-root",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should watch files outside root",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/hmr-ssr/__tests__/hmr-ssr.spec.ts",
+      "playground": "hmr-ssr",
+      "total": 43,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "hmr works correctly > should connect",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > self accept",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > hot data persists across module instances",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > accept dep",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > nested dep propagation",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > invalidate",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > soft invalidate",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > invalidate in circular dep should not trigger infinite HMR",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > invalidate in circular dep should be hot updated if possible",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > plugin hmr handler + custom event",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > plugin hmr remove custom events",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > plugin client-server communication",
+          "status": "not-run"
+        },
+        {
+          "name": "hmr works correctly > queries are correctly resolved",
+          "status": "not-run"
+        },
+        {
+          "name": "self accept with different entry point formats > accepts if entry point is relative to root ./unresolved.ts",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "self accept with different entry point formats > accepts if entry point is relative to root ./unresolved",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "self accept with different entry point formats > accepts if entry point is relative to root /unresolved",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > the callback is called with the new version the module",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > stops HMR bubble on dependency change",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > accepts itself and refreshes on change",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > accepts itself and refreshes on 2nd change",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > does not accept itself anymore after acceptedExports change",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to dep",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to self > with named exports",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to self > with default export",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > doesn't reload if files not in the entrypoint importers chain is changed > does not full reload",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > doesn't reload if files not in the entrypoint importers chain is changed > does not update",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > accepts itself when imported for side effects only (no bindings imported)",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "acceptExports > acceptExports([]) > accepts itself if no exports are imported",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "acceptExports > acceptExports([]) > doesn't accept itself if any of its exports is imported",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > import * from ... > accepts itself if all its exports are accepted",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > import * from ... > doesn't accept itself if one export is not accepted",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > dynamic import(...) > accepts itself if all its exports are accepted",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > dynamic import(...) > doesn't accept itself if one export is not accepted",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "handle virtual module updates",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "invalidate virtual module",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "should hmr when file is deleted and restored",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "delete file should not break hmr",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "deleted file should trigger dispose and prune callbacks",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "import.meta.hot?.accept",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "hmr works for self-accepted module within circular imported files",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "hmr should not reload if no accepted within circular imported files",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "not inlined assets HMR",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "inlined assets HMR",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        }
+      ]
+    },
+    {
+      "file": "playground/hmr/__tests__/hmr.spec.ts",
+      "playground": "hmr",
+      "total": 56,
+      "passed": 19,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should render",
+          "status": "pass"
+        },
+        {
+          "name": "should connect",
+          "status": "pass"
+        },
+        {
+          "name": "hot events",
+          "status": "pass"
+        },
+        {
+          "name": "self accept",
+          "status": "pass"
+        },
+        {
+          "name": "hot data persists across module instances",
+          "status": "pass"
+        },
+        {
+          "name": "accept dep",
+          "status": "pass"
+        },
+        {
+          "name": "nested dep propagation",
+          "status": "pass"
+        },
+        {
+          "name": "invalidate",
+          "status": "fail",
+          "error": "expected '>>> vite:invalidate -- playground-tem…' to match '>>> vite:invalidate -- /invalidation/…'"
+        },
+        {
+          "name": "invalidate works with multiple tabs",
+          "status": "fail",
+          "error": "expected '[vite] connecting...' to match '>>> vite:beforeUpdate -- update'"
+        },
+        {
+          "name": "invalidate virtual module propagates to importers",
+          "status": "fail",
+          "error": "elementHandle.textContent: Execution context was destroyed, most likely because of a navigation"
+        },
+        {
+          "name": "invalidate on root triggers page reload",
+          "status": "pass"
+        },
+        {
+          "name": "soft invalidate",
+          "status": "pass"
+        },
+        {
+          "name": "invalidate in circular dep should not trigger infinite HMR",
+          "status": "pass"
+        },
+        {
+          "name": "invalidate in circular dep should be hot updated if possible",
+          "status": "pass"
+        },
+        {
+          "name": "plugin hmr handler + custom event",
+          "status": "fail",
+          "error": "expected '' to match 'edited2'"
+        },
+        {
+          "name": "plugin hmr remove custom events",
+          "status": "fail",
+          "error": "expected '' to match 'edited2'"
+        },
+        {
+          "name": "plugin client-server communication",
+          "status": "pass"
+        },
+        {
+          "name": "full-reload encodeURI path",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "CSS update preserves query params",
+          "status": "fail",
+          "error": "expected '' to match 'param=required'"
+        },
+        {
+          "name": "it swaps out link tags",
+          "status": "fail",
+          "error": "expected 'no' to match 'yes'"
+        },
+        {
+          "name": "not loaded dynamic import",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "importing reloaded",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > the callback is called with the new version the module",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > stops HMR bubble on dependency change",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > accepts itself and refreshes on change",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > accepts itself and refreshes on 2nd change",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > does not accept itself anymore after acceptedExports change",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to dep",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to self > with named exports",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to self > with default export",
+          "status": "not-run"
+        },
+        {
+          "name": "acceptExports > accepts itself when imported for side effects only (no bindings imported)",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: /connected/, />>>/"
+        },
+        {
+          "name": "acceptExports > acceptExports([]) > accepts itself if no exports are imported",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: /connected/, -- unused --"
+        },
+        {
+          "name": "acceptExports > acceptExports([]) > doesn't accept itself if any of its exports is imported",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: /connected/, -- used --"
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > import * from ... > accepts itself if all its exports are accepted",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: /connected/, >>> ready <<<"
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > import * from ... > doesn't accept itself if one export is not accepted",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: /connected/, >>> ready <<<"
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > dynamic import(...) > accepts itself if all its exports are accepted",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: /connected/, >>> ready <<<"
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > dynamic import(...) > doesn't accept itself if one export is not accepted",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: /connected/, >>> ready <<<"
+        },
+        {
+          "name": "css in html hmr",
+          "status": "fail",
+          "error": "expected 'url(\"data:image/png;base64,iVBORw0KGg…' to match 'icon'"
+        },
+        {
+          "name": "HTML",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "handle virtual module updates",
+          "status": "pass"
+        },
+        {
+          "name": "invalidate virtual module",
+          "status": "fail",
+          "error": "expected '[wow]0' to be '[wow]1' // Object.is equality"
+        },
+        {
+          "name": "handle virtual module accept updates",
+          "status": "pass"
+        },
+        {
+          "name": "invalidate virtual module and accept",
+          "status": "fail",
+          "error": "expected '0' to be '[wow2]2' // Object.is equality"
+        },
+        {
+          "name": "keep hmr reload after missing import on server startup",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "should hmr when file is deleted and restored",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: file-delete-restore/child.js is disposed"
+        },
+        {
+          "name": "delete file should not break hmr",
+          "status": "fail",
+          "error": "expected 'count is 2!' to match 'count is 1!'"
+        },
+        {
+          "name": "deleted file should trigger dispose and prune callbacks",
+          "status": "fail",
+          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/hmr/file-delete-restore/child.js'"
+        },
+        {
+          "name": "deleting import from non-self-accepting module can trigger prune event",
+          "status": "fail",
+          "error": "expected 'prune-init' to match 'prune-init|dep2-disposed|dep2-pruned'"
+        },
+        {
+          "name": "import.meta.hot?.accept",
+          "status": "pass"
+        },
+        {
+          "name": "hmr works for self-accepted module within circular imported files",
+          "status": "pass"
+        },
+        {
+          "name": "hmr should not reload if no accepted within circular imported files",
+          "status": "pass"
+        },
+        {
+          "name": "not inlined assets HMR",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: /Logo-no-inline updated/"
+        },
+        {
+          "name": "inlined assets HMR",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: /Logo updated/"
+        },
+        {
+          "name": "CSS HMR with this.addWatchFile",
+          "status": "pass"
+        },
+        {
+          "name": "hmr should happen after missing file is created",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: /connected/, a.js"
+        },
+        {
+          "name": "deduplicate server rendered link stylesheet",
+          "status": "fail",
+          "error": "Cannot find element: \".test-css-link\""
+        }
+      ]
+    },
+    {
+      "file": "playground/html/__tests__/html.spec.ts",
+      "playground": "html",
+      "total": 48,
+      "passed": 48,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "main > pre transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > string transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > tags transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > combined transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > server only transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > build only transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > conditional transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > body prepend/append transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > css",
+          "status": "pass"
+        },
+        {
+          "name": "main > preserve comments",
+          "status": "pass"
+        },
+        {
+          "name": "main > external paths works with vite-ignore attribute",
+          "status": "pass"
+        },
+        {
+          "name": "nested > pre transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > string transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > tags transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > combined transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > server only transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > build only transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > conditional transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > body prepend/append transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > css",
+          "status": "pass"
+        },
+        {
+          "name": "nested > relative path in html asset",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > pre transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > string transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > tags transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > combined transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > server only transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > build only transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > conditional transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > body prepend/append transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > css",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > relative path in html asset",
+          "status": "pass"
+        },
+        {
+          "name": "noHead > noHead tags injection",
+          "status": "pass"
+        },
+        {
+          "name": "noBody > noBody tags injection",
+          "status": "pass"
+        },
+        {
+          "name": "Unicode path > direct access",
+          "status": "pass"
+        },
+        {
+          "name": "Unicode path > spa fallback",
+          "status": "pass"
+        },
+        {
+          "name": "link with props > separate links with different media props",
+          "status": "pass"
+        },
+        {
+          "name": "SPA fallback > should serve index.html via page navigation even when path matches file basename",
+          "status": "pass"
+        },
+        {
+          "name": "invalid > should be 500 with overlay",
+          "status": "n/a"
+        },
+        {
+          "name": "invalid > should close overlay when clicked away",
+          "status": "n/a"
+        },
+        {
+          "name": "invalid > should close overlay when escape key is pressed",
+          "status": "n/a"
+        },
+        {
+          "name": "invalid > stack is updated",
+          "status": "n/a"
+        },
+        {
+          "name": "invalid > should reload when fixed",
+          "status": "n/a"
+        },
+        {
+          "name": "Valid HTML > valid HTML is parsed",
+          "status": "pass"
+        },
+        {
+          "name": "env > env works",
+          "status": "pass"
+        },
+        {
+          "name": "importmap > importmap should be prepended",
+          "status": "pass"
+        },
+        {
+          "name": "side-effects > console.log is not tree-shaken",
+          "status": "pass"
+        },
+        {
+          "name": "special character > should fetch html proxy",
+          "status": "pass"
+        },
+        {
+          "name": "relative input > passing relative path to rolldownOptions.input works",
+          "status": "pass"
+        },
+        {
+          "name": "warmup > should warmup /warmup/warm.js",
+          "status": "n/a"
+        },
+        {
+          "name": "html serve behavior",
+          "status": "pass"
+        },
+        {
+          "name": "html fallback works non browser accept header",
+          "status": "pass"
+        },
+        {
+          "name": "escape html attribute",
+          "status": "pass"
+        },
+        {
+          "name": "invalidate inline proxy module on reload",
+          "status": "pass"
+        },
+        {
+          "name": "normalizes protocol-relative HTML proxy URLs",
+          "status": "n/a"
+        },
+        {
+          "name": "malformed URLs in src attributes should show errors",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/import-attribute/__tests__/import-attribute.spec.ts",
+      "playground": "import-attribute",
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "from source code",
+          "status": "pass"
+        },
+        {
+          "name": "from dependency",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/js-sourcemap/__tests__/js-sourcemap.spec.ts",
+      "playground": "js-sourcemap",
+      "total": 9,
+      "passed": 4,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "js",
+          "status": "pass"
+        },
+        {
+          "name": "js with inline sourcemap injected by a plugin",
+          "status": "fail",
+          "error": "expected '<script type=\"module\" src=\"/bundledDe…' to contain '// default boundary sourcemap with ma…'"
+        },
+        {
+          "name": "ts",
+          "status": "pass"
+        },
+        {
+          "name": "multiline import",
+          "status": "fail",
+          "error": "Unexpected token '<', \"</div>\" is not valid JSON"
+        },
+        {
+          "name": "should not output missing source file warning",
+          "status": "pass"
+        },
+        {
+          "name": "should not leak file contents via sourcemap path traversal in node_modules",
+          "status": "pass"
+        },
+        {
+          "name": "should not leak file contents via sourcemap path traversal in optimized deps",
+          "status": "fail",
+          "error": "expected null to be truthy"
+        },
+        {
+          "name": "babel-transformed downleveled optimized dep maps to the correct original name",
+          "status": "fail",
+          "error": "expected null to be truthy"
+        },
+        {
+          "name": "oxc-transformed downleveled optimized dep maps to the correct original name",
+          "status": "fail",
+          "error": "expected null to be truthy"
+        }
+      ]
+    },
+    {
+      "file": "playground/json/__tests__/csr/json-csr.spec.ts",
+      "playground": "json",
+      "total": 11,
+      "passed": 10,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "default import",
+          "status": "pass"
+        },
+        {
+          "name": "named import",
+          "status": "pass"
+        },
+        {
+          "name": "deep import",
+          "status": "pass"
+        },
+        {
+          "name": "named deep import",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import, named",
+          "status": "pass"
+        },
+        {
+          "name": "fetch",
+          "status": "fail",
+          "error": "expected '' to be '{\"hello\":\"this is json\"}' // Object.is equality"
+        },
+        {
+          "name": "?url",
+          "status": "pass"
+        },
+        {
+          "name": "?raw",
+          "status": "pass"
+        },
+        {
+          "name": "require(json) returns object without default export",
+          "status": "pass"
+        },
+        {
+          "name": "should full reload",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/lazy-compilation/__tests__/lazy-compilation.spec.ts",
+      "playground": "lazy-compilation",
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "lazy compilation > a chunk compiled while an earlier chunk is still in flight carries the shared factory",
+          "status": "pass"
+        },
+        {
+          "name": "lazy compilation > a chunk requested after the earlier chunks were evaluated omits the shared factory",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/chunk-importmap/legacy-chunk-importmap.spec.ts",
+      "playground": "legacy",
+      "total": 1,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "fail",
+          "error": "expected 'Failed to load resource: the server r…' not to match '404'"
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/legacy.spec.ts",
+      "playground": "legacy",
+      "total": 10,
+      "passed": 9,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should load the worker",
+          "status": "pass"
+        },
+        {
+          "name": "should work",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.env.LEGACY",
+          "status": "fail",
+          "error": "expected 'false' to match 'true'"
+        },
+        {
+          "name": "transpiles down iterators correctly",
+          "status": "pass"
+        },
+        {
+          "name": "async generator",
+          "status": "pass"
+        },
+        {
+          "name": "wraps with iife",
+          "status": "pass"
+        },
+        {
+          "name": "generates assets",
+          "status": "pass"
+        },
+        {
+          "name": "correctly emits styles",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with css",
+          "status": "pass"
+        },
+        {
+          "name": "asset url",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/modern-target/legacy-modern-target.spec.ts",
+      "playground": "legacy",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load and execute the JS file",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/no-polyfills/legacy-no-polyfills.spec.ts",
+      "playground": "legacy",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load and execute the JS file",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/lib/__tests__/lib.spec.ts",
+      "playground": "lib",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "dev",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/multiple-entrypoints/__tests__/multiple-entrypoints.spec.ts",
+      "playground": "multiple-entrypoints",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have css applied on second dynamic import",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/nested-deps/__tests__/nested-deps.spec.ts",
+      "playground": "nested-deps",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "handle nested package",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/object-hooks/__tests__/object-hooks.spec.ts",
+      "playground": "object-hooks",
+      "total": 1,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "object hooks",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        }
+      ]
+    },
+    {
+      "file": "playground/optimize-deps-no-discovery/__tests__/optimize-deps-no-discovery.spec.ts",
+      "playground": "optimize-deps-no-discovery",
+      "total": 3,
+      "passed": 2,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "optimized dep",
+          "status": "pass"
+        },
+        {
+          "name": "vue + vuex",
+          "status": "pass"
+        },
+        {
+          "name": "metadata",
+          "status": "fail",
+          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/optimize-deps-no-discovery/node_modules/.vite/deps/_metadata.json'"
+        }
+      ]
+    },
+    {
+      "file": "playground/optimize-deps/__tests__/optimize-deps.spec.ts",
+      "playground": "optimize-deps",
+      "total": 55,
+      "passed": 1,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "default + named imports from cjs dep (react)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "named imports from webpacked cjs (phoenix)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "default import from webpacked cjs (clipboard)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "default import from cjs with es-module-flag (dep-cjs-with-es-module-flag)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "default import from cjs (cjs-dep-cjs-compiled-from-esm)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "default import from cjs (cjs-dep-cjs-compiled-from-cjs)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "named import injected into an optimized dep by a plugin (dep-with-injected-import)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dynamic imports from cjs dep (react)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dynamic named imports from webpacked cjs (phoenix)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dynamic default import from webpacked cjs (clipboard)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-esm)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-cjs)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dynamic default import from cjs with es-module-flag (cjs-dynamic-dep-cjs-with-es-module-flag)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dynamic import from format-ambiguous importer respects __esModule flag (cjs-dynamic-importer-ambiguous)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dynamic import from explicit cjs importer uses node interop (cjs-dynamic-importer-cjs)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dedupe",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "cjs browser field (axios)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "cjs browser field bare",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dep from linked dep (lodash-es)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "forced include",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "import * from optimized dep",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "import from dep with process.env.NODE_ENV",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "import from dep with .notjs files",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "Import from dependency which uses relative path which needs to be resolved by main field",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dep with dynamic import",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dep with optional peer dep",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dep with optional peer dep submodule",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dep with optional peer dep (cjs)",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "optimized CJS dep preserves fallback for excluded optional peer",
+          "status": "fail",
+          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/optimize-deps/node_modules/.vite/deps/_metadata.json'"
+        },
+        {
+          "name": "dep with css import",
+          "status": "fail",
+          "error": "Cannot find element: \".dep-linked-include\""
+        },
+        {
+          "name": "CJS dep with css import",
+          "status": "fail",
+          "error": "Cannot find element: \".cjs-with-assets\""
+        },
+        {
+          "name": "CJS dep requiring dep with css main field",
+          "status": "fail",
+          "error": "Cannot find element: \".cjs-require-css-main-field\""
+        },
+        {
+          "name": "externalize known non-js files in optimize included dep",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "vue + vuex",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "esbuild-plugin",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "import from hidden dir",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "import optimize-excluded package that imports optimized-included package",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "import aliased package with colon",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "import aliased package using absolute path",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "variable names are reused in different scripts",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "flatten id should generate correctly",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "non optimized module is not duplicated",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "optimized browser:false is empty without warning",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "error on builtin modules usage",
+          "status": "fail",
+          "error": "expected [ '[vite] connecting...', …(1) ] to deeply equal ArrayContaining{…}"
+        },
+        {
+          "name": "pre bundle css require",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "name file limit is 170 characters",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        },
+        {
+          "name": "optimizeDeps config > supports include glob syntax",
+          "status": "fail",
+          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/optimize-deps/node_modules/.vite/deps/_metadata.json'"
+        },
+        {
+          "name": "long file name should work",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "warn on incompatible dependency",
+          "status": "fail",
+          "error": "expected [ …(11) ] to deep equally contain StringContaining{…}"
+        },
+        {
+          "name": "import the CommonJS external package that omits the js suffix",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "external package name with asset extension",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "dependency with external sub-dependencies",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "virtual module with .vue extension does not error during scan",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        },
+        {
+          "name": "no dep scan error for virtual modules with html-like extensions",
+          "status": "pass"
+        },
+        {
+          "name": "should fix relative worker paths in optimized dependencies",
+          "status": "fail",
+          "error": "expect.poll() function didn't resolve in time."
+        }
+      ]
+    },
+    {
+      "file": "playground/optimize-missing-deps/__test__/optimize-missing-deps.spec.ts",
+      "playground": "optimize-missing-deps",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "optimize",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/preload/__tests__/preload-disabled/preload-disabled.spec.ts",
+      "playground": "preload",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/preload/__tests__/preload.spec.ts",
+      "playground": "preload",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/preload/__tests__/resolve-deps/preload-resolve-deps.spec.ts",
+      "playground": "preload",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/preserve-symlinks/__tests__/preserve-symlinks.spec.ts",
+      "playground": "preserve-symlinks",
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "not-preserve-symlinks",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/proxy-bypass/__tests__/proxy-bypass.spec.ts",
+      "playground": "proxy-bypass",
+      "total": 4,
+      "passed": 4,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "proxy-bypass",
+          "status": "pass"
+        },
+        {
+          "name": "async-proxy-bypass",
+          "status": "pass"
+        },
+        {
+          "name": "async-proxy-bypass-with-error",
+          "status": "pass"
+        },
+        {
+          "name": "proxy error returns 502",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/proxy-hmr/__tests__/proxy-hmr.spec.ts",
+      "playground": "proxy-hmr",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "proxy-hmr",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/resolve-tsconfig-paths/__tests__/resolve.spec.ts",
+      "playground": "resolve-tsconfig-paths",
+      "total": 9,
+      "passed": 9,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "import from .ts",
+          "status": "pass"
+        },
+        {
+          "name": "import from .js",
+          "status": "pass"
+        },
+        {
+          "name": "import using # prefixed path",
+          "status": "pass"
+        },
+        {
+          "name": "fallback works",
+          "status": "pass"
+        },
+        {
+          "name": "nested tsconfig.json & references / include works",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.glob resolves tsconfig paths",
+          "status": "pass"
+        },
+        {
+          "name": "css @import resolves tsconfig paths",
+          "status": "pass"
+        },
+        {
+          "name": "sass @use resolves tsconfig paths",
+          "status": "pass"
+        },
+        {
+          "name": "less @import does not resolve tsconfig paths (unsupported)",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/resolve/__tests__/mainfields-custom-first/resolve-mainfields-custom-first.spec.ts",
+      "playground": "resolve",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "resolve.mainFields.custom-first",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/resolve/__tests__/resolve.spec.ts",
+      "playground": "resolve",
+      "total": 54,
+      "passed": 53,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "bom import",
+          "status": "pass"
+        },
+        {
+          "name": "deep import",
+          "status": "pass"
+        },
+        {
+          "name": "exports and a nested package scope with a different type",
+          "status": "pass"
+        },
+        {
+          "name": "entry with exports field",
+          "status": "pass"
+        },
+        {
+          "name": "deep import with exports field",
+          "status": "pass"
+        },
+        {
+          "name": "deep import with query with exports field",
+          "status": "pass"
+        },
+        {
+          "name": "deep import with exports field + exposed dir",
+          "status": "pass"
+        },
+        {
+          "name": "deep import with exports field + mapped dir",
+          "status": "pass"
+        },
+        {
+          "name": "exports read from the root package.json",
+          "status": "pass"
+        },
+        {
+          "name": "deep import with exports and legacy fallback",
+          "status": "pass"
+        },
+        {
+          "name": "Respect exports field env key priority",
+          "status": "pass"
+        },
+        {
+          "name": "Respect production/development conditionals",
+          "status": "pass"
+        },
+        {
+          "name": "Respect exports to take precedence over mainFields",
+          "status": "pass"
+        },
+        {
+          "name": "import and require resolve using module condition",
+          "status": "pass"
+        },
+        {
+          "name": "implicit dir/index.js",
+          "status": "pass"
+        },
+        {
+          "name": "implicit dir/index.js vs explicit file",
+          "status": "pass"
+        },
+        {
+          "name": "nested extension",
+          "status": "pass"
+        },
+        {
+          "name": "exact extension vs. duplicated (.js.js)",
+          "status": "pass"
+        },
+        {
+          "name": "don't add extension to directory name (./dir-with-ext.js/index.js)",
+          "status": "pass"
+        },
+        {
+          "name": "a ts module can import another ts module using its corresponding js file name",
+          "status": "pass"
+        },
+        {
+          "name": "a js module can import another ts module using its corresponding js file name",
+          "status": "pass"
+        },
+        {
+          "name": "filename with dot",
+          "status": "pass"
+        },
+        {
+          "name": "absolute path",
+          "status": "pass"
+        },
+        {
+          "name": "file url",
+          "status": "pass"
+        },
+        {
+          "name": "browser field",
+          "status": "pass"
+        },
+        {
+          "name": "access property of browser:false module",
+          "status": "pass"
+        },
+        {
+          "name": "Resolve browser field even if module field exists",
+          "status": "pass"
+        },
+        {
+          "name": "css entry",
+          "status": "pass"
+        },
+        {
+          "name": "monorepo linked dep",
+          "status": "pass"
+        },
+        {
+          "name": "plugin resolved virtual file",
+          "status": "pass"
+        },
+        {
+          "name": "plugin resolved virtual file that has import",
+          "status": "pass"
+        },
+        {
+          "name": "plugin resolved custom virtual file",
+          "status": "pass"
+        },
+        {
+          "name": "virtual file with URL scheme should not be rewritten (#20803)",
+          "status": "pass"
+        },
+        {
+          "name": "resolve inline package",
+          "status": "pass"
+        },
+        {
+          "name": "resolve.extensions",
+          "status": "pass"
+        },
+        {
+          "name": "resolve.mainFields",
+          "status": "pass"
+        },
+        {
+          "name": "resolve.mainFields.browser-first",
+          "status": "pass"
+        },
+        {
+          "name": "resolve.conditions",
+          "status": "pass"
+        },
+        {
+          "name": "resolve package that contains # in path",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving top level with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving same level with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving nested path with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving star with imports filed",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving slash with imports filed",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving from other package with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving with query with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving dot-prefixed directory with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving #/ root alias pattern with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolve doesn't interrupt page request with trailing query and .css",
+          "status": "pass"
+        },
+        {
+          "name": "resolve non-normalized absolute path",
+          "status": "pass"
+        },
+        {
+          "name": "Resolve doesn't interrupt page request that clashes with local project package.json",
+          "status": "pass"
+        },
+        {
+          "name": "import utf8-bom package",
+          "status": "pass"
+        },
+        {
+          "name": "HEAD request handling > HEAD request to JS file returns correct Content-Type",
+          "status": "pass"
+        },
+        {
+          "name": "HEAD request handling > HEAD request to CSS file returns correct Content-Type",
+          "status": "fail",
+          "error": "expected null to be 'text/css' // Object.is equality"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-alias/__tests__/ssr-alias.spec.ts",
+      "playground": "ssr-alias",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "dev",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-conditions/__tests__/ssr-conditions.spec.ts",
+      "playground": "ssr-conditions",
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "ssr.resolve.conditions affect non-externalized imports during ssr",
+          "status": "pass"
+        },
+        {
+          "name": "ssr.resolve.externalConditions affect externalized imports during ssr",
+          "status": "pass"
+        },
+        {
+          "name": "ssr.resolve settings do not affect non-ssr imports",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-deps/__tests__/ssr-deps.spec.ts",
+      "playground": "ssr-deps",
+      "total": 18,
+      "passed": 18,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "msg should be encrypted",
+          "status": "pass"
+        },
+        {
+          "name": "msg read by fs/promises",
+          "status": "pass"
+        },
+        {
+          "name": "msg from primitive export",
+          "status": "pass"
+        },
+        {
+          "name": "msg from TS transpiled exports",
+          "status": "pass"
+        },
+        {
+          "name": "msg from Object.assign exports",
+          "status": "pass"
+        },
+        {
+          "name": "msg from forwarded exports",
+          "status": "pass"
+        },
+        {
+          "name": "msg from define properties exports",
+          "status": "pass"
+        },
+        {
+          "name": "msg from define property exports",
+          "status": "pass"
+        },
+        {
+          "name": "msg from only object assigned exports",
+          "status": "pass"
+        },
+        {
+          "name": "msg from no external cjs",
+          "status": "pass"
+        },
+        {
+          "name": "msg from optimized with nested external",
+          "status": "pass"
+        },
+        {
+          "name": "msg from optimized cjs with nested external",
+          "status": "pass"
+        },
+        {
+          "name": "msg from external using external entry",
+          "status": "pass"
+        },
+        {
+          "name": "msg from linked no external",
+          "status": "pass"
+        },
+        {
+          "name": "msg from linked no external",
+          "status": "pass"
+        },
+        {
+          "name": "import css library",
+          "status": "pass"
+        },
+        {
+          "name": "import css library",
+          "status": "pass"
+        },
+        {
+          "name": "optimize-deps-nested-include",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-html/__tests__/ssr-html.spec.ts",
+      "playground": "ssr-html",
+      "total": 10,
+      "passed": 10,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "injected inline scripts > no injected inline scripts are present",
+          "status": "pass"
+        },
+        {
+          "name": "injected inline scripts > injected script proxied correctly",
+          "status": "pass"
+        },
+        {
+          "name": "trailing slash html paths > pre-transforms relative module scripts from the trailing slash directory",
+          "status": "pass"
+        },
+        {
+          "name": "trailing slash html paths > loads relative module scripts from the trailing slash directory",
+          "status": "pass"
+        },
+        {
+          "name": "hmr > handle virtual module updates",
+          "status": "pass"
+        },
+        {
+          "name": "stacktrace > stacktrace of js is correct when sourcemaps is not enabled in Node.js",
+          "status": "pass"
+        },
+        {
+          "name": "stacktrace > stacktrace of js is correct when sourcemaps is enabled in Node.js",
+          "status": "pass"
+        },
+        {
+          "name": "stacktrace > stacktrace of ts is correct when sourcemaps is not enabled in Node.js",
+          "status": "pass"
+        },
+        {
+          "name": "stacktrace > stacktrace of ts is correct when sourcemaps is enabled in Node.js",
+          "status": "pass"
+        },
+        {
+          "name": "stacktrace > with Vite runtime",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-noexternal/__tests__/ssr-noexternal.spec.ts",
+      "playground": "ssr-noexternal",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "message from require-external-cjs",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-pug/__tests__/ssr-pug.spec.ts",
+      "playground": "ssr-pug",
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "injected inline scripts > no injected inline scripts are present",
+          "status": "pass"
+        },
+        {
+          "name": "injected inline scripts > injected script proxied correctly",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-wasm/__tests__/ssr-wasm.spec.ts",
+      "playground": "ssr-wasm",
+      "total": 4,
+      "passed": 4,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should work when inlined",
+          "status": "pass"
+        },
+        {
+          "name": "should work when output",
+          "status": "pass"
+        },
+        {
+          "name": "direct wasm import",
+          "status": "pass"
+        },
+        {
+          "name": "direct wasm import with wasm imports",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-webworker/__tests__/ssr-webworker.spec.ts",
+      "playground": "ssr-webworker",
+      "total": 4,
+      "passed": 4,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "/",
+          "status": "pass"
+        },
+        {
+          "name": "supports resolve.conditions",
+          "status": "pass"
+        },
+        {
+          "name": "respects browser export",
+          "status": "pass"
+        },
+        {
+          "name": "supports nodejs_compat",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr/__tests__/ssr.spec.ts",
+      "playground": "ssr",
+      "total": 9,
+      "passed": 9,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "circular dependencies modules doesn't throw",
+          "status": "pass"
+        },
+        {
+          "name": "circular import doesn't throw (1)",
+          "status": "pass"
+        },
+        {
+          "name": "circular import doesn't throw (2)",
+          "status": "pass"
+        },
+        {
+          "name": "deadlock doesn't happen for static imports",
+          "status": "pass"
+        },
+        {
+          "name": "deadlock doesn't happen for dynamic imports",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.resolve is supported",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.main is supported",
+          "status": "pass"
+        },
+        {
+          "name": "html proxy is encoded",
+          "status": "pass"
+        },
+        {
+          "name": "should restart ssr",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/tailwind-sourcemap/__tests__/tailwind-sourcemap.spec.ts",
+      "playground": "tailwind-sourcemap",
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should not output missing source file warning",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/tailwind-v3/__test__/tailwind-v3.spec.ts",
+      "playground": "tailwind-v3",
+      "total": 4,
+      "passed": 1,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should render",
+          "status": "pass"
+        },
+        {
+          "name": "regenerate CSS and HMR (glob pattern)",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/views/view1.js via /src/main.js"
+        },
+        {
+          "name": "same file duplicated in module graph (#4267)",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/components/component1.js"
+        },
+        {
+          "name": "regenerate CSS and HMR (relative path)",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/main.js"
+        }
+      ]
+    },
+    {
+      "file": "playground/tailwind/__test__/tailwind.spec.ts",
+      "playground": "tailwind",
+      "total": 5,
+      "passed": 1,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should render",
+          "status": "pass"
+        },
+        {
+          "name": "full reload happens when the HTML is changed",
+          "status": "fail",
+          "error": "expected 'oklch(0.623 0.214 259.815)' to be 'oklch(0.723 0.219 149.579)' // Object.is equality"
+        },
+        {
+          "name": "regenerate CSS and HMR (glob pattern)",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/views/view1.js via /src/main.js"
+        },
+        {
+          "name": "same file duplicated in module graph (#4267)",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/components/component1.js"
+        },
+        {
+          "name": "regenerate CSS and HMR (relative path)",
+          "status": "fail",
+          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/main.js"
+        }
+      ]
+    },
+    {
+      "file": "playground/transform-plugin/__tests__/base/transform-plugin.spec.ts",
+      "playground": "transform-plugin",
+      "total": 1,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "should re-run transform when dependencies are edited",
+          "status": "fail",
+          "error": "expected '1' to be '2' // Object.is equality"
+        }
+      ]
+    },
+    {
+      "file": "playground/transform-plugin/__tests__/transform-plugin.spec.ts",
+      "playground": "transform-plugin",
+      "total": 3,
+      "passed": 2,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "module type should be supported",
+          "status": "pass"
+        },
+        {
+          "name": "lazy hook filter should be applied",
+          "status": "pass"
+        },
+        {
+          "name": "should re-run transform when dependencies are edited",
+          "status": "fail",
+          "error": "expected '1' to be '2' // Object.is equality"
+        }
+      ]
+    },
+    {
+      "file": "playground/tsconfig-json-load-error/__tests__/tsconfig-json-load-error.spec.ts",
+      "playground": "tsconfig-json-load-error",
+      "total": 3,
+      "passed": 1,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "server > should log 500 error in browser for malformed tsconfig",
+          "status": "fail",
+          "error": "expected undefined to be truthy"
+        },
+        {
+          "name": "server > should show error overlay for tsconfig error",
+          "status": "pass"
+        },
+        {
+          "name": "server > should reload when tsconfig is changed",
+          "status": "fail",
+          "error": "expected [ '[vite] connecting...', …(1) ] to include 'tsconfig error fixed, file loaded'"
+        }
+      ]
+    },
+    {
+      "file": "playground/tsconfig-json/__tests__/tsconfig-json.spec.ts",
+      "playground": "tsconfig-json",
+      "total": 6,
+      "passed": 6,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should respected each `tsconfig.json`s compilerOptions",
+          "status": "pass"
+        },
+        {
+          "name": "scanner should not error with decorators",
+          "status": "pass"
+        },
+        {
+          "name": "transformWithEsbuild > merge tsconfigRaw object",
+          "status": "pass"
+        },
+        {
+          "name": "transformWithEsbuild > overwrite tsconfigRaw string",
+          "status": "pass"
+        },
+        {
+          "name": "transformWithEsbuild > verbatimModuleSyntax",
+          "status": "pass"
+        },
+        {
+          "name": "transformWithEsbuild > experimentalDecorators",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/wasm/__tests__/wasm.spec.ts",
+      "playground": "wasm",
+      "total": 11,
+      "passed": 11,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should work when inlined",
+          "status": "pass"
+        },
+        {
+          "name": "should work when output",
+          "status": "pass"
+        },
+        {
+          "name": "init function returns WebAssembly.Instance",
+          "status": "pass"
+        },
+        {
+          "name": "?url",
+          "status": "pass"
+        },
+        {
+          "name": "should work when wasm in worker",
+          "status": "pass"
+        },
+        {
+          "name": "direct wasm import",
+          "status": "pass"
+        },
+        {
+          "name": "direct wasm import with wasm imports",
+          "status": "pass"
+        },
+        {
+          "name": "direct wasm import unwraps exported WebAssembly.Global",
+          "status": "pass"
+        },
+        {
+          "name": "wasm importing a global from another wasm",
+          "status": "pass"
+        },
+        {
+          "name": "wasm reading a mutable global mutated by another wasm",
+          "status": "pass"
+        },
+        {
+          "name": "wasm using js-string builtins and imported string constants",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/es/worker-es.spec.ts",
+      "playground": "worker",
+      "total": 20,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "normal",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "named",
+          "status": "fail",
+          "error": "expected '' to match 'namedWorker'"
+        },
+        {
+          "name": "TS output",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "inlined",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "named inlined",
+          "status": "fail",
+          "error": "expected '' to match 'namedInlineWorker'"
+        },
+        {
+          "name": "import meta url",
+          "status": "fail",
+          "error": "expected '' to match /^(blob|http):/"
+        },
+        {
+          "name": "unicode inlined",
+          "status": "fail",
+          "error": "expected '' to match '•pong•'"
+        },
+        {
+          "name": "shared worker",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "named shared worker",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "inline shared worker",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "worker emitted and import.meta.url in nested worker (serve)",
+          "status": "fail",
+          "error": "expected '' to match 'worker-nested-worker'"
+        },
+        {
+          "name": "deeply nested workers",
+          "status": "fail",
+          "error": "expected '' to match /Hello\\sfrom\\sroot.*\\/es\\/.+deeply-…/es\\"
+        },
+        {
+          "name": "module worker",
+          "status": "fail",
+          "error": "expected '' to match 'A string'"
+        },
+        {
+          "name": "classic worker",
+          "status": "fail",
+          "error": "expected '' to match 'A classic'"
+        },
+        {
+          "name": "emit chunk",
+          "status": "fail",
+          "error": "expected '' to match '[\"A string\",{\"type\":\"emit-chunk-sub-w…'"
+        },
+        {
+          "name": "url query worker",
+          "status": "fail",
+          "error": "expected '' to match 'Hello from simple worker!'"
+        },
+        {
+          "name": "import.meta.glob in worker",
+          "status": "fail",
+          "error": "expected '' to match '[\"'"
+        },
+        {
+          "name": "import.meta.glob with eager in worker",
+          "status": "fail",
+          "error": "expected '' to match '[\"'"
+        },
+        {
+          "name": "self reference worker",
+          "status": "fail",
+          "error": "expected '' to match 'pong: main\\npong: nested\\n'"
+        },
+        {
+          "name": "self reference url worker",
+          "status": "fail",
+          "error": "expected '' to match 'pong: main\\npong: nested\\n'"
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/iife/worker-iife.spec.ts",
+      "playground": "worker",
+      "total": 17,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "normal",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "named",
+          "status": "fail",
+          "error": "expected '' to match 'namedWorker'"
+        },
+        {
+          "name": "TS output",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "inlined",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "named inlined",
+          "status": "fail",
+          "error": "expected '' to match 'namedInlineWorker'"
+        },
+        {
+          "name": "shared worker",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "named shared worker",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "inline shared worker",
+          "status": "fail",
+          "error": "expected '' to match 'pong'"
+        },
+        {
+          "name": "worker emitted and import.meta.url in nested worker (serve)",
+          "status": "fail",
+          "error": "expected '' to match '/worker-nested'"
+        },
+        {
+          "name": "module worker",
+          "status": "fail",
+          "error": "expected '' to match /A\\sstring.*\\/iife\\/.+url-worker\\…/iife\\"
+        },
+        {
+          "name": "classic worker",
+          "status": "fail",
+          "error": "expected '' to match 'A classic'"
+        },
+        {
+          "name": "url query worker",
+          "status": "fail",
+          "error": "expected '' to match 'Hello from simple worker!'"
+        },
+        {
+          "name": "import.meta.glob eager in worker",
+          "status": "fail",
+          "error": "expected '' to match '[\"'"
+        },
+        {
+          "name": "self reference worker",
+          "status": "fail",
+          "error": "expected '' to be 'pong: main\\npong: nested\\n' // Object.is equality"
+        },
+        {
+          "name": "self reference url worker",
+          "status": "fail",
+          "error": "expected '' to be 'pong: main\\npong: nested\\n' // Object.is equality"
+        },
+        {
+          "name": "self reference url worker in dependency",
+          "status": "fail",
+          "error": "expected '' to be 'pong: main\\npong: nested\\n' // Object.is equality"
+        },
+        {
+          "name": "sourcemap is correct after env is injected",
+          "status": "fail",
+          "error": "Test timed out in 30000ms."
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/relative-base-iife/worker-relative-base-iife.spec.ts",
+      "playground": "worker",
+      "total": 1,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "asset url",
+          "status": "fail",
+          "error": "expected '/worker-assets/worker_asset-vite-DcBt…' to match '/vite.svg'"
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/relative-base/worker-relative-base.spec.ts",
+      "playground": "worker",
+      "total": 13,
+      "passed": 11,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "normal",
+          "status": "fail",
+          "error": "expected '/worker-assets/worker_asset-vite-DcBt…' to match '/vite.svg'"
+        },
+        {
+          "name": "named",
+          "status": "pass"
+        },
+        {
+          "name": "TS output",
+          "status": "pass"
+        },
+        {
+          "name": "shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "named shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "inline shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "worker emitted and import.meta.url in nested worker (serve)",
+          "status": "pass"
+        },
+        {
+          "name": "module worker",
+          "status": "pass"
+        },
+        {
+          "name": "classic worker",
+          "status": "fail",
+          "error": "expected '' to match '[success] classic-esm'"
+        },
+        {
+          "name": "import.meta.glob in worker",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.glob with eager in worker",
+          "status": "pass"
+        },
+        {
+          "name": "self reference worker",
+          "status": "pass"
+        },
+        {
+          "name": "self reference url worker",
+          "status": "pass"
+        }
+      ]
+    }
+  ]
+}
