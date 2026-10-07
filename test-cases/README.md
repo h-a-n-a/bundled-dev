@@ -1,6 +1,6 @@
 # Bundled-dev skip tags — playground checklist
 
-Issue: [vitejs/vite#23028](https://github.com/vitejs/vite/issues/23028) · Repo: `~/Projects/vite`, branch `test/bundled-dev-skip-tags` (plain git, from `main` @ `8a4c19cfc`)
+Issue: [vitejs/vite#23028](https://github.com/vitejs/vite/issues/23028) · Repo: `~/Projects/vite` (plain git), one branch per dir
 
 Goal: replace every `skipIf(isBundledDev)` and every `bundledDevExclude` entry with a Vitest tag, so the bundled-dev report keeps two groups apart. Each tagged test or describe also gets `meta: { reason: '…' }`.
 
@@ -19,6 +19,9 @@ Goal: replace every `skipIf(isBundledDev)` and every `bundledDevExclude` entry w
 - A whole excluded file becomes `/** @module-tag … */`.
 - Don't move on to the next test case until I tell you to. If you are unsure, ask me.
 - Use `bundledDevTodo` and `bundledDevUnsupported`. Don't write tags explicitly.
+- When the cause is the same, reuse the exact reason text from earlier cases (`git grep -h -A1 "bundledDevTodo(\|bundledDevUnsupported(" -- playground`), so the report groups those tests.
+- Name each dir's branch `test/bundled-dev-skip-tags-<dirname>`, e.g. `test/bundled-dev-skip-tags-backend-integration`.
+- Create each dir's branch from the branch of the dir before it, in the order of the list below. The `assets` branch is `test/bundled-dev-skip-tags` (vitejs/vite#23680), so `backend-integration` starts from it.
 
 ## Steps for each dir
 
