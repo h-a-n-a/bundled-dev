@@ -19,6 +19,7 @@ Goal: replace every `skipIf(isBundledDev)` and every `bundledDevExclude` entry w
 - A whole excluded file becomes `/** @module-tag … */`.
 - Don't move on to the next test case until I tell you to. If you are unsure, ask me.
 - Use `bundledDevTodo` and `bundledDevUnsupported`. Don't write tags explicitly.
+- Put issue numbers in the second argument (`{ vite: [N] }`, `{ rolldown: [N] }`), not in the reason text. Leave out the umbrella vitejs/vite#23028: no `issues` means "no issue yet".
 - When the cause is the same, reuse the exact reason text from earlier cases (`git grep -h -A1 "bundledDevTodo(\|bundledDevUnsupported(" -- playground`), so the report groups those tests.
 - Name each dir's branch `test/bundled-dev-skip-tags-<dirname>`, e.g. `test/bundled-dev-skip-tags-backend-integration`.
 - Create each dir's branch from the branch of the dir before it, in the order of the list below. The `assets` branch is `test/bundled-dev-skip-tags` (vitejs/vite#23680), so `backend-integration` starts from it.
@@ -61,11 +62,12 @@ Only PRs opened as part of this work, starting with #23680. All PRs are in vitej
 
 | Dir | PR | Kind | Branch | What it does | State |
 |---|---|---|---|---|---|
-| `assets` | #23680 | tags | `test/bundled-dev-skip-tags` | tags the 35 skips | open (draft) |
-| `backend-integration` | #23681 | tags | `test/bundled-dev-skip-tags-backend-integration` | tags the 6 skips; Windows-only `todo` (`windowsTodo`) | open (draft) |
-| `backend-integration` | #23683 | fix | `fix/bundled-dev-server-origin` | applies `server.origin` to asset URLs; removes 2 `todo` | open (draft) |
-| `backend-integration` | #23684 | fix | `fix/bundled-dev-windows-file-names` | normalizes memory-file keys (`\` on Windows); removes `windowsTodo` | open (draft) |
+| `assets` | #23680 | tags | `test/bundled-dev-skip-tags` | tags the 35 skips; adds `meta.issues` to the helpers | open |
+| `backend-integration` | #23681 | tags | `test/bundled-dev-skip-tags-backend-integration` | tags the 6 skips; Windows-only `todo` (`windowsTodo`) | open |
+| `backend-integration` | #23683 | fix | `fix/bundled-dev-server-origin` | applies `server.origin` to asset URLs; removes 2 `todo` | open |
+| `backend-integration` | #23684 | fix | `fix/bundled-dev-windows-file-names` | normalizes memory-file keys (`\` on Windows); removes `windowsTodo` | open |
 | `chunk-importmap` | #23685 | fix | `fix/bundled-dev-chunk-import-map` | bundled dev ignores `build.chunkImportMap`; removes the exclude entry | open (draft) |
+| `csp` | #23705 | tags | `test/bundled-dev-skip-tags-csp` | tags the 5 skips with one shared `todo` (`transformIndexHtmlTodo`) | open (draft) |
 
 ## When I ask you to check the PRs
 
@@ -87,7 +89,7 @@ Counts are from `main` @ `8a4c19cfc`: 141 skip sites and 5 excluded spec files.
 - [x] `assets` — 5 specs · 35 skips → 18 `todo` (14 postfix dropped, 3 `?url` CSS #22863, 1 inline `<style>` `@import` HMR) · 17 run (bundled-dev branch in the expected value, `runtime-base`) · `?raw import` log guard (`if (!isBundled)`) kept
 - [x] `backend-integration` — 1 spec · 4 skips + 2 Windows-only · vitejs/vite#23681: 2 `todo` (`server.origin` not applied to emitted asset URLs), 2 run (bundled-dev branch in the expected value: CSS HMR uses `<style>`, `hot updated` log), Windows-only `todo` (`windowsTodo`) on the tests that load the page · fixes: vitejs/vite#23683 (`server.origin`), vitejs/vite#23684 (Windows: memory-file keys keep `\` from input keys) → no tags left · issue comments: 5/7, 7/7 with both fixes; P0 Windows 404, P1 entry URL not documented, P1 `server.origin`
 - [x] `chunk-importmap` — 1 spec · excluded: `chunk-importmap.spec.ts` · vitejs/vite#23685 → no tags: bundled dev applied the build-only `build.chunkImportMap` (stable chunk names, but no import map in the HTML → 404), fixed by forcing it off in `resolveBuildEnvironmentOptions` · 10/10 under bundled dev with the fix (plain dev 10/10, build 12/12) · issue comments: 0/10, 10/10 with #23685; P0 page fails to load with `build.chunkImportMap: true`
-- [ ] `csp` — 1 spec · 5 skips
+- [x] `csp` — 1 spec · 5 skips · vitejs/vite#23705: 5 `todo`, one shared reason (`issues: { vite: [20374] }`): the playground serves the page from its own middleware (`appType: 'custom'`, a fresh nonce per request), and `server.transformIndexHtml` returns HTML with source URLs that bundled dev does not serve. Bundled dev does build the HTML (`bundledDev.memoryFiles['index.html']`, nonce placeholders included), but a custom server has no supported way to get it · issue comments: 4/9 (plain dev 9/9)
 - [ ] `css` — 6 specs · 1 skip
 - [ ] `dynamic-import` — 1 spec · 1 skip
 - [ ] `env` — 1 spec · 1 skip
