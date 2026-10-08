@@ -24,6 +24,7 @@ Goal: replace every `skipIf(isBundledDev)` and every `bundledDevExclude` entry w
 - Create each dir's branch from the branch of the dir before it, in the order of the list below. The `assets` branch is `test/bundled-dev-skip-tags` (vitejs/vite#23680), so `backend-integration` starts from it.
 - A dir that needs only a fix and no tags gets a `fix/…` branch instead. It holds the fix and the exclude removal, and the next dir starts from it. `chunk-importmap` is `fix/bundled-dev-chunk-import-map`, so `csp` starts from it.
 - The stack is tracked with `gh stack` (github/gh-stack) in `~/Projects/vite`. Add a new branch on top with `gh stack add`, then use `gh stack rebase` and `gh stack push`. Open new PRs with `gh pr create --draft`. Never use `gh stack submit` without `--auto`, and never pass `--open`: both make PRs ready for review.
+- When asked to check the discussions, check https://github.com/vitejs/vite/discussions/22746
 
 ## Steps for each dir
 
