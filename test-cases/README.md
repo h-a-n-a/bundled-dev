@@ -15,6 +15,11 @@ Goal: replace every `skipIf(isBundledDev)` and every `bundledDevExclude` entry w
 - If the skip comment does not say whether the skip is by design, ask before choosing a tag.
 - Treat `skipIf(isBundledDev && isWindows)` like any other skip: remove it, or replace it with a tag.
 - A tag cannot cancel `runIf` or `test.skip`. Turn `runIf(isServe && !isBundledDev)` into `runIf(isServe)` + tag.
+- A guard inside a test (`if (isBundled) return`, `if (!isBundledDev) { … }`, or similar) hides part of the test under bundled dev without a tag, so the report does not show the gap. Split the guarded part into its own test, placed right after the original, and tag it.
+  - Name it after the original, plus what the split part checks (e.g. `linked css HMR`).
+  - If the guard also covers build (`isBundled`), add `runIf(isServe)` to the new test.
+  - Example: `css` (vitejs/vite#23707).
+- A bundled-dev branch in the expected value (`isBundled ? /base64/ : '/nested/icon.png'`) is not a guard. Keep it, with no tag.
 - Never tag a block that is limited to another mode: a `todo` tag wins over `describe.runIf(false)`.
 - A whole excluded file becomes `/** @module-tag … */`.
 - Don't move on to the next test case until I tell you to. If you are unsure, ask me.
@@ -29,7 +34,7 @@ Goal: replace every `skipIf(isBundledDev)` and every `bundledDevExclude` entry w
 
 ## Steps for each dir
 
-1. Visit each spec in the dir. List every test case that is skipped under bundled dev (`skipIf(isBundledDev)`, `runIf(… && !isBundledDev)`, or another form).
+1. Visit each spec in the dir. List every test case that is skipped under bundled dev (`skipIf(isBundledDev)`, `runIf(… && !isBundledDev)`, a guard inside a test, or another form).
 2. Go through the cases one by one, together. For each case, start the dev server for that playground in bundled dev, so it can be examined in the browser:
    ```sh
    cd ~/Projects/vite/playground/<dir>
@@ -68,7 +73,7 @@ Only PRs opened as part of this work, starting with #23680. All PRs are in vitej
 | `backend-integration` | #23684 | fix | `fix/bundled-dev-windows-file-names` | normalizes memory-file keys (`\` on Windows); removes `windowsTodo` | open |
 | `chunk-importmap` | #23685 | fix | `fix/bundled-dev-chunk-import-map` | bundled dev ignores `build.chunkImportMap`; removes the exclude entry | open (draft) |
 | `csp` | #23705 | tags | `test/bundled-dev-skip-tags-csp` | tags the 5 skips with one shared `todo` (`transformIndexHtmlTodo`) | open (draft) |
-| `css` | #23707 | tags | `test/bundled-dev-skip-tags-css` | tags `?url` as `todo`; keeps 4 HMR edit guards (`isBundled`) and points them at rolldown/rolldown#10039 | open (draft) |
+| `css` | #23707 | tags | `test/bundled-dev-skip-tags-css` | tags `?url` as `todo`; splits 4 HMR edits into their own tests, tagged `todo` (rolldown/rolldown#10039) | open (draft) |
 
 ## When I ask you to check the PRs
 
@@ -91,7 +96,7 @@ Counts are from `main` @ `8a4c19cfc`: 141 skip sites and 5 excluded spec files.
 - [x] `backend-integration` — 1 spec · 4 skips + 2 Windows-only · vitejs/vite#23681: 2 `todo` (`server.origin` not applied to emitted asset URLs), 2 run (bundled-dev branch in the expected value: CSS HMR uses `<style>`, `hot updated` log), Windows-only `todo` (`windowsTodo`) on the tests that load the page · fixes: vitejs/vite#23683 (`server.origin`), vitejs/vite#23684 (Windows: memory-file keys keep `\` from input keys) → no tags left · issue comments: 5/7, 7/7 with both fixes; P0 Windows 404, P1 entry URL not documented, P1 `server.origin`
 - [x] `chunk-importmap` — 1 spec · excluded: `chunk-importmap.spec.ts` · vitejs/vite#23685 → no tags: bundled dev applied the build-only `build.chunkImportMap` (stable chunk names, but no import map in the HTML → 404), fixed by forcing it off in `resolveBuildEnvironmentOptions` · 10/10 under bundled dev with the fix (plain dev 10/10, build 12/12) · issue comments: 0/10, 10/10 with #23685; P0 page fails to load with `build.chunkImportMap: true`
 - [x] `csp` — 1 spec · 5 skips · vitejs/vite#23705: 5 `todo`, one shared reason (`issues: { vite: [20374] }`): the playground serves the page from its own middleware (`appType: 'custom'`, a fresh nonce per request), and `server.transformIndexHtml` returns HTML with source URLs that bundled dev does not serve. Bundled dev does build the HTML (`bundledDev.memoryFiles['index.html']`, nonce placeholders included), but a custom server has no supported way to get it · issue comments: 4/9 (plain dev 9/9)
-- [x] `css` — 6 specs · 1 skip + 4 guards · vitejs/vite#23707: 1 `todo` (`?url` CSS skips the CSS pipeline, so PostCSS does not run on it, #22863); 4 HMR edit guards (`if (isBundled) return` ×3, `if (!isBundled)` ×1) kept: an edit that lands before the client is registered is dropped (rolldown/rolldown#10039 items 5 and 6, not fixed). The edits pass when run alone (11/11), because `vitestSetup.ts` waits for the client first. The `?raw` edit reloads the page (plain dev too), which reopens the window for the `sugarss` edits · `postcss-plugins-different-dir` starts its own plain dev server (not covered, left as is) · issue comments: 97/99
+- [x] `css` — 6 specs · 1 skip + 4 guards · vitejs/vite#23707: 1 `todo` (`?url` CSS skips the CSS pipeline, so PostCSS does not run on it, #22863). The 4 HMR edit guards (`if (isBundled) return` ×3, `if (!isBundled)` ×1) became 4 `runIf(isServe)` tests tagged `todo` (`linked css HMR`, `css import from js HMR`, `postcss config HMR` share `droppedEditTodo`; `?raw HMR` has its own reason), all `{ rolldown: [10039] }`. Cause: an edit that lands before the client is registered is dropped (rolldown/rolldown#10039 items 5 and 6, not fixed). `?raw HMR` reloads the page (plain dev too), which reopens that window for the later `sugarss` edits, so it is tagged instead of `sugarss` · `tests.ts` is shared by `css.spec.ts` and `lightningcss.spec.ts`, so each tag counts twice · `postcss-plugins-different-dir` starts its own plain dev server (not covered, left as is) · issue comments: 97/107 (10 todo)
 - [ ] `dynamic-import` — 1 spec · 1 skip
 - [ ] `env` — 1 spec · 1 skip
 - [ ] `environment-react-ssr` — 1 spec · 2 skips
