@@ -1,17 +1,62 @@
 {
-  "date": "2026-10-06T09:35:12.233Z",
-  "viteCommit": "fea5b21dd9524ed7308632407b996f1fe5942c9c",
-  "rolldownVersion": "1.2.11",
+  "date": "2026-10-09T20:00:51.506Z",
+  "viteCommit": "3b72997d42e7dd2b31898d0e68461e3025e836b6",
+  "rolldownVersion": "1.2.12",
   "summary": {
-    "total": 1140,
-    "passed": 781,
-    "files": 91,
-    "filesPassing": 54
+    "all": {
+      "total": 1156,
+      "passed": 747,
+      "files": 84,
+      "filesPassing": 36,
+      "statuses": {
+        "pass": 747,
+        "fail": 0,
+        "todo": 34,
+        "not-run": 0,
+        "triage": 375,
+        "unsupported": 0
+      },
+      "buildOnly": 167,
+      "everyMode": 14,
+      "ownServer": 14
+    },
+    "noSsr": {
+      "total": 1057,
+      "passed": 744,
+      "files": 73,
+      "filesPassing": 35,
+      "statuses": {
+        "pass": 744,
+        "fail": 0,
+        "todo": 34,
+        "not-run": 0,
+        "triage": 279,
+        "unsupported": 0
+      },
+      "buildOnly": 155,
+      "everyMode": 11,
+      "ownServer": 14
+    }
   },
+  "fixes": [
+    {
+      "file": "playground/hmr-full-bundle-mode/__tests__/hmr-full-bundle-mode.spec.ts",
+      "name": "chained invalidate in an import cycle settles",
+      "status": "todo",
+      "note": "A bundled-dev test that test.skip hides in every mode (rolldown/rolldown#10340)."
+    },
+    {
+      "file": "playground/assets-sanitize/__tests__/assets-sanitize.spec.ts",
+      "name": "importing asset with special char in filename works in dev",
+      "status": "n/a",
+      "note": "The plain-dev copy of \"…works in bundled dev\"."
+    }
+  ],
   "files": [
     {
       "file": "playground/alias/__tests__/alias.spec.ts",
       "playground": "alias",
+      "ssr": false,
       "total": 10,
       "passed": 10,
       "status": "pass",
@@ -61,13 +106,14 @@
     {
       "file": "playground/assets-sanitize/__tests__/assets-sanitize.spec.ts",
       "playground": "assets-sanitize",
+      "ssr": false,
       "total": 2,
-      "passed": 1,
-      "status": "partial",
+      "passed": 2,
+      "status": "pass",
       "tests": [
         {
-          "name": "importing asset with special char in filename works in dev",
-          "status": "not-run"
+          "name": "importing asset with special char in filename works in bundled dev",
+          "status": "pass"
         },
         {
           "name": "denied .env",
@@ -78,14 +124,21 @@
     {
       "file": "playground/assets/__tests__/assets.spec.ts",
       "playground": "assets",
+      "ssr": false,
       "total": 84,
       "passed": 74,
       "status": "partial",
       "tests": [
         {
           "name": "should have no 404s",
-          "status": "fail",
-          "error": "expected 'Failed to load resource: the server r…' not to match '404'"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "`?url` CSS skips the CSS pipeline and is inlined as raw bytes, so its relative `url()` gives a 404",
+          "issues": {
+            "vite": [
+              22863
+            ]
+          }
         },
         {
           "name": "should get a 404 when using incorrect case",
@@ -253,8 +306,14 @@
         },
         {
           "name": "css url() references > url() with svg in .css?url",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5176/nested/fra…' to match /data:image\\/svg\\+xml,.+/svg\\+xml,.+"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "`?url` CSS skips the CSS pipeline and is inlined as raw bytes, so the svg in its `url()` is not inlined",
+          "issues": {
+            "vite": [
+              22863
+            ]
+          }
         },
         {
           "name": "css url() references > non inlined url() HMR",
@@ -286,13 +345,15 @@
         },
         {
           "name": "svg fragments > img url",
-          "status": "fail",
-          "error": "expected '/foo/bar/assets/fragment-BMHXyfjN.svg' to match /svg#icon-clock-view$/"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "svg fragments > via css url()",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5176/foo/bar/as…' to match /svg#icon-clock-view\"\\)$/"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "svg fragments > from js import",
@@ -300,8 +361,9 @@
         },
         {
           "name": "svg fragments > url with an alias",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5176/foo/bar/as…' to match /\\.svg#icon-clock-view\"\\)$/"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "Unknown extension assets import",
@@ -329,8 +391,9 @@
         },
         {
           "name": "?no-inline svg import -- multiple postfix",
-          "status": "fail",
-          "error": "expected '/foo/bar/assets/fragment-BMHXyfjN.svg' to match /\\/foo\\/bar\\/assets\\/fragment-[-\\w…/foo\\"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "?inline png import",
@@ -350,8 +413,14 @@
         },
         {
           "name": "?url import on css",
-          "status": "fail",
-          "error": "expected 'data:text/css;base64,aW1nIHsKICB3aWR0…' to match '/foo/bar/css/icons.css'"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "`?url` CSS skips the CSS pipeline and is inlined as raw bytes, instead of being emitted as a CSS file",
+          "issues": {
+            "vite": [
+              22863
+            ]
+          }
         },
         {
           "name": "unicode url > from js import",
@@ -383,13 +452,15 @@
         },
         {
           "name": "new URL(`./${dynamic}?abc`, import.meta.url)",
-          "status": "fail",
-          "error": "expected 'http://localhost:5176/foo/bar/assets/…' to match /\\/foo\\/bar\\/assets\\/asset-[-\\w]{8…/foo\\"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "new URL(`./${1 === 0 ? static : dynamic}?abc`, import.meta.url)",
-          "status": "fail",
-          "error": "expected 'http://localhost:5176/foo/bar/assets/…' to match /\\/foo\\/bar\\/assets\\/asset-[-\\w]{8…/foo\\"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "new URL(/* @vite-ignore */ 'non-existent', import.meta.url)",
@@ -405,8 +476,9 @@
         },
         {
           "name": "@import in html style tag hmr",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "todo",
+          "tag": "todo",
+          "reason": "editing a CSS file `@import`ed from an inline `<style>` does not reload the open page; the reload only reaches the next page that connects"
         },
         {
           "name": "html import word boundary",
@@ -433,6 +505,7 @@
     {
       "file": "playground/assets/__tests__/encoded-base/assets-encoded-base.spec.ts",
       "playground": "assets",
+      "ssr": false,
       "total": 32,
       "passed": 30,
       "status": "partial",
@@ -519,13 +592,15 @@
         },
         {
           "name": "svg fragments > img url",
-          "status": "fail",
-          "error": "expected '/foo bar/assets/fragment-BMHXyfjN.svg' to match /svg#icon-clock-view$/"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "svg fragments > via css url()",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:9524/foo%20bar/…' to match /svg#icon-clock-view\"\\)$/"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "svg fragments > from js import",
@@ -572,6 +647,7 @@
     {
       "file": "playground/assets/__tests__/relative-base/assets-relative-base.spec.ts",
       "playground": "assets",
+      "ssr": false,
       "total": 33,
       "passed": 31,
       "status": "partial",
@@ -662,13 +738,15 @@
         },
         {
           "name": "svg fragments > img url",
-          "status": "fail",
-          "error": "expected '/assets/fragment-BMHXyfjN.svg' to match /svg#icon-clock-view$/"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "svg fragments > via css url()",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5181/assets/fra…' to match /svg#icon-clock-view\"\\)$/"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "svg fragments > from js import",
@@ -715,162 +793,7 @@
     {
       "file": "playground/assets/__tests__/runtime-base/assets-runtime-base.spec.ts",
       "playground": "assets",
-      "total": 32,
-      "passed": 13,
-      "status": "partial",
-      "tests": [
-        {
-          "name": "should have no 404s",
-          "status": "pass"
-        },
-        {
-          "name": "raw references from /public > load raw js from /public",
-          "status": "pass"
-        },
-        {
-          "name": "raw references from /public > load raw css from /public",
-          "status": "pass"
-        },
-        {
-          "name": "import-expression from simple script",
-          "status": "pass"
-        },
-        {
-          "name": "asset imports from js > relative",
-          "status": "fail",
-          "error": "expected '/assets/asset-C1hss4aq.png' to match '/nested/asset.png'"
-        },
-        {
-          "name": "asset imports from js > absolute",
-          "status": "fail",
-          "error": "expected '/assets/asset-C1hss4aq.png' to match '/nested/asset.png'"
-        },
-        {
-          "name": "asset imports from js > from /public",
-          "status": "pass"
-        },
-        {
-          "name": "asset imports from js > typeof asset import",
-          "status": "pass"
-        },
-        {
-          "name": "css url() references > fonts",
-          "status": "pass"
-        },
-        {
-          "name": "css url() references > relative",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
-        },
-        {
-          "name": "css url() references > image-set relative",
-          "status": "fail",
-          "error": "expected 'image-set(url(\"http://localhost:5173/…' to match '/nested/asset.png'"
-        },
-        {
-          "name": "css url() references > image-set without the url() call",
-          "status": "fail",
-          "error": "expected 'image-set(url(\"http://localhost:5173/…' to match '/nested/asset.png'"
-        },
-        {
-          "name": "css url() references > image-set with var",
-          "status": "fail",
-          "error": "expected 'image-set(url(\"http://localhost:5173/…' to match '/nested/asset.png'"
-        },
-        {
-          "name": "css url() references > image-set with mix",
-          "status": "fail",
-          "error": "expected 'image-set(url(\"http://localhost:5173/…' to match '/nested/asset.png'"
-        },
-        {
-          "name": "css url() references > relative in @import",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
-        },
-        {
-          "name": "css url() references > absolute",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
-        },
-        {
-          "name": "css url() references > from /public",
-          "status": "pass"
-        },
-        {
-          "name": "css url() references > multiple urls on the same line",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
-        },
-        {
-          "name": "css url() references > aliased",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
-        },
-        {
-          "name": "image > srcset",
-          "status": "fail",
-          "error": "expected '/assets/asset-C1hss4aq.png 1x' to match /\\.\\/nested\\/asset\\.png \\dx/nested\\"
-        },
-        {
-          "name": "svg fragments > img url",
-          "status": "fail",
-          "error": "expected '/assets/fragment-BMHXyfjN.svg' to match /svg#icon-clock-view$/"
-        },
-        {
-          "name": "svg fragments > via css url()",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5173/assets/fra…' to match /svg#icon-clock-view\"\\)$/"
-        },
-        {
-          "name": "svg fragments > from js import",
-          "status": "pass"
-        },
-        {
-          "name": "?raw import",
-          "status": "pass"
-        },
-        {
-          "name": "?url import",
-          "status": "fail",
-          "error": "expected '/assets/foo-B1Vn3RRq.js' to match '/foo.js'"
-        },
-        {
-          "name": "?url import on css",
-          "status": "fail",
-          "error": "expected '/assets/icons-BkHOfqnX.css' to match '/css/icons.css'"
-        },
-        {
-          "name": "new URL(..., import.meta.url)",
-          "status": "fail",
-          "error": "expected 'http://localhost:5173/assets/img-B3S4…' to match '/import-meta-url/img.png'"
-        },
-        {
-          "name": "new URL(`${dynamic}`, import.meta.url)",
-          "status": "fail",
-          "error": "expected 'http://localhost:5173/assets/icon-BuL…' to match '/nested/icon.png'"
-        },
-        {
-          "name": "new URL(`non-existent`, import.meta.url)",
-          "status": "pass"
-        },
-        {
-          "name": "inline style test",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:5173/assets/ass…' to match '/nested/asset.png'"
-        },
-        {
-          "name": "html import word boundary",
-          "status": "pass"
-        },
-        {
-          "name": "relative path in html asset",
-          "status": "pass"
-        }
-      ]
-    },
-    {
-      "file": "playground/assets/__tests__/url-base/assets-url-base.spec.ts",
-      "playground": "assets",
+      "ssr": false,
       "total": 32,
       "passed": 30,
       "status": "partial",
@@ -957,13 +880,157 @@
         },
         {
           "name": "svg fragments > img url",
-          "status": "fail",
-          "error": "expected '/assets/fragment-BMHXyfjN.svg' to match /svg#icon-clock-view$/"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "svg fragments > via css url()",
-          "status": "fail",
-          "error": "expected 'url(\"http://localhost:9525/assets/fra…' to match /svg#icon-clock-view\"\\)$/"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import on css",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`non-existent`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "pass"
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/url-base/assets-url-base.spec.ts",
+      "playground": "assets",
+      "ssr": false,
+      "total": 32,
+      "passed": 30,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
         },
         {
           "name": "svg fragments > from js import",
@@ -1010,9 +1077,10 @@
     {
       "file": "playground/backend-integration/__tests__/backend-integration.spec.ts",
       "playground": "backend-integration",
+      "ssr": false,
       "total": 7,
-      "passed": 3,
-      "status": "partial",
+      "passed": 7,
+      "status": "pass",
       "tests": [
         {
           "name": "should have no 404s",
@@ -1020,8 +1088,7 @@
         },
         {
           "name": "asset imports from js > file outside root",
-          "status": "fail",
-          "error": "expected '/dev/assets/logo-C1hss4aq.png' to match 'http://localhost:5009/dev/@fs/'"
+          "status": "pass"
         },
         {
           "name": "serve > No ReferenceError",
@@ -1029,13 +1096,11 @@
         },
         {
           "name": "serve > preserve the base in CSS HMR",
-          "status": "fail",
-          "error": "Cannot read properties of null (reading 'getAttribute')"
+          "status": "pass"
         },
         {
           "name": "serve > server.origin is applied to non-public CSS url()",
-          "status": "fail",
-          "error": "expected 'url(\"/dev/assets/logo-C1hss4aq.png\")' to contain 'http://localhost:5009/dev/'"
+          "status": "pass"
         },
         {
           "name": "serve > server.origin is applied to public CSS url()",
@@ -1043,14 +1108,14 @@
         },
         {
           "name": "serve > CSS dependencies are tracked for HMR",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /global.css"
+          "status": "pass"
         }
       ]
     },
     {
       "file": "playground/base-conflict/__tests__/base-conflict.spec.ts",
       "playground": "base-conflict",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -1062,8 +1127,35 @@
       ]
     },
     {
+      "file": "playground/base/__tests__/base.spec.ts",
+      "playground": "base",
+      "ssr": false,
+      "total": 4,
+      "passed": 3,
+      "status": "partial",
+      "tests": [
+        {
+          "name": "serves the base root as index.html",
+          "status": "pass"
+        },
+        {
+          "name": "serves a file through the base",
+          "status": "triage"
+        },
+        {
+          "name": "404s a path that only shares a partial segment with the base",
+          "status": "pass"
+        },
+        {
+          "name": "404s a path outside the base",
+          "status": "pass"
+        }
+      ]
+    },
+    {
       "file": "playground/build-old/__tests__/build-old.spec.ts",
       "playground": "build-old",
+      "ssr": false,
       "total": 3,
       "passed": 3,
       "status": "pass",
@@ -1085,109 +1177,49 @@
     {
       "file": "playground/chunk-importmap/__tests__/chunk-importmap.spec.ts",
       "playground": "chunk-importmap",
+      "ssr": false,
       "total": 10,
-      "passed": 0,
-      "status": "fail",
+      "passed": 10,
+      "status": "pass",
       "tests": [
         {
           "name": "should have no 404s",
-          "status": "fail",
-          "error": "expected 'Failed to load resource: the server r…' not to match '404'"
+          "status": "pass"
         },
         {
           "name": "index js",
-          "status": "fail",
-          "error": "expected 'js: error' to be 'js: ok' // Object.is equality"
+          "status": "pass"
         },
         {
           "name": "importmap",
-          "status": "fail",
-          "error": "expected '' to contain '\"/foo\": \"/bar\"'"
+          "status": "pass"
         },
         {
           "name": "static js",
-          "status": "fail",
-          "error": "expected 'static-js: error' to be 'static-js: ok' // Object.is equality"
+          "status": "pass"
         },
         {
           "name": "dynamic js",
-          "status": "fail",
-          "error": "expected 'dynamic-js: error' to be 'dynamic-js: ok' // Object.is equality"
+          "status": "pass"
         },
         {
           "name": "static css",
-          "status": "fail",
-          "error": "expected 'black' to be 'red' // Object.is equality"
+          "status": "pass"
         },
         {
           "name": "dynamic css",
-          "status": "fail",
-          "error": "expected 'black' to be 'red' // Object.is equality"
+          "status": "pass"
         },
         {
           "name": "direct dynamic css",
-          "status": "fail",
-          "error": "expected 'black' to be 'red' // Object.is equality"
+          "status": "pass"
         },
         {
           "name": "shared pure css chunk",
-          "status": "fail",
-          "error": "expected 'shared-js: error' to be 'shared-js: ok' // Object.is equality"
+          "status": "pass"
         },
         {
           "name": "worker",
-          "status": "fail",
-          "error": "expected 'worker: ping' to be 'worker: pong' // Object.is equality"
-        }
-      ]
-    },
-    {
-      "file": "playground/cli-module/__tests__/cli-module.spec.ts",
-      "playground": "cli-module",
-      "total": 1,
-      "passed": 1,
-      "status": "pass",
-      "tests": [
-        {
-          "name": "cli should work in \"type\":\"module\" package",
-          "status": "pass"
-        }
-      ]
-    },
-    {
-      "file": "playground/cli/__tests__/cli.spec.ts",
-      "playground": "cli",
-      "total": 2,
-      "passed": 2,
-      "status": "pass",
-      "tests": [
-        {
-          "name": "cli should work",
-          "status": "pass"
-        },
-        {
-          "name": "should restart",
-          "status": "pass"
-        }
-      ]
-    },
-    {
-      "file": "playground/client-reload/__tests__/client-reload.spec.ts",
-      "playground": "client-reload",
-      "total": 3,
-      "passed": 3,
-      "status": "pass",
-      "tests": [
-        {
-          "name": "client-reload > default",
-          "status": "pass"
-        },
-        {
-          "name": "client-reload > custom hmr port",
-          "status": "pass"
-        },
-        {
-          "name": "client-reload > custom hmr port and cross origin isolation",
           "status": "pass"
         }
       ]
@@ -1195,14 +1227,21 @@
     {
       "file": "playground/csp/__tests__/csp.spec.ts",
       "playground": "csp",
+      "ssr": false,
       "total": 9,
       "passed": 4,
       "status": "partial",
       "tests": [
         {
           "name": "linked css",
-          "status": "fail",
-          "error": "expected 'black' to be 'blue' // Object.is equality"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
         },
         {
           "name": "inline style tag",
@@ -1210,23 +1249,47 @@
         },
         {
           "name": "imported css",
-          "status": "fail",
-          "error": "expected 'black' to be 'blue' // Object.is equality"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
         },
         {
           "name": "dynamic css",
-          "status": "fail",
-          "error": "expected 'black' to be 'red' // Object.is equality"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
         },
         {
           "name": "script tag",
-          "status": "fail",
-          "error": "expected 'js: error' to be 'js: ok' // Object.is equality"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
         },
         {
           "name": "dynamic js",
-          "status": "fail",
-          "error": "expected 'dynamic-js: error' to be 'dynamic-js: ok' // Object.is equality"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
         },
         {
           "name": "inline js",
@@ -1245,6 +1308,7 @@
     {
       "file": "playground/css-codesplit/__tests__/css-codesplit.spec.ts",
       "playground": "css-codesplit",
+      "ssr": false,
       "total": 4,
       "passed": 4,
       "status": "pass",
@@ -1268,38 +1332,9 @@
       ]
     },
     {
-      "file": "playground/css-dynamic-import/__tests__/css-dynamic-import.spec.ts",
-      "playground": "css-dynamic-import",
-      "total": 2,
-      "passed": 2,
-      "status": "pass",
-      "tests": [
-        {
-          "name": "doesn't duplicate dynamically imported css files when served with relative base",
-          "status": "pass"
-        },
-        {
-          "name": "doesn't duplicate dynamically imported css files when served with absolute base",
-          "status": "pass"
-        }
-      ]
-    },
-    {
-      "file": "playground/css-lightningcss-proxy/__tests__/css-lightningcss-proxy.spec.ts",
-      "playground": "css-lightningcss-proxy",
-      "total": 1,
-      "passed": 1,
-      "status": "pass",
-      "tests": [
-        {
-          "name": "injected inline style > injected inline style is present",
-          "status": "pass"
-        }
-      ]
-    },
-    {
       "file": "playground/css-lightningcss-root/__tests__/css-lightningcss-root.spec.ts",
       "playground": "css-lightningcss-root",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -1313,6 +1348,7 @@
     {
       "file": "playground/css-lightningcss/__tests__/css-lightningcss.spec.ts",
       "playground": "css-lightningcss",
+      "ssr": false,
       "total": 9,
       "passed": 9,
       "status": "pass",
@@ -1358,6 +1394,7 @@
     {
       "file": "playground/css-no-codesplit/__tests__/css-no-codesplit.spec.ts",
       "playground": "css-no-codesplit",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -1371,9 +1408,10 @@
     {
       "file": "playground/css-sourcemap/__tests__/css-sourcemap.spec.ts",
       "playground": "css-sourcemap",
-      "total": 10,
+      "ssr": false,
+      "total": 11,
       "passed": 10,
-      "status": "pass",
+      "status": "partial",
       "tests": [
         {
           "name": "serve > linked css",
@@ -1385,7 +1423,7 @@
         },
         {
           "name": "serve > js .css request does not include sourcemap",
-          "status": "n/a"
+          "status": "triage"
         },
         {
           "name": "serve > imported css",
@@ -1424,9 +1462,10 @@
     {
       "file": "playground/css-sourcemap/__tests__/lightningcss/lightningcss.spec.ts",
       "playground": "css-sourcemap",
-      "total": 10,
+      "ssr": false,
+      "total": 11,
       "passed": 10,
-      "status": "pass",
+      "status": "partial",
       "tests": [
         {
           "name": "serve > linked css",
@@ -1438,7 +1477,7 @@
         },
         {
           "name": "serve > js .css request does not include sourcemap",
-          "status": "n/a"
+          "status": "triage"
         },
         {
           "name": "serve > imported css",
@@ -1477,8 +1516,9 @@
     {
       "file": "playground/css/__tests__/css.spec.ts",
       "playground": "css",
-      "total": 48,
-      "passed": 47,
+      "ssr": false,
+      "total": 53,
+      "passed": 48,
       "status": "partial",
       "tests": [
         {
@@ -1490,8 +1530,30 @@
           "status": "pass"
         },
         {
+          "name": "linked css HMR",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "An edit that lands while the page is loading or before the HMR client connects is dropped, so the update never reaches the page",
+          "issues": {
+            "rolldown": [
+              10039
+            ]
+          }
+        },
+        {
           "name": "css import from js",
           "status": "pass"
+        },
+        {
+          "name": "css import from js HMR",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "An edit that lands while the page is loading or before the HMR client connects is dropped, so the update never reaches the page",
+          "issues": {
+            "rolldown": [
+              10039
+            ]
+          }
         },
         {
           "name": "css import asset with space",
@@ -1500,6 +1562,17 @@
         {
           "name": "postcss config",
           "status": "pass"
+        },
+        {
+          "name": "postcss config HMR",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "An edit that lands while the page is loading or before the HMR client connects is dropped, so the update never reaches the page",
+          "issues": {
+            "rolldown": [
+              10039
+            ]
+          }
         },
         {
           "name": "postcss plugin that injects url()",
@@ -1623,12 +1696,29 @@
         },
         {
           "name": "?url",
-          "status": "fail",
-          "error": "expected 'black' to be 'yellow' // Object.is equality"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "`?url` CSS skips the CSS pipeline and is inlined as raw bytes, so PostCSS does not run on it",
+          "issues": {
+            "vite": [
+              22863
+            ]
+          }
         },
         {
           "name": "?raw",
           "status": "pass"
+        },
+        {
+          "name": "?raw HMR",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "This edit reloads the page. An edit that lands while the page is loading is dropped, so the later HMR edits in this file become flaky",
+          "issues": {
+            "rolldown": [
+              10039
+            ]
+          }
         },
         {
           "name": "import css in less",
@@ -1664,6 +1754,10 @@
         },
         {
           "name": "@import scss",
+          "status": "pass"
+        },
+        {
+          "name": "preprocessor imported from css resolves relative imports",
           "status": "pass"
         },
         {
@@ -1679,8 +1773,9 @@
     {
       "file": "playground/css/__tests__/lightningcss/lightningcss.spec.ts",
       "playground": "css",
-      "total": 47,
-      "passed": 46,
+      "ssr": false,
+      "total": 52,
+      "passed": 47,
       "status": "partial",
       "tests": [
         {
@@ -1692,8 +1787,30 @@
           "status": "pass"
         },
         {
+          "name": "linked css HMR",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "An edit that lands while the page is loading or before the HMR client connects is dropped, so the update never reaches the page",
+          "issues": {
+            "rolldown": [
+              10039
+            ]
+          }
+        },
+        {
           "name": "css import from js",
           "status": "pass"
+        },
+        {
+          "name": "css import from js HMR",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "An edit that lands while the page is loading or before the HMR client connects is dropped, so the update never reaches the page",
+          "issues": {
+            "rolldown": [
+              10039
+            ]
+          }
         },
         {
           "name": "css import asset with space",
@@ -1702,6 +1819,17 @@
         {
           "name": "postcss config",
           "status": "pass"
+        },
+        {
+          "name": "postcss config HMR",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "An edit that lands while the page is loading or before the HMR client connects is dropped, so the update never reaches the page",
+          "issues": {
+            "rolldown": [
+              10039
+            ]
+          }
         },
         {
           "name": "postcss plugin that injects url()",
@@ -1825,12 +1953,29 @@
         },
         {
           "name": "?url",
-          "status": "fail",
-          "error": "expected 'black' to be 'yellow' // Object.is equality"
+          "status": "todo",
+          "tag": "todo",
+          "reason": "`?url` CSS skips the CSS pipeline and is inlined as raw bytes, so PostCSS does not run on it",
+          "issues": {
+            "vite": [
+              22863
+            ]
+          }
         },
         {
           "name": "?raw",
           "status": "pass"
+        },
+        {
+          "name": "?raw HMR",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "This edit reloads the page. An edit that lands while the page is loading is dropped, so the later HMR edits in this file become flaky",
+          "issues": {
+            "rolldown": [
+              10039
+            ]
+          }
         },
         {
           "name": "import css in less",
@@ -1869,33 +2014,11 @@
           "status": "pass"
         },
         {
+          "name": "preprocessor imported from css resolves relative imports",
+          "status": "pass"
+        },
+        {
           "name": "Scoped CSS should have a correct order",
-          "status": "pass"
-        }
-      ]
-    },
-    {
-      "file": "playground/css/__tests__/postcss-plugins-different-dir/css-postcss-plugins-different-dir.spec.ts",
-      "playground": "css",
-      "total": 1,
-      "passed": 1,
-      "status": "pass",
-      "tests": [
-        {
-          "name": "postcss plugins in different dir",
-          "status": "pass"
-        }
-      ]
-    },
-    {
-      "file": "playground/css/postcss-caching/css.spec.ts",
-      "playground": "css",
-      "total": 1,
-      "passed": 1,
-      "status": "pass",
-      "tests": [
-        {
-          "name": "postcss config",
           "status": "pass"
         }
       ]
@@ -1903,6 +2026,7 @@
     {
       "file": "playground/data-uri/__tests__/data-uri.spec.ts",
       "playground": "data-uri",
+      "ssr": false,
       "total": 3,
       "passed": 3,
       "status": "pass",
@@ -1924,9 +2048,10 @@
     {
       "file": "playground/define/__tests__/define.spec.ts",
       "playground": "define",
+      "ssr": false,
       "total": 6,
-      "passed": 5,
-      "status": "partial",
+      "passed": 6,
+      "status": "pass",
       "tests": [
         {
           "name": "string",
@@ -1950,17 +2075,17 @@
         },
         {
           "name": "env import with query parameters works correctly",
-          "status": "fail",
-          "error": "expected 'error: __DEFINES__ is not defined' to be 'success' // Object.is equality"
+          "status": "pass"
         }
       ]
     },
     {
       "file": "playground/dynamic-import/__tests__/dynamic-import.spec.ts",
       "playground": "dynamic-import",
+      "ssr": false,
       "total": 26,
-      "passed": 26,
-      "status": "pass",
+      "passed": 25,
+      "status": "partial",
       "tests": [
         {
           "name": "should load literal dynamic import",
@@ -1995,11 +2120,11 @@
           "status": "pass"
         },
         {
-          "name": "should load dynamic import with css",
+          "name": "should load dynamic import with vars",
           "status": "pass"
         },
         {
-          "name": "should load dynamic import with vars",
+          "name": "should load dynamic import with css",
           "status": "pass"
         },
         {
@@ -2032,7 +2157,7 @@
         },
         {
           "name": "should load dynamic import with vars worker",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "should load dynamic import with css in package",
@@ -2071,6 +2196,7 @@
     {
       "file": "playground/env-nested/__tests__/env-nested.spec.ts",
       "playground": "env-nested",
+      "ssr": false,
       "total": 3,
       "passed": 3,
       "status": "pass",
@@ -2092,6 +2218,7 @@
     {
       "file": "playground/env/__tests__/env.spec.ts",
       "playground": "env",
+      "ssr": false,
       "total": 17,
       "passed": 16,
       "status": "partial",
@@ -2150,8 +2277,7 @@
         },
         {
           "name": "env object",
-          "status": "fail",
-          "error": "expected { BASE_URL: '/env/', …(14) } to match object { …(16) }"
+          "status": "triage"
         },
         {
           "name": "env object in template literal expression",
@@ -2170,6 +2296,7 @@
     {
       "file": "playground/environment-react-ssr/__tests__/environment-react-ssr.spec.ts",
       "playground": "environment-react-ssr",
+      "ssr": true,
       "total": 4,
       "passed": 2,
       "status": "partial",
@@ -2180,8 +2307,7 @@
         },
         {
           "name": "pre-bundling > client",
-          "status": "fail",
-          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/environment-react-ssr/node_modules/.vite/deps/_metadata.json'"
+          "status": "triage"
         },
         {
           "name": "pre-bundling > ssr",
@@ -2189,14 +2315,14 @@
         },
         {
           "name": "pre-bundling > deps reload",
-          "status": "fail",
-          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/environment-react-ssr/node_modules/.vite/deps/_metadata.json'"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/extensions/__tests__/extensions.spec.ts",
       "playground": "extensions",
+      "ssr": false,
       "total": 2,
       "passed": 2,
       "status": "pass",
@@ -2214,6 +2340,7 @@
     {
       "file": "playground/external/__tests__/external.spec.ts",
       "playground": "external",
+      "ssr": false,
       "total": 2,
       "passed": 2,
       "status": "pass",
@@ -2231,19 +2358,18 @@
     {
       "file": "playground/forward-console/__test__/forward-console.spec.ts",
       "playground": "forward-console",
+      "ssr": false,
       "total": 4,
       "passed": 1,
       "status": "partial",
       "tests": [
         {
           "name": "unhandled error",
-          "status": "fail",
-          "error": "expected '[Unhandled error] Error: this is test…' to contain '[Unhandled error] Error: this is test…'"
+          "status": "triage"
         },
         {
           "name": "unhandled rejection",
-          "status": "fail",
-          "error": "expected '[Unhandled rejection] Error: this is …' to contain '[Unhandled rejection] Error: this is …'"
+          "status": "triage"
         },
         {
           "name": "console.error",
@@ -2251,16 +2377,16 @@
         },
         {
           "name": "dependency stack uses source map path",
-          "status": "fail",
-          "error": "expected '[Unhandled error] Error: this is test…' to contain '[Unhandled error] Error: this is test…'"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/fs-serve/__tests__/base/fs-serve-base.spec.ts",
       "playground": "fs-serve",
+      "ssr": false,
       "total": 77,
-      "passed": 29,
+      "passed": 19,
       "status": "partial",
       "tests": [
         {
@@ -2281,283 +2407,235 @@
         },
         {
           "name": "matrix > safe fetch (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch in subdir (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch in subdir (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with special characters (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with special characters (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with special characters 2 (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with special characters 2 (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch imported (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch imported with query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe JSON fetch (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe HTML fetch (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe HTML fetch (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe HTML fetch outside root (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with special characters (#8498) (normal)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with special characters (#8498) (/@fs/)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with special characters 2 (#8498) (normal)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with special characters 2 (#8498) (/@fs/)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch import inline (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch import inline (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch raw query import (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch raw query import (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch raw import raw outside root (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch raw import raw outside root 1 (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch raw import raw outside root 2 (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with ?url query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with ?url query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch ?.svg?import (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch ?.svg?import (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch .svg?import (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch .svg?import (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch import inline wasm init (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch import inline wasm init (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with vite wasm instance query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with relative path after query (normal)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with relative path after query (/@fs/)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied env casing (normal)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > denied env casing (/@fs/)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with raw query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with raw query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with url query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with url query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with inline query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with inline query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied env with ?.svg?.wasm?init (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied env with ?.svg?.wasm?init (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with import and raw query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with import and raw query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with vite wasm instance query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with vite wasm instance query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with NTFS ADS suffix (normal)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with NTFS ADS suffix (/@fs/)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "fetch > serve with configured headers",
@@ -2624,6 +2702,7 @@
     {
       "file": "playground/fs-serve/__tests__/deny/fs-serve-deny.spec.ts",
       "playground": "fs-serve",
+      "ssr": false,
       "total": 6,
       "passed": 6,
       "status": "pass",
@@ -2657,8 +2736,9 @@
     {
       "file": "playground/fs-serve/__tests__/fs-serve.spec.ts",
       "playground": "fs-serve",
+      "ssr": false,
       "total": 89,
-      "passed": 41,
+      "passed": 31,
       "status": "partial",
       "tests": [
         {
@@ -2679,283 +2759,235 @@
         },
         {
           "name": "matrix > safe fetch (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch in subdir (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch in subdir (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with special characters (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with special characters (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with special characters 2 (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch with special characters 2 (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch imported (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > safe fetch imported with query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '200' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe JSON fetch (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe HTML fetch (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe HTML fetch (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe HTML fetch outside root (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with special characters (#8498) (normal)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with special characters (#8498) (/@fs/)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with special characters 2 (#8498) (normal)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with special characters 2 (#8498) (/@fs/)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch import inline (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch import inline (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch raw query import (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch raw query import (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch raw import raw outside root (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch raw import raw outside root 1 (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch raw import raw outside root 2 (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with ?url query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with ?url query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch ?.svg?import (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch ?.svg?import (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch .svg?import (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch .svg?import (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch import inline wasm init (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch import inline wasm init (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with vite wasm instance query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with relative path after query (normal)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > unsafe fetch with relative path after query (/@fs/)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied env casing (normal)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > denied env casing (/@fs/)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with raw query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with raw query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with url query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with url query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with inline query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with inline query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied env with ?.svg?.wasm?init (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied env with ?.svg?.wasm?init (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with import and raw query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with import and raw query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with vite wasm instance query (normal)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with vite wasm instance query (/@fs/)",
-          "status": "fail",
-          "error": "expected '404' to be '403' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with NTFS ADS suffix (normal)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "matrix > denied .env with NTFS ADS suffix (/@fs/)",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "fetch > serve with configured headers",
@@ -3070,6 +3102,7 @@
     {
       "file": "playground/glob-import/__tests__/glob-import.spec.ts",
       "playground": "glob-import",
+      "ssr": false,
       "total": 25,
       "passed": 22,
       "status": "partial",
@@ -3100,8 +3133,7 @@
         },
         {
           "name": "hmr for adding/removing files",
-          "status": "fail",
-          "error": "expected { …(7) } to strictly equal { '/dir/a.js': {}, …(7) }"
+          "status": "triage"
         },
         {
           "name": "no hmr for adding/removing files",
@@ -3109,13 +3141,11 @@
         },
         {
           "name": "hmr for adding/removing files in package",
-          "status": "fail",
-          "error": "expected [ '/pkg-pages/foo.js' ] to strictly equal [ '/pkg-pages/bar.js', …(1) ]"
+          "status": "triage"
         },
         {
           "name": "hmr for adding/removing files with array patterns and exclusions",
-          "status": "fail",
-          "error": "expected { Object (./array-test-dir/included.js) } to strictly equal { …(2) }"
+          "status": "triage"
         },
         {
           "name": "follow symlinks",
@@ -3182,6 +3212,7 @@
     {
       "file": "playground/hmr-full-bundle-mode/__tests__/build-hooks.spec.ts",
       "playground": "hmr-full-bundle-mode",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -3195,9 +3226,10 @@
     {
       "file": "playground/hmr-full-bundle-mode/__tests__/hmr-full-bundle-mode.spec.ts",
       "playground": "hmr-full-bundle-mode",
-      "total": 20,
+      "ssr": false,
+      "total": 21,
       "passed": 20,
-      "status": "pass",
+      "status": "partial",
       "tests": [
         {
           "name": "show bundling in progress",
@@ -3278,12 +3310,18 @@
         {
           "name": "lazy bundling errors return 500",
           "status": "pass"
+        },
+        {
+          "name": "chained invalidate in an import cycle settles",
+          "status": "todo",
+          "note": "A bundled-dev test that test.skip hides in every mode (rolldown/rolldown#10340)."
         }
       ]
     },
     {
       "file": "playground/hmr-root/__tests__/hmr-root.spec.ts",
       "playground": "hmr-root",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -3297,209 +3335,234 @@
     {
       "file": "playground/hmr-ssr/__tests__/hmr-ssr.spec.ts",
       "playground": "hmr-ssr",
+      "ssr": true,
       "total": 43,
       "passed": 0,
       "status": "fail",
       "tests": [
         {
           "name": "hmr works correctly > should connect",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > self accept",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > hot data persists across module instances",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > accept dep",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > nested dep propagation",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > invalidate",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > soft invalidate",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > invalidate in circular dep should not trigger infinite HMR",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > invalidate in circular dep should be hot updated if possible",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > plugin hmr handler + custom event",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > plugin hmr remove custom events",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > plugin client-server communication",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works correctly > queries are correctly resolved",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "self accept with different entry point formats > accepts if entry point is relative to root ./unresolved.ts",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "self accept with different entry point formats > accepts if entry point is relative to root ./unresolved",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "self accept with different entry point formats > accepts if entry point is relative to root /unresolved",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > when all used exports are accepted > the callback is called with the new version the module",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > when all used exports are accepted > stops HMR bubble on dependency change",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > when all used exports are accepted > accepts itself and refreshes on change",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > when all used exports are accepted > accepts itself and refreshes on 2nd change",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > when all used exports are accepted > does not accept itself anymore after acceptedExports change",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to dep",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to self > with named exports",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to self > with default export",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > when some used exports are not accepted > doesn't reload if files not in the entrypoint importers chain is changed > does not full reload",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > when some used exports are not accepted > doesn't reload if files not in the entrypoint importers chain is changed > does not update",
-          "status": "not-run"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > accepts itself when imported for side effects only (no bindings imported)",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > acceptExports([]) > accepts itself if no exports are imported",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > acceptExports([]) > doesn't accept itself if any of its exports is imported",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > indiscriminate imports: import * > import * from ... > accepts itself if all its exports are accepted",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > indiscriminate imports: import * > import * from ... > doesn't accept itself if one export is not accepted",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > indiscriminate imports: import * > dynamic import(...) > accepts itself if all its exports are accepted",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "acceptExports > indiscriminate imports: import * > dynamic import(...) > doesn't accept itself if one export is not accepted",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "handle virtual module updates",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "invalidate virtual module",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "should hmr when file is deleted and restored",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "delete file should not break hmr",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "deleted file should trigger dispose and prune callbacks",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "import.meta.hot?.accept",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr works for self-accepted module within circular imported files",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "hmr should not reload if no accepted within circular imported files",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "not inlined assets HMR",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "inlined assets HMR",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         }
       ]
     },
     {
       "file": "playground/hmr/__tests__/hmr.spec.ts",
       "playground": "hmr",
-      "total": 56,
-      "passed": 19,
+      "ssr": false,
+      "total": 57,
+      "passed": 31,
       "status": "partial",
       "tests": [
         {
@@ -3532,18 +3595,15 @@
         },
         {
           "name": "invalidate",
-          "status": "fail",
-          "error": "expected '>>> vite:invalidate -- playground-tem…' to match '>>> vite:invalidate -- /invalidation/…'"
+          "status": "triage"
         },
         {
           "name": "invalidate works with multiple tabs",
-          "status": "fail",
-          "error": "expected '[vite] connecting...' to match '>>> vite:beforeUpdate -- update'"
+          "status": "triage"
         },
         {
           "name": "invalidate virtual module propagates to importers",
-          "status": "fail",
-          "error": "elementHandle.textContent: Execution context was destroyed, most likely because of a navigation"
+          "status": "triage"
         },
         {
           "name": "invalidate on root triggers page reload",
@@ -3563,13 +3623,11 @@
         },
         {
           "name": "plugin hmr handler + custom event",
-          "status": "fail",
-          "error": "expected '' to match 'edited2'"
+          "status": "triage"
         },
         {
           "name": "plugin hmr remove custom events",
-          "status": "fail",
-          "error": "expected '' to match 'edited2'"
+          "status": "triage"
         },
         {
           "name": "plugin client-server communication",
@@ -3577,147 +3635,127 @@
         },
         {
           "name": "full-reload encodeURI path",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage"
         },
         {
           "name": "CSS update preserves query params",
-          "status": "fail",
-          "error": "expected '' to match 'param=required'"
+          "status": "triage"
         },
         {
           "name": "it swaps out link tags",
-          "status": "fail",
-          "error": "expected 'no' to match 'yes'"
+          "status": "triage"
         },
         {
           "name": "not loaded dynamic import",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage"
         },
         {
           "name": "importing reloaded",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "acceptExports > when all used exports are accepted > the callback is called with the new version the module",
-          "status": "not-run"
+          "status": "pass"
         },
         {
           "name": "acceptExports > when all used exports are accepted > stops HMR bubble on dependency change",
-          "status": "not-run"
+          "status": "pass"
         },
         {
           "name": "acceptExports > when all used exports are accepted > accepts itself and refreshes on change",
-          "status": "not-run"
+          "status": "pass"
         },
         {
           "name": "acceptExports > when all used exports are accepted > accepts itself and refreshes on 2nd change",
-          "status": "not-run"
+          "status": "pass"
         },
         {
           "name": "acceptExports > when all used exports are accepted > does not accept itself anymore after acceptedExports change",
-          "status": "not-run"
+          "status": "pass"
         },
         {
           "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to dep",
-          "status": "not-run"
+          "status": "pass"
         },
         {
           "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to self > with named exports",
-          "status": "not-run"
+          "status": "pass"
         },
         {
           "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to self > with default export",
-          "status": "not-run"
+          "status": "pass"
         },
         {
           "name": "acceptExports > accepts itself when imported for side effects only (no bindings imported)",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: /connected/, />>>/"
+          "status": "pass"
         },
         {
           "name": "acceptExports > acceptExports([]) > accepts itself if no exports are imported",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: /connected/, -- unused --"
+          "status": "pass"
         },
         {
           "name": "acceptExports > acceptExports([]) > doesn't accept itself if any of its exports is imported",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: /connected/, -- used --"
+          "status": "pass"
         },
         {
           "name": "acceptExports > indiscriminate imports: import * > import * from ... > accepts itself if all its exports are accepted",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: /connected/, >>> ready <<<"
+          "status": "pass"
         },
         {
           "name": "acceptExports > indiscriminate imports: import * > import * from ... > doesn't accept itself if one export is not accepted",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: /connected/, >>> ready <<<"
+          "status": "pass"
         },
         {
           "name": "acceptExports > indiscriminate imports: import * > dynamic import(...) > accepts itself if all its exports are accepted",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: /connected/, >>> ready <<<"
+          "status": "pass"
         },
         {
           "name": "acceptExports > indiscriminate imports: import * > dynamic import(...) > doesn't accept itself if one export is not accepted",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: /connected/, >>> ready <<<"
+          "status": "pass"
         },
         {
           "name": "css in html hmr",
-          "status": "fail",
-          "error": "expected 'url(\"data:image/png;base64,iVBORw0KGg…' to match 'icon'"
+          "status": "triage"
         },
         {
           "name": "HTML",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage"
         },
         {
           "name": "handle virtual module updates",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "invalidate virtual module",
-          "status": "fail",
-          "error": "expected '[wow]0' to be '[wow]1' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "handle virtual module accept updates",
-          "status": "pass"
+          "status": "triage"
         },
         {
           "name": "invalidate virtual module and accept",
-          "status": "fail",
-          "error": "expected '0' to be '[wow2]2' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "keep hmr reload after missing import on server startup",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage"
         },
         {
           "name": "should hmr when file is deleted and restored",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: file-delete-restore/child.js is disposed"
+          "status": "triage"
         },
         {
           "name": "delete file should not break hmr",
-          "status": "fail",
-          "error": "expected 'count is 2!' to match 'count is 1!'"
+          "status": "triage"
         },
         {
           "name": "deleted file should trigger dispose and prune callbacks",
-          "status": "fail",
-          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/hmr/file-delete-restore/child.js'"
+          "status": "triage"
         },
         {
           "name": "deleting import from non-self-accepting module can trigger prune event",
-          "status": "fail",
-          "error": "expected 'prune-init' to match 'prune-init|dep2-disposed|dep2-pruned'"
+          "status": "triage"
         },
         {
           "name": "import.meta.hot?.accept",
@@ -3733,13 +3771,11 @@
         },
         {
           "name": "not inlined assets HMR",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: /Logo-no-inline updated/"
+          "status": "triage"
         },
         {
           "name": "inlined assets HMR",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: /Logo updated/"
+          "status": "triage"
         },
         {
           "name": "CSS HMR with this.addWatchFile",
@@ -3747,22 +3783,43 @@
         },
         {
           "name": "hmr should happen after missing file is created",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: /connected/, a.js"
+          "status": "triage"
         },
         {
           "name": "deduplicate server rendered link stylesheet",
-          "status": "fail",
-          "error": "Cannot find element: \".test-css-link\""
+          "status": "triage"
+        },
+        {
+          "name": "reuse server rendered style without rewriting unchanged css",
+          "status": "triage"
+        }
+      ]
+    },
+    {
+      "file": "playground/hmr/__tests__/no-partial-accept/hmr-no-partial-accept.spec.ts",
+      "playground": "hmr",
+      "ssr": false,
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "acceptExports with hmrPartialAccept off > importer that uses only accepted exports > is not skipped, so the update reaches the root and reloads the page",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports with hmrPartialAccept off > module that accepts all its exports > still accepts itself",
+          "status": "pass"
         }
       ]
     },
     {
       "file": "playground/html/__tests__/html.spec.ts",
       "playground": "html",
-      "total": 48,
+      "ssr": false,
+      "total": 55,
       "passed": 48,
-      "status": "pass",
+      "status": "partial",
       "tests": [
         {
           "name": "main > pre transform",
@@ -3914,23 +3971,23 @@
         },
         {
           "name": "invalid > should be 500 with overlay",
-          "status": "n/a"
+          "status": "triage"
         },
         {
           "name": "invalid > should close overlay when clicked away",
-          "status": "n/a"
+          "status": "triage"
         },
         {
           "name": "invalid > should close overlay when escape key is pressed",
-          "status": "n/a"
+          "status": "triage"
         },
         {
           "name": "invalid > stack is updated",
-          "status": "n/a"
+          "status": "triage"
         },
         {
           "name": "invalid > should reload when fixed",
-          "status": "n/a"
+          "status": "triage"
         },
         {
           "name": "Valid HTML > valid HTML is parsed",
@@ -3958,7 +4015,7 @@
         },
         {
           "name": "warmup > should warmup /warmup/warm.js",
-          "status": "n/a"
+          "status": "triage"
         },
         {
           "name": "html serve behavior",
@@ -3978,7 +4035,7 @@
         },
         {
           "name": "normalizes protocol-relative HTML proxy URLs",
-          "status": "n/a"
+          "status": "triage"
         },
         {
           "name": "malformed URLs in src attributes should show errors",
@@ -3989,6 +4046,7 @@
     {
       "file": "playground/import-attribute/__tests__/import-attribute.spec.ts",
       "playground": "import-attribute",
+      "ssr": false,
       "total": 2,
       "passed": 2,
       "status": "pass",
@@ -4006,6 +4064,7 @@
     {
       "file": "playground/js-sourcemap/__tests__/js-sourcemap.spec.ts",
       "playground": "js-sourcemap",
+      "ssr": false,
       "total": 9,
       "passed": 4,
       "status": "partial",
@@ -4016,8 +4075,7 @@
         },
         {
           "name": "js with inline sourcemap injected by a plugin",
-          "status": "fail",
-          "error": "expected '<script type=\"module\" src=\"/bundledDe…' to contain '// default boundary sourcemap with ma…'"
+          "status": "triage"
         },
         {
           "name": "ts",
@@ -4025,8 +4083,7 @@
         },
         {
           "name": "multiline import",
-          "status": "fail",
-          "error": "Unexpected token '<', \"</div>\" is not valid JSON"
+          "status": "triage"
         },
         {
           "name": "should not output missing source file warning",
@@ -4038,24 +4095,22 @@
         },
         {
           "name": "should not leak file contents via sourcemap path traversal in optimized deps",
-          "status": "fail",
-          "error": "expected null to be truthy"
+          "status": "triage"
         },
         {
           "name": "babel-transformed downleveled optimized dep maps to the correct original name",
-          "status": "fail",
-          "error": "expected null to be truthy"
+          "status": "triage"
         },
         {
           "name": "oxc-transformed downleveled optimized dep maps to the correct original name",
-          "status": "fail",
-          "error": "expected null to be truthy"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/json/__tests__/csr/json-csr.spec.ts",
       "playground": "json",
+      "ssr": false,
       "total": 11,
       "passed": 10,
       "status": "partial",
@@ -4086,8 +4141,7 @@
         },
         {
           "name": "fetch",
-          "status": "fail",
-          "error": "expected '' to be '{\"hello\":\"this is json\"}' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "?url",
@@ -4110,6 +4164,7 @@
     {
       "file": "playground/lazy-compilation/__tests__/lazy-compilation.spec.ts",
       "playground": "lazy-compilation",
+      "ssr": false,
       "total": 2,
       "passed": 2,
       "status": "pass",
@@ -4127,20 +4182,22 @@
     {
       "file": "playground/legacy/__tests__/chunk-importmap/legacy-chunk-importmap.spec.ts",
       "playground": "legacy",
+      "ssr": false,
       "total": 1,
       "passed": 0,
       "status": "fail",
       "tests": [
         {
           "name": "should have no 404s",
-          "status": "fail",
-          "error": "expected 'Failed to load resource: the server r…' not to match '404'"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         }
       ]
     },
     {
       "file": "playground/legacy/__tests__/legacy.spec.ts",
       "playground": "legacy",
+      "ssr": false,
       "total": 10,
       "passed": 9,
       "status": "partial",
@@ -4155,8 +4212,7 @@
         },
         {
           "name": "import.meta.env.LEGACY",
-          "status": "fail",
-          "error": "expected 'false' to match 'true'"
+          "status": "triage"
         },
         {
           "name": "transpiles down iterators correctly",
@@ -4191,6 +4247,7 @@
     {
       "file": "playground/legacy/__tests__/modern-target/legacy-modern-target.spec.ts",
       "playground": "legacy",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -4204,6 +4261,7 @@
     {
       "file": "playground/legacy/__tests__/no-polyfills/legacy-no-polyfills.spec.ts",
       "playground": "legacy",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -4215,21 +4273,23 @@
       ]
     },
     {
-      "file": "playground/lib/__tests__/lib.spec.ts",
-      "playground": "lib",
+      "file": "playground/module-graph/__tests__/module-graph.spec.ts",
+      "playground": "module-graph",
+      "ssr": false,
       "total": 1,
-      "passed": 1,
-      "status": "pass",
+      "passed": 0,
+      "status": "fail",
       "tests": [
         {
-          "name": "dev",
-          "status": "pass"
+          "name": "importedUrls order is preserved",
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/multiple-entrypoints/__tests__/multiple-entrypoints.spec.ts",
       "playground": "multiple-entrypoints",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -4243,6 +4303,7 @@
     {
       "file": "playground/nested-deps/__tests__/nested-deps.spec.ts",
       "playground": "nested-deps",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -4256,20 +4317,22 @@
     {
       "file": "playground/object-hooks/__tests__/object-hooks.spec.ts",
       "playground": "object-hooks",
+      "ssr": false,
       "total": 1,
       "passed": 0,
       "status": "fail",
       "tests": [
         {
           "name": "object hooks",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         }
       ]
     },
     {
       "file": "playground/optimize-deps-no-discovery/__tests__/optimize-deps-no-discovery.spec.ts",
       "playground": "optimize-deps-no-discovery",
+      "ssr": false,
       "total": 3,
       "passed": 2,
       "status": "partial",
@@ -4284,310 +4347,304 @@
         },
         {
           "name": "metadata",
-          "status": "fail",
-          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/optimize-deps-no-discovery/node_modules/.vite/deps/_metadata.json'"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/optimize-deps/__tests__/optimize-deps.spec.ts",
       "playground": "optimize-deps",
-      "total": 55,
-      "passed": 1,
-      "status": "partial",
+      "ssr": false,
+      "total": 56,
+      "passed": 0,
+      "status": "fail",
       "tests": [
         {
           "name": "default + named imports from cjs dep (react)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "named imports from webpacked cjs (phoenix)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "default import from webpacked cjs (clipboard)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "default import from cjs with es-module-flag (dep-cjs-with-es-module-flag)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "default import from cjs (cjs-dep-cjs-compiled-from-esm)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "default import from cjs (cjs-dep-cjs-compiled-from-cjs)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "named import injected into an optimized dep by a plugin (dep-with-injected-import)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dynamic imports from cjs dep (react)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dynamic named imports from webpacked cjs (phoenix)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dynamic default import from webpacked cjs (clipboard)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-esm)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-cjs)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dynamic default import from cjs with es-module-flag (cjs-dynamic-dep-cjs-with-es-module-flag)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dynamic import from format-ambiguous importer respects __esModule flag (cjs-dynamic-importer-ambiguous)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dynamic import from explicit cjs importer uses node interop (cjs-dynamic-importer-cjs)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dedupe",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "cjs browser field (axios)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "cjs browser field bare",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dep from linked dep (lodash-es)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "forced include",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "import * from optimized dep",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "import from dep with process.env.NODE_ENV",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "import from dep with .notjs files",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "Import from dependency which uses relative path which needs to be resolved by main field",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dep with dynamic import",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dep with optional peer dep",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dep with optional peer dep submodule",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dep with optional peer dep (cjs)",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "optimized CJS dep preserves fallback for excluded optional peer",
-          "status": "fail",
-          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/optimize-deps/node_modules/.vite/deps/_metadata.json'"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dep with css import",
-          "status": "fail",
-          "error": "Cannot find element: \".dep-linked-include\""
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "CJS dep with css import",
-          "status": "fail",
-          "error": "Cannot find element: \".cjs-with-assets\""
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "CJS dep requiring dep with css main field",
-          "status": "fail",
-          "error": "Cannot find element: \".cjs-require-css-main-field\""
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "externalize known non-js files in optimize included dep",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "vue + vuex",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "esbuild-plugin",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "import from hidden dir",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "import optimize-excluded package that imports optimized-included package",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "import aliased package with colon",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "import aliased package using absolute path",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "variable names are reused in different scripts",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "flatten id should generate correctly",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "non optimized module is not duplicated",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "optimized browser:false is empty without warning",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "error on builtin modules usage",
-          "status": "fail",
-          "error": "expected [ '[vite] connecting...', …(1) ] to deeply equal ArrayContaining{…}"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "pre bundle css require",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "name file limit is 170 characters",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "optimizeDeps config > supports include glob syntax",
-          "status": "fail",
-          "error": "ENOENT: no such file or directory, open '/Users/shuyuan/Projects/vite-bundled-dashboard/playground-temp/optimize-deps/node_modules/.vite/deps/_metadata.json'"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "long file name should work",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "warn on incompatible dependency",
-          "status": "fail",
-          "error": "expected [ …(11) ] to deep equally contain StringContaining{…}"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "import the CommonJS external package that omits the js suffix",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "external package name with asset extension",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "dependency with external sub-dependencies",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
+        },
+        {
+          "name": "discovers deep imports with custom html-like extensions during dep scan",
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "virtual module with .vue extension does not error during scan",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "no dep scan error for virtual modules with html-like extensions",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         },
         {
           "name": "should fix relative worker paths in optimized dependencies",
-          "status": "fail",
-          "error": "expect.poll() function didn't resolve in time."
-        }
-      ]
-    },
-    {
-      "file": "playground/optimize-missing-deps/__test__/optimize-missing-deps.spec.ts",
-      "playground": "optimize-missing-deps",
-      "total": 1,
-      "passed": 1,
-      "status": "pass",
-      "tests": [
-        {
-          "name": "optimize",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec file is in bundledDevExclude."
         }
       ]
     },
     {
       "file": "playground/preload/__tests__/preload-disabled/preload-disabled.spec.ts",
       "playground": "preload",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -4601,6 +4658,7 @@
     {
       "file": "playground/preload/__tests__/preload.spec.ts",
       "playground": "preload",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -4614,6 +4672,7 @@
     {
       "file": "playground/preload/__tests__/resolve-deps/preload-resolve-deps.spec.ts",
       "playground": "preload",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -4627,6 +4686,7 @@
     {
       "file": "playground/preserve-symlinks/__tests__/preserve-symlinks.spec.ts",
       "playground": "preserve-symlinks",
+      "ssr": false,
       "total": 2,
       "passed": 2,
       "status": "pass",
@@ -4644,6 +4704,7 @@
     {
       "file": "playground/proxy-bypass/__tests__/proxy-bypass.spec.ts",
       "playground": "proxy-bypass",
+      "ssr": false,
       "total": 4,
       "passed": 4,
       "status": "pass",
@@ -4667,21 +4728,9 @@
       ]
     },
     {
-      "file": "playground/proxy-hmr/__tests__/proxy-hmr.spec.ts",
-      "playground": "proxy-hmr",
-      "total": 1,
-      "passed": 1,
-      "status": "pass",
-      "tests": [
-        {
-          "name": "proxy-hmr",
-          "status": "pass"
-        }
-      ]
-    },
-    {
       "file": "playground/resolve-tsconfig-paths/__tests__/resolve.spec.ts",
       "playground": "resolve-tsconfig-paths",
+      "ssr": false,
       "total": 9,
       "passed": 9,
       "status": "pass",
@@ -4727,6 +4776,7 @@
     {
       "file": "playground/resolve/__tests__/mainfields-custom-first/resolve-mainfields-custom-first.spec.ts",
       "playground": "resolve",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -4740,6 +4790,7 @@
     {
       "file": "playground/resolve/__tests__/resolve.spec.ts",
       "playground": "resolve",
+      "ssr": false,
       "total": 54,
       "passed": 53,
       "status": "partial",
@@ -4958,14 +5009,14 @@
         },
         {
           "name": "HEAD request handling > HEAD request to CSS file returns correct Content-Type",
-          "status": "fail",
-          "error": "expected null to be 'text/css' // Object.is equality"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/ssr-alias/__tests__/ssr-alias.spec.ts",
       "playground": "ssr-alias",
+      "ssr": true,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -4979,282 +5030,342 @@
     {
       "file": "playground/ssr-conditions/__tests__/ssr-conditions.spec.ts",
       "playground": "ssr-conditions",
+      "ssr": true,
       "total": 3,
-      "passed": 3,
-      "status": "pass",
+      "passed": 0,
+      "status": "fail",
       "tests": [
         {
           "name": "ssr.resolve.conditions affect non-externalized imports during ssr",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "ssr.resolve.externalConditions affect externalized imports during ssr",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "ssr.resolve settings do not affect non-ssr imports",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         }
       ]
     },
     {
       "file": "playground/ssr-deps/__tests__/ssr-deps.spec.ts",
       "playground": "ssr-deps",
+      "ssr": true,
       "total": 18,
-      "passed": 18,
-      "status": "pass",
+      "passed": 0,
+      "status": "fail",
       "tests": [
         {
           "name": "msg should be encrypted",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg read by fs/promises",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from primitive export",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from TS transpiled exports",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from Object.assign exports",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from forwarded exports",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from define properties exports",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from define property exports",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from only object assigned exports",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from no external cjs",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from optimized with nested external",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from optimized cjs with nested external",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from external using external entry",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from linked no external",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "msg from linked no external",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "import css library",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "import css library",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "optimize-deps-nested-include",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         }
       ]
     },
     {
       "file": "playground/ssr-html/__tests__/ssr-html.spec.ts",
       "playground": "ssr-html",
+      "ssr": true,
       "total": 10,
-      "passed": 10,
-      "status": "pass",
+      "passed": 0,
+      "status": "fail",
       "tests": [
         {
           "name": "injected inline scripts > no injected inline scripts are present",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "injected inline scripts > injected script proxied correctly",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "trailing slash html paths > pre-transforms relative module scripts from the trailing slash directory",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "trailing slash html paths > loads relative module scripts from the trailing slash directory",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "hmr > handle virtual module updates",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "stacktrace > stacktrace of js is correct when sourcemaps is not enabled in Node.js",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "stacktrace > stacktrace of js is correct when sourcemaps is enabled in Node.js",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "stacktrace > stacktrace of ts is correct when sourcemaps is not enabled in Node.js",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "stacktrace > stacktrace of ts is correct when sourcemaps is enabled in Node.js",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "stacktrace > with Vite runtime",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         }
       ]
     },
     {
       "file": "playground/ssr-noexternal/__tests__/ssr-noexternal.spec.ts",
       "playground": "ssr-noexternal",
+      "ssr": true,
       "total": 1,
-      "passed": 1,
-      "status": "pass",
+      "passed": 0,
+      "status": "fail",
       "tests": [
         {
           "name": "message from require-external-cjs",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         }
       ]
     },
     {
       "file": "playground/ssr-pug/__tests__/ssr-pug.spec.ts",
       "playground": "ssr-pug",
+      "ssr": true,
       "total": 2,
-      "passed": 2,
-      "status": "pass",
+      "passed": 0,
+      "status": "fail",
       "tests": [
         {
           "name": "injected inline scripts > no injected inline scripts are present",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "injected inline scripts > injected script proxied correctly",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         }
       ]
     },
     {
       "file": "playground/ssr-wasm/__tests__/ssr-wasm.spec.ts",
       "playground": "ssr-wasm",
+      "ssr": true,
       "total": 4,
-      "passed": 4,
-      "status": "pass",
+      "passed": 0,
+      "status": "fail",
       "tests": [
         {
           "name": "should work when inlined",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "should work when output",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "direct wasm import",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "direct wasm import with wasm imports",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         }
       ]
     },
     {
       "file": "playground/ssr-webworker/__tests__/ssr-webworker.spec.ts",
       "playground": "ssr-webworker",
+      "ssr": true,
       "total": 4,
-      "passed": 4,
-      "status": "pass",
+      "passed": 0,
+      "status": "fail",
       "tests": [
         {
           "name": "/",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "supports resolve.conditions",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "respects browser export",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "supports nodejs_compat",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         }
       ]
     },
     {
       "file": "playground/ssr/__tests__/ssr.spec.ts",
       "playground": "ssr",
+      "ssr": true,
       "total": 9,
-      "passed": 9,
-      "status": "pass",
+      "passed": 0,
+      "status": "fail",
       "tests": [
         {
           "name": "circular dependencies modules doesn't throw",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "circular import doesn't throw (1)",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "circular import doesn't throw (2)",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "deadlock doesn't happen for static imports",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "deadlock doesn't happen for dynamic imports",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "import.meta.resolve is supported",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "import.meta.main is supported",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "html proxy is encoded",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         },
         {
           "name": "should restart ssr",
-          "status": "pass"
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
         }
       ]
     },
     {
       "file": "playground/tailwind-sourcemap/__tests__/tailwind-sourcemap.spec.ts",
       "playground": "tailwind-sourcemap",
+      "ssr": false,
       "total": 1,
       "passed": 1,
       "status": "pass",
@@ -5268,6 +5379,7 @@
     {
       "file": "playground/tailwind-v3/__test__/tailwind-v3.spec.ts",
       "playground": "tailwind-v3",
+      "ssr": false,
       "total": 4,
       "passed": 1,
       "status": "partial",
@@ -5278,24 +5390,22 @@
         },
         {
           "name": "regenerate CSS and HMR (glob pattern)",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/views/view1.js via /src/main.js"
+          "status": "triage"
         },
         {
           "name": "same file duplicated in module graph (#4267)",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/components/component1.js"
+          "status": "triage"
         },
         {
           "name": "regenerate CSS and HMR (relative path)",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/main.js"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/tailwind/__test__/tailwind.spec.ts",
       "playground": "tailwind",
+      "ssr": false,
       "total": 5,
       "passed": 1,
       "status": "partial",
@@ -5306,43 +5416,40 @@
         },
         {
           "name": "full reload happens when the HTML is changed",
-          "status": "fail",
-          "error": "expected 'oklch(0.623 0.214 259.815)' to be 'oklch(0.723 0.219 149.579)' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "regenerate CSS and HMR (glob pattern)",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/views/view1.js via /src/main.js"
+          "status": "triage"
         },
         {
           "name": "same file duplicated in module graph (#4267)",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/components/component1.js"
+          "status": "triage"
         },
         {
           "name": "regenerate CSS and HMR (relative path)",
-          "status": "fail",
-          "error": "Timeout waiting for browser logs. Waiting for: [vite] css hot updated: /index.css, [vite] hot updated: /src/main.js"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/transform-plugin/__tests__/base/transform-plugin.spec.ts",
       "playground": "transform-plugin",
+      "ssr": false,
       "total": 1,
       "passed": 0,
       "status": "fail",
       "tests": [
         {
           "name": "should re-run transform when dependencies are edited",
-          "status": "fail",
-          "error": "expected '1' to be '2' // Object.is equality"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/transform-plugin/__tests__/transform-plugin.spec.ts",
       "playground": "transform-plugin",
+      "ssr": false,
       "total": 3,
       "passed": 2,
       "status": "partial",
@@ -5357,22 +5464,25 @@
         },
         {
           "name": "should re-run transform when dependencies are edited",
-          "status": "fail",
-          "error": "expected '1' to be '2' // Object.is equality"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/tsconfig-json-load-error/__tests__/tsconfig-json-load-error.spec.ts",
       "playground": "tsconfig-json-load-error",
-      "total": 3,
-      "passed": 1,
+      "ssr": false,
+      "total": 4,
+      "passed": 2,
       "status": "partial",
       "tests": [
         {
           "name": "server > should log 500 error in browser for malformed tsconfig",
-          "status": "fail",
-          "error": "expected undefined to be truthy"
+          "status": "triage"
+        },
+        {
+          "name": "server > should keep the fallback page for malformed tsconfig",
+          "status": "pass"
         },
         {
           "name": "server > should show error overlay for tsconfig error",
@@ -5380,14 +5490,14 @@
         },
         {
           "name": "server > should reload when tsconfig is changed",
-          "status": "fail",
-          "error": "expected [ '[vite] connecting...', …(1) ] to include 'tsconfig error fixed, file loaded'"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/tsconfig-json/__tests__/tsconfig-json.spec.ts",
       "playground": "tsconfig-json",
+      "ssr": false,
       "total": 6,
       "passed": 6,
       "status": "pass",
@@ -5421,6 +5531,7 @@
     {
       "file": "playground/wasm/__tests__/wasm.spec.ts",
       "playground": "wasm",
+      "ssr": false,
       "total": 11,
       "passed": 11,
       "status": "pass",
@@ -5474,231 +5585,196 @@
     {
       "file": "playground/worker/__tests__/es/worker-es.spec.ts",
       "playground": "worker",
+      "ssr": false,
       "total": 20,
       "passed": 0,
       "status": "fail",
       "tests": [
         {
           "name": "normal",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "named",
-          "status": "fail",
-          "error": "expected '' to match 'namedWorker'"
+          "status": "triage"
         },
         {
           "name": "TS output",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "inlined",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "named inlined",
-          "status": "fail",
-          "error": "expected '' to match 'namedInlineWorker'"
+          "status": "triage"
         },
         {
           "name": "import meta url",
-          "status": "fail",
-          "error": "expected '' to match /^(blob|http):/"
+          "status": "triage"
         },
         {
           "name": "unicode inlined",
-          "status": "fail",
-          "error": "expected '' to match '•pong•'"
+          "status": "triage"
         },
         {
           "name": "shared worker",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "named shared worker",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "inline shared worker",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "worker emitted and import.meta.url in nested worker (serve)",
-          "status": "fail",
-          "error": "expected '' to match 'worker-nested-worker'"
+          "status": "triage"
         },
         {
           "name": "deeply nested workers",
-          "status": "fail",
-          "error": "expected '' to match /Hello\\sfrom\\sroot.*\\/es\\/.+deeply-…/es\\"
+          "status": "triage"
         },
         {
           "name": "module worker",
-          "status": "fail",
-          "error": "expected '' to match 'A string'"
+          "status": "triage"
         },
         {
           "name": "classic worker",
-          "status": "fail",
-          "error": "expected '' to match 'A classic'"
+          "status": "triage"
         },
         {
           "name": "emit chunk",
-          "status": "fail",
-          "error": "expected '' to match '[\"A string\",{\"type\":\"emit-chunk-sub-w…'"
+          "status": "triage"
         },
         {
           "name": "url query worker",
-          "status": "fail",
-          "error": "expected '' to match 'Hello from simple worker!'"
+          "status": "triage"
         },
         {
           "name": "import.meta.glob in worker",
-          "status": "fail",
-          "error": "expected '' to match '[\"'"
+          "status": "triage"
         },
         {
           "name": "import.meta.glob with eager in worker",
-          "status": "fail",
-          "error": "expected '' to match '[\"'"
+          "status": "triage"
         },
         {
           "name": "self reference worker",
-          "status": "fail",
-          "error": "expected '' to match 'pong: main\\npong: nested\\n'"
+          "status": "triage"
         },
         {
           "name": "self reference url worker",
-          "status": "fail",
-          "error": "expected '' to match 'pong: main\\npong: nested\\n'"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/worker/__tests__/iife/worker-iife.spec.ts",
       "playground": "worker",
+      "ssr": false,
       "total": 17,
       "passed": 0,
       "status": "fail",
       "tests": [
         {
           "name": "normal",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "named",
-          "status": "fail",
-          "error": "expected '' to match 'namedWorker'"
+          "status": "triage"
         },
         {
           "name": "TS output",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "inlined",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "named inlined",
-          "status": "fail",
-          "error": "expected '' to match 'namedInlineWorker'"
+          "status": "triage"
         },
         {
           "name": "shared worker",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "named shared worker",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "inline shared worker",
-          "status": "fail",
-          "error": "expected '' to match 'pong'"
+          "status": "triage"
         },
         {
           "name": "worker emitted and import.meta.url in nested worker (serve)",
-          "status": "fail",
-          "error": "expected '' to match '/worker-nested'"
+          "status": "triage"
         },
         {
           "name": "module worker",
-          "status": "fail",
-          "error": "expected '' to match /A\\sstring.*\\/iife\\/.+url-worker\\…/iife\\"
+          "status": "triage"
         },
         {
           "name": "classic worker",
-          "status": "fail",
-          "error": "expected '' to match 'A classic'"
+          "status": "triage"
         },
         {
           "name": "url query worker",
-          "status": "fail",
-          "error": "expected '' to match 'Hello from simple worker!'"
+          "status": "triage"
         },
         {
           "name": "import.meta.glob eager in worker",
-          "status": "fail",
-          "error": "expected '' to match '[\"'"
+          "status": "triage"
         },
         {
           "name": "self reference worker",
-          "status": "fail",
-          "error": "expected '' to be 'pong: main\\npong: nested\\n' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "self reference url worker",
-          "status": "fail",
-          "error": "expected '' to be 'pong: main\\npong: nested\\n' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "self reference url worker in dependency",
-          "status": "fail",
-          "error": "expected '' to be 'pong: main\\npong: nested\\n' // Object.is equality"
+          "status": "triage"
         },
         {
           "name": "sourcemap is correct after env is injected",
-          "status": "fail",
-          "error": "Test timed out in 30000ms."
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/worker/__tests__/relative-base-iife/worker-relative-base-iife.spec.ts",
       "playground": "worker",
+      "ssr": false,
       "total": 1,
       "passed": 0,
       "status": "fail",
       "tests": [
         {
           "name": "asset url",
-          "status": "fail",
-          "error": "expected '/worker-assets/worker_asset-vite-DcBt…' to match '/vite.svg'"
+          "status": "triage"
         }
       ]
     },
     {
       "file": "playground/worker/__tests__/relative-base/worker-relative-base.spec.ts",
       "playground": "worker",
+      "ssr": false,
       "total": 13,
       "passed": 11,
       "status": "partial",
       "tests": [
         {
           "name": "normal",
-          "status": "fail",
-          "error": "expected '/worker-assets/worker_asset-vite-DcBt…' to match '/vite.svg'"
+          "status": "triage"
         },
         {
           "name": "named",
@@ -5730,8 +5806,7 @@
         },
         {
           "name": "classic worker",
-          "status": "fail",
-          "error": "expected '' to match '[success] classic-esm'"
+          "status": "triage"
         },
         {
           "name": "import.meta.glob in worker",

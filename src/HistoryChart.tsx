@@ -1,18 +1,40 @@
 import { useLayoutEffect, useRef, useState } from 'react'
-import { percent, rate, type RunInfo } from './data'
+import { percent } from './data'
 
-const HEIGHT = 220
+const HEIGHT = 260
 const PAD = { top: 12, right: 16, bottom: 28, left: 44 }
 
 const formatDay = (date: string) =>
   new Date(date).toLocaleDateString('en', { month: 'short', day: 'numeric', timeZone: 'UTC' })
 
+const formatTime = (date: string) =>
+  `${new Date(date).toLocaleString('en', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZone: 'UTC',
+  })} UTC`
+
+export interface Series {
+  // Legend text, and the shorter text after the percentage in the tooltip.
+  label: string
+  tipLabel: string
+  className: string
+  values: number[]
+  // One line per run under the percentage, e.g. "744/1057 tests passed, 34 todo".
+  details: string[]
+}
+
 export function HistoryChart({
-  history,
+  dates,
+  series,
   selected,
   onSelect,
 }: {
-  history: RunInfo[]
+  dates: string[]
+  series: Series[]
   selected: string
   onSelect: (date: string) => void
 }) {
@@ -27,11 +49,11 @@ export function HistoryChart({
     return () => observer.disconnect()
   }, [])
 
-  const values = history.map((h) => rate(h.summary))
-  // Round the y range out to 10% steps so the line keeps some room.
-  const yMin = Math.max(0, Math.floor((Math.min(...values) - 0.05) * 10) / 10)
+  const all = series.flatMap((s) => s.values)
+  // Round the y range out to 10% steps so the lines keep some room.
+  const yMin = Math.max(0, Math.floor((Math.min(...all) - 0.05) * 10) / 10)
   const yMax = 1
-  const times = history.map((h) => Date.parse(h.date))
+  const times = dates.map((d) => Date.parse(d))
   const tMin = Math.min(...times)
   const tMax = Math.max(...times)
 
@@ -43,28 +65,22 @@ export function HistoryChart({
   const yTicks: number[] = []
   for (let v = yMin; v <= yMax + 1e-9; v += yMax - yMin > 0.5 ? 0.2 : 0.1) yTicks.push(v)
 
-  const xTickCount = Math.min(history.length, Math.max(2, Math.floor(plotW / 90)))
+  const xTickCount = Math.min(dates.length, Math.max(2, Math.floor(plotW / 90)))
   const xTicks =
-    history.length === 1
+    dates.length === 1
       ? [0]
-      : Array.from({ length: xTickCount }, (_, i) =>
-          Math.round((i * (history.length - 1)) / (xTickCount - 1)),
-        )
+      : Array.from({ length: xTickCount }, (_, i) => Math.round((i * (dates.length - 1)) / (xTickCount - 1)))
 
-  const points = times.map((t, i) => [x(t), y(values[i])] as const)
-  const path = points.map(([px, py], i) => `${i ? 'L' : 'M'}${px},${py}`).join('')
+  const xs = times.map(x)
 
   function nearest(clientX: number) {
-    const left = ref.current!.getBoundingClientRect().left
+    const px = clientX - ref.current!.getBoundingClientRect().left
     let best = 0
-    for (let i = 1; i < points.length; i++) {
-      if (Math.abs(points[i][0] - (clientX - left)) < Math.abs(points[best][0] - (clientX - left))) best = i
-    }
+    for (let i = 1; i < xs.length; i++) if (Math.abs(xs[i] - px) < Math.abs(xs[best] - px)) best = i
     return best
   }
 
-  const active = hover ?? history.findIndex((h) => h.date === selected)
-  const tip = hover === null ? null : history[hover]
+  const active = hover ?? dates.indexOf(selected)
 
   return (
     <div className="chart" ref={ref}>
@@ -73,10 +89,10 @@ export function HistoryChart({
           width={width}
           height={HEIGHT}
           role="img"
-          aria-label={`Bundled dev pass rate over ${history.length} runs`}
+          aria-label={`Bundled dev pass rate over ${dates.length} runs`}
           onPointerMove={(e) => setHover(nearest(e.clientX))}
           onPointerLeave={() => setHover(null)}
-          onClick={(e) => onSelect(history[nearest(e.clientX)].date)}
+          onClick={(e) => onSelect(dates[nearest(e.clientX)])}
         >
           {yTicks.map((v) => (
             <g key={v}>
@@ -87,29 +103,44 @@ export function HistoryChart({
             </g>
           ))}
           {xTicks.map((i) => (
-            <text key={i} className="axis" x={points[i][0]} y={HEIGHT - 8} textAnchor="middle">
-              {formatDay(history[i].date)}
+            <text key={i} className="axis" x={xs[i]} y={HEIGHT - 8} textAnchor="middle">
+              {formatDay(dates[i])}
             </text>
           ))}
           {hover !== null && (
-            <line className="crosshair" x1={points[hover][0]} x2={points[hover][0]} y1={PAD.top} y2={PAD.top + plotH} />
+            <line className="crosshair" x1={xs[hover]} x2={xs[hover]} y1={PAD.top} y2={PAD.top + plotH} />
           )}
-          <path className="line" d={path} />
-          {active >= 0 && <circle className="marker" cx={points[active][0]} cy={points[active][1]} r={5} />}
+          {series.map((s) => (
+            <g key={s.label} className={s.className}>
+              <path className="line" d={s.values.map((v, i) => `${i ? 'L' : 'M'}${xs[i]},${y(v)}`).join('')} />
+              {s.values.map((v, i) => (
+                <circle key={i} className={i === active ? 'marker active' : 'marker'} cx={xs[i]} cy={y(v)} r={i === active ? 5 : 3} />
+              ))}
+            </g>
+          ))}
         </svg>
       )}
-      {tip && hover !== null && (
-        <div
-          className="tooltip"
-          style={{ left: Math.min(points[hover][0], width - 180), top: points[hover][1] + 12 }}
-        >
-          <strong>{formatDay(tip.date)}</strong>
-          <span>
-            {percent(rate(tip.summary))} · {tip.summary.passed}/{tip.summary.total} tests
-          </span>
-          <span className="muted">click to open this run</span>
+      {hover !== null && (
+        <div className="tooltip" style={{ left: Math.max(0, Math.min(xs[hover] + 12, width - 420)), top: PAD.top + 8 }}>
+          {series.map((s) => (
+            <div key={s.label} className="tip-series">
+              <strong>
+                <span className={`swatch ${s.className}`} aria-hidden="true" />
+                {percent(s.values[hover])} {s.tipLabel}
+              </strong>
+              <span className="muted">{s.details[hover]}</span>
+            </div>
+          ))}
+          <span className="muted">{formatTime(dates[hover])}</span>
         </div>
       )}
+      <div className="chart-legend">
+        {series.map((s) => (
+          <span key={s.label}>
+            <span className={`swatch ${s.className}`} aria-hidden="true" /> {s.label}
+          </span>
+        ))}
+      </div>
     </div>
   )
 }

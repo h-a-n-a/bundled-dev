@@ -22,7 +22,7 @@ env:
 
 jobs:
   test:
-    name: Plain dev vs bundled dev
+    name: Playground tests
     runs-on: ubuntu-latest
     timeout-minutes: 120
     permissions:
@@ -51,16 +51,7 @@ jobs:
           pnpm playwright install chromium
           pnpm run build
 
-      - name: Turn off bundled-dev skips
-        run: node scripts/unskip.mjs vite
-
       # Failing tests are the data, so a non-zero exit must not stop the job.
-      - name: Test plain dev
-        working-directory: vite
-        env:
-          RESULTS_FILE: ${{ github.workspace }}/plain.json
-        run: pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../scripts/reporter.mjs --reporter=dot || true
-
       - name: Test bundled dev
         working-directory: vite
         env:
@@ -68,12 +59,25 @@ jobs:
           RESULTS_FILE: ${{ github.workspace }}/bundled.json
         run: pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../scripts/reporter.mjs --reporter=dot || true
 
+      - name: Test plain dev
+        working-directory: vite
+        env:
+          RESULTS_FILE: ${{ github.workspace }}/plain.json
+        run: pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../scripts/reporter.mjs --reporter=dot || true
+
+      - name: Test build
+        working-directory: vite
+        env:
+          VITE_TEST_BUILD: 1
+          RESULTS_FILE: ${{ github.workspace }}/build.json
+        run: pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../scripts/reporter.mjs --reporter=dot || true
+
       - name: Compare
         run: |
           export VITE_COMMIT="$(git -C vite rev-parse HEAD)"
           export ROLLDOWN_VERSION="$(node -p "require('./vite/packages/vite/node_modules/rolldown/package.json').version")"
           export RUN_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          node scripts/compare.mjs plain.json bundled.json results
+          node scripts/compare.mjs bundled.json plain.json build.json results
 
       - uses: actions/upload-artifact@v4
         with:

@@ -1,13 +1,43 @@
 [
   {
-    "date": "2026-10-06T09:35:12.233Z",
-    "viteCommit": "fea5b21dd9524ed7308632407b996f1fe5942c9c",
-    "rolldownVersion": "1.2.11",
+    "date": "2026-10-09T20:00:51.506Z",
+    "viteCommit": "3b72997d42e7dd2b31898d0e68461e3025e836b6",
+    "rolldownVersion": "1.2.12",
     "summary": {
-      "total": 1140,
-      "passed": 781,
-      "files": 91,
-      "filesPassing": 54
+      "all": {
+        "total": 1156,
+        "passed": 747,
+        "files": 84,
+        "filesPassing": 36,
+        "statuses": {
+          "pass": 747,
+          "fail": 0,
+          "todo": 34,
+          "not-run": 0,
+          "triage": 375,
+          "unsupported": 0
+        },
+        "buildOnly": 167,
+        "everyMode": 14,
+        "ownServer": 14
+      },
+      "noSsr": {
+        "total": 1057,
+        "passed": 744,
+        "files": 73,
+        "filesPassing": 35,
+        "statuses": {
+          "pass": 744,
+          "fail": 0,
+          "todo": 34,
+          "not-run": 0,
+          "triage": 279,
+          "unsupported": 0
+        },
+        "buildOnly": 155,
+        "everyMode": 11,
+        "ownServer": 14
+      }
     }
   }
 ]
