@@ -1,0 +1,116 @@
+name: Vite Tests
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      vite-ref:
+        description: Vite branch/ref to test. Only `main` runs are published.
+        required: false
+        default: main
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ inputs.vite-ref || 'main' }}
+  cancel-in-progress: false
+
+env:
+  VITE_REF: ${{ inputs.vite-ref || 'main' }}
+
+jobs:
+  test:
+    name: Playground tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Checkout Vite
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+          repository: vitejs/vite
+          ref: ${{ env.VITE_REF }}
+          path: vite
+
+      - uses: pnpm/setup@v3
+        with:
+          runtime: node@24
+
+      - name: Install and build Vite
+        working-directory: vite
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm playwright install chromium
+          pnpm run build
+
+      # Failing tests are the data, so a non-zero exit must not stop the job.
+      - name: Test bundled dev
+        working-directory: vite
+        env:
+          VITE_TEST_BUNDLED_DEV: 1
+          RESULTS_FILE: ${{ github.workspace }}/bundled.json
+        run: pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../scripts/reporter.mjs --reporter=dot || true
+
+      - name: Test plain dev
+        working-directory: vite
+        env:
+          RESULTS_FILE: ${{ github.workspace }}/plain.json
+        run: pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../scripts/reporter.mjs --reporter=dot || true
+
+      - name: Test build
+        working-directory: vite
+        env:
+          VITE_TEST_BUILD: 1
+          RESULTS_FILE: ${{ github.workspace }}/build.json
+        run: pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../scripts/reporter.mjs --reporter=dot || true
+
+      - name: Compare
+        run: |
+          export VITE_COMMIT="$(git -C vite rev-parse HEAD)"
+          export ROLLDOWN_VERSION="$(node -p "require('./vite/packages/vite/node_modules/rolldown/package.json').version")"
+          export RUN_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          node scripts/compare.mjs bundled.json plain.json build.json results
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: results/
+
+  publish:
+    name: Commit results
+    needs: test
+    if: (inputs.vite-ref || 'main') == 'main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: results
+          path: results/
+
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898+github-actions[bot]@users.noreply.github.com'
+          git add results/
+          git commit -m "results: $(date -u +%F)"
+          git push
+
+  # A push made with GITHUB_TOKEN does not start other workflows, so deploy here.
+  deploy:
+    needs: publish
+    uses: ./.github/workflows/deploy.yml
+    permissions:
+      id-token: write

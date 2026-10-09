@@ -1,0 +1,13 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true
+  better-sqlite3: false
+minimumReleaseAgeExclude:
+  - '@void/deploy-cloudflare@0.26.0'
+  - '@void/deploy-core@0.26.0'
+  - '@void/edge@0.26.0'
+  - '@void/isr@0.26.0'
+  - '@void/platform@0.26.0'
+  - void@0.26.0
+  - vite@8.3.3

@@ -1,2 +1,12 @@
-dist/
-node_modules/
+node_modules
+dist
+
+# void
+.void
+.wrangler
+
+# vite-tests workflow inputs
+/vite
+/plain.json
+/bundled.json
+/build.json
