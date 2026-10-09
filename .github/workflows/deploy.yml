@@ -17,6 +17,7 @@ jobs:
   deploy-void:
     name: Deploy to Void
     runs-on: ubuntu-latest
+    environment: void
     # `void deploy` authenticates via GitHub OIDC: with id-token:write (and no VOID_TOKEN set)
     # it exchanges an OIDC token for a short-lived, project-scoped deploy token.
     # The repo must first be authorized once with `void github connect`.
@@ -33,7 +34,13 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # Since void 0.26 the CLI has no default platform: it needs a saved connection to the
+      # hosted platform (the one rolldown's docs deploy to). `--no-login` saves it without a
+      # login, because the OIDC token above does the auth.
       - name: Deploy to Void
-        run: pnpm void deploy --platform void
+        run: |
+          pnpm void connect "$VOID_API_URL" --no-login
+          pnpm void deploy --platform void --project "$VOID_PROJECT"
         env:
+          VOID_API_URL: https://api.void.cloud
           VOID_PROJECT: bundled-dev
