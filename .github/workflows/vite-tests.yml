@@ -91,6 +91,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     steps:
       - uses: actions/checkout@v5
         with:
@@ -108,9 +109,11 @@ jobs:
           git commit -m "results: $(date -u +%F)"
           git push
 
-  # A push made with GITHUB_TOKEN does not start other workflows, so deploy here.
-  deploy:
-    needs: publish
-    uses: ./.github/workflows/deploy.yml
-    permissions:
-      id-token: write
+      # Void only deploys a commit that is the branch head, checked through the
+      # OIDC token's sha. This run's sha is the commit before the push above, so
+      # deploy from a new run. A GITHUB_TOKEN push starts no workflows, but a
+      # workflow_dispatch does.
+      - name: Deploy
+        run: gh workflow run deploy.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}
