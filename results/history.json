@@ -1,17 +1,18 @@
 [
   {
-    "date": "2026-10-09T20:00:51.506Z",
+    "date": "2026-10-09T20:37:08.177Z",
     "viteCommit": "3b72997d42e7dd2b31898d0e68461e3025e836b6",
     "rolldownVersion": "1.2.12",
+    "runUrl": "https://github.com/h-a-n-a/bundled-dev/actions/runs/37987705020",
     "summary": {
       "all": {
         "total": 1156,
-        "passed": 747,
+        "passed": 745,
         "files": 84,
         "filesPassing": 36,
         "statuses": {
-          "pass": 747,
-          "fail": 0,
+          "pass": 745,
+          "fail": 2,
           "todo": 34,
           "not-run": 0,
           "triage": 375,
@@ -23,12 +24,12 @@
       },
       "noSsr": {
         "total": 1057,
-        "passed": 744,
+        "passed": 742,
         "files": 73,
         "filesPassing": 35,
         "statuses": {
-          "pass": 744,
-          "fail": 0,
+          "pass": 742,
+          "fail": 2,
           "todo": 34,
           "not-run": 0,
           "triage": 279,
