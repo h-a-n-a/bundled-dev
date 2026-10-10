@@ -7,6 +7,11 @@ const PAD = { top: 12, right: 16, bottom: 28, left: 44 }
 const formatDay = (date: string) =>
   new Date(date).toLocaleDateString('en', { month: 'short', day: 'numeric', timeZone: 'UTC' })
 
+// The first and last dates sit on the plot edges; centering them would cut
+// them off at the chart's sides.
+const tickAnchor = (n: number, count: number) =>
+  count === 1 ? 'middle' : n === 0 ? 'start' : n === count - 1 ? 'end' : 'middle'
+
 const formatTime = (date: string) =>
   `${new Date(date).toLocaleString('en', {
     month: 'short',
@@ -102,8 +107,8 @@ export function HistoryChart({
               </text>
             </g>
           ))}
-          {xTicks.map((i) => (
-            <text key={i} className="axis" x={xs[i]} y={HEIGHT - 8} textAnchor="middle">
+          {xTicks.map((i, n) => (
+            <text key={i} className="axis" x={xs[i]} y={HEIGHT - 8} textAnchor={tickAnchor(n, xTicks.length)}>
               {formatDay(dates[i])}
             </text>
           ))}
