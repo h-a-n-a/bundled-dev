@@ -434,7 +434,7 @@ export function App() {
 
       <footer className="footer">
         Built on the <a href="https://void.cloud/">Void</a> platform · Powered by{' '}
-        <a href="https://vite.dev/">Vite</a>'s bundled-dev mode{' '}
+        <a href="https://vite.dev/">Vite</a>'s bundled-dev mode in development mode{' '}
         <span role="img" aria-label="love">
           ❤️
         </span>
