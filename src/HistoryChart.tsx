@@ -35,13 +35,9 @@ export interface Series {
 export function HistoryChart({
   dates,
   series,
-  selected,
-  onSelect,
 }: {
   dates: string[]
   series: Series[]
-  selected: string
-  onSelect: (date: string) => void
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const [width, setWidth] = useState(0)
@@ -85,7 +81,7 @@ export function HistoryChart({
     return best
   }
 
-  const active = hover ?? dates.indexOf(selected)
+  const active = hover ?? dates.length - 1
 
   return (
     <div className="chart" ref={ref}>
@@ -97,7 +93,6 @@ export function HistoryChart({
           aria-label={`Bundled dev pass rate over ${dates.length} runs`}
           onPointerMove={(e) => setHover(nearest(e.clientX))}
           onPointerLeave={() => setHover(null)}
-          onClick={(e) => onSelect(dates[nearest(e.clientX)])}
         >
           {yTicks.map((v) => (
             <g key={v}>

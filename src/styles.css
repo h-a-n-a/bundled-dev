@@ -316,7 +316,6 @@ code {
 
 .chart svg {
   display: block;
-  cursor: pointer;
 }
 
 .chart .grid {

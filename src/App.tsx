@@ -79,7 +79,6 @@ const ssrOnly = (s: Record<'all' | 'noSsr', Summary>) => ({
   ) as Record<TestStatus, number>,
 })
 
-const NOT_KEPT = 'Only the summary of this run is kept. Test details are kept for the last 30 days.'
 
 // "744/1057 tests passed, 34 todo, 279 waiting for triage" for the chart tooltip.
 function tooltipDetail(s: Pick<Summary, 'passed' | 'total' | 'statuses'>) {
@@ -93,9 +92,8 @@ const fileId = (file: string) => `file-${file.replace(/[^\w-]/g, '-')}`
 
 export function App() {
   const latest = history.at(-1)
-  const [selected, setSelected] = useState(latest?.date ?? '')
-  // undefined while loading; null when the run's details were pruned.
-  const [run, setRun] = useState<Run | null | undefined>(undefined)
+  // The page always shows the latest run; the trend chart only shows older runs' summaries.
+  const [run, setRun] = useState<Run | null>(null)
   const [filter, setFilter] = useState<Filter>('failing')
   const [query, setQuery] = useState('')
   const [showSsr, setShowSsr] = useState(false)
@@ -103,14 +101,13 @@ export function App() {
   const [gridScope, setGridScope] = useState<'all' | 'ssr'>('all')
 
   useEffect(() => {
-    if (!selected) return
+    if (!latest) return
     let current = true
-    setRun(undefined)
-    loadRun(selected).then((r) => current && setRun(r))
+    loadRun(latest.date).then((r) => current && setRun(r))
     return () => {
       current = false
     }
-  }, [selected])
+  }, [latest])
 
   // Open and scroll to a file picked in the file grid, once its row is rendered.
   useEffect(() => {
@@ -164,9 +161,8 @@ export function App() {
 
   if (!latest) return <main className="page">No results yet.</main>
 
-  const info = run ?? history.find((h) => h.date === selected)!
-  const index = history.findIndex((h) => h.date === selected)
-  const previous = index > 0 ? history[index - 1] : undefined
+  const info = run ?? latest
+  const previous = history.at(-2)
   const all = info.summary.all
   const noSsr = info.summary.noSsr
   const since = (now: number, before?: number) =>
@@ -188,7 +184,7 @@ export function App() {
           bundled dev count. Each square below is one test case; the line chart tracks the pass rate across runs.
         </p>
         <p className="meta">
-          {index === history.length - 1 ? 'Latest run' : 'Run'}:{' '}
+          Latest run:{' '}
           <strong>{new Date(info.date).toUTCString().replace(' GMT', ' UTC').replace(/:\d\d UTC/, ' UTC')}</strong>
           {info.viteCommit && (
             <>
@@ -273,10 +269,8 @@ export function App() {
         )}
         <div id="grid-panel" role="tabpanel" aria-labelledby={`grid-tab-${gridScope}`}>
           <h3>Test cases</h3>
-          {run === undefined ? (
+          {!tests ? (
             <p className="muted">Loading run…</p>
-          ) : !tests ? (
-            <p className="muted">{NOT_KEPT}</p>
           ) : (
             <>
               {/* One click handler for the whole grid keeps ~1000 squares out of the tab order. */}
@@ -341,8 +335,6 @@ export function App() {
                     },
                   ]
             }
-            selected={selected}
-            onSelect={setSelected}
           />
         </div>
       </section>
@@ -371,10 +363,8 @@ export function App() {
             Show SSR specs
           </label>
         </div>
-        {run === undefined ? (
+        {!run ? (
           <p className="muted">Loading run…</p>
-        ) : run === null ? (
-          <p className="muted">{NOT_KEPT}</p>
         ) : groups.length === 0 ? (
           <p className="muted">No files match.</p>
         ) : (
