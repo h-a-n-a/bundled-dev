@@ -441,6 +441,14 @@ export function App() {
           )}
         </section>
       </details>
+
+      <footer className="footer">
+        Built on the <a href="https://void.cloud/">Void</a> platform · Powered by{' '}
+        <a href="https://rolldown.rs/">Rolldown</a>'s bundled-dev mode{' '}
+        <span role="img" aria-label="love">
+          ❤️
+        </span>
+      </footer>
     </main>
   )
 }
