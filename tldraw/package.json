@@ -1,0 +1,11 @@
+{
+  "name": "@bundled-dev/tldraw",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bench": "node scripts/bench.mjs",
+    "bench:rounds": "bash scripts/run.sh",
+    "summarize": "node scripts/summarize.cjs",
+    "render": "node scripts/render.mjs"
+  }
+}

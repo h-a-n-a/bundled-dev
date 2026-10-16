@@ -98,7 +98,11 @@ a {
 }
 
 code {
-  font: 0.9em ui-monospace, SFMono-Regular, Menlo, monospace;
+  font:
+    0.9em ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
 }
 
 .muted {
@@ -530,7 +534,11 @@ summary {
   border-radius: 4px;
   background: var(--surface-2);
   color: var(--text-secondary);
-  font: 600 11px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font:
+    600 11px/1.4 -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
   letter-spacing: 0.03em;
 }
 

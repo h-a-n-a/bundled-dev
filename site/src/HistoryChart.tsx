@@ -32,13 +32,7 @@ export interface Series {
   details: string[]
 }
 
-export function HistoryChart({
-  dates,
-  series,
-}: {
-  dates: string[]
-  series: Series[]
-}) {
+export function HistoryChart({ dates, series }: { dates: string[]; series: Series[] }) {
   const ref = useRef<HTMLDivElement>(null)
   const [width, setWidth] = useState(0)
   const [hover, setHover] = useState<number | null>(null)
@@ -121,7 +115,13 @@ export function HistoryChart({
             <g key={s.label} className={s.className}>
               <path className="line" d={s.values.map((v, i) => `${i ? 'L' : 'M'}${xs[i]},${y(v)}`).join('')} />
               {s.values.map((v, i) => (
-                <circle key={i} className={i === active ? 'marker active' : 'marker'} cx={xs[i]} cy={y(v)} r={i === active ? 5 : 3} />
+                <circle
+                  key={i}
+                  className={i === active ? 'marker active' : 'marker'}
+                  cx={xs[i]}
+                  cy={y(v)}
+                  r={i === active ? 5 : 3}
+                />
               ))}
             </g>
           ))}

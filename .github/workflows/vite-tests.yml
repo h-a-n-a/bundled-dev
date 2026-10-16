@@ -40,14 +40,15 @@ jobs:
           ref: ${{ env.VITE_REF }}
           path: vite
 
-      - uses: pnpm/setup@v3
+      - uses: voidzero-dev/setup-vp@v1.21.2
         with:
-          runtime: node@24
-          # The pnpm version comes from site/package.json. This job only needs
-          # pnpm itself: Vite installs its own deps, and compare.mjs needs none.
-          working-directory: site
-          install: false
+          node-version-file: .node-version
+          run-install: false
+          cache: true
+          cache-dependency-path: vite/pnpm-lock.yaml
 
+      # Use the upstream checkout's pnpm version and Vite/Vitest binaries.
+      # Running `vp test` here would measure Vite+'s bundled toolchain instead.
       - name: Install and build Vite
         working-directory: vite
         run: |

@@ -29,7 +29,8 @@ const FILES = {
 }
 const ORIGINAL = Object.fromEntries(Object.entries(FILES).map(([k, f]) => [k, fs.readFileSync(f, 'utf8')]))
 const restoreAll = () => {
-	for (const [k, f] of Object.entries(FILES)) if (fs.readFileSync(f, 'utf8') !== ORIGINAL[k]) fs.writeFileSync(f, ORIGINAL[k])
+	for (const [k, f] of Object.entries(FILES))
+		if (fs.readFileSync(f, 'utf8') !== ORIGINAL[k]) fs.writeFileSync(f, ORIGINAL[k])
 }
 process.on('exit', restoreAll)
 
@@ -69,7 +70,11 @@ async function newPage() {
 	const page = await ctx.newPage()
 	const cdp = await ctx.newCDPSession(page)
 	await cdp.send('Network.enable')
-	cdp.on('Network.responseReceived', (e) => e.response.status >= 400 && result.errors.push(`[${phase}] CDP ${e.response.status} ${e.type} ${e.response.url}`))
+	cdp.on(
+		'Network.responseReceived',
+		(e) =>
+			e.response.status >= 400 && result.errors.push(`[${phase}] CDP ${e.response.status} ${e.type} ${e.response.url}`),
+	)
 	const net = { requests: 0, bytes: 0 }
 	page.on('request', () => net.requests++)
 	page.on('requestfinished', async (req) => {
@@ -78,7 +83,10 @@ async function newPage() {
 	})
 	page.on('pageerror', (e) => result.errors.push(`[${phase}] pageerror: ` + String(e).slice(0, 300)))
 	page.on('response', (r) => r.status() >= 400 && result.errors.push(`[${phase}] HTTP ${r.status()} ${r.url()}`))
-	page.on('console', (m) => m.type() === 'error' && result.errors.push(`[${phase}] ` + m.text().replace(/\s+/g, ' ').slice(0, 300)))
+	page.on(
+		'console',
+		(m) => m.type() === 'error' && result.errors.push(`[${phase}] ` + m.text().replace(/\s+/g, ' ').slice(0, 300)),
+	)
 	return { ctx, page, net }
 }
 // "ready" = the canvas and the main toolbar are both visible
@@ -159,7 +167,8 @@ try {
 		const edits = {
 			example: {
 				edit: (src, v) => src.replace('<Tldraw />', `<Tldraw /><div id="hmr-probe">${v}</div>`),
-				signal: (v) => page.waitForFunction((v) => document.getElementById('hmr-probe')?.textContent === v, v, { timeout: 15_000 }),
+				signal: (v) =>
+					page.waitForFunction((v) => document.getElementById('hmr-probe')?.textContent === v, v, { timeout: 15_000 }),
 			},
 			toolbar: {
 				edit: (src, v) => src + `\nconsole.log('hmr-probe ${v}')\n`,
@@ -175,7 +184,7 @@ try {
 					page.waitForFunction(
 						(n) => getComputedStyle(document.getElementById('root')).outlineColor === `rgb(1, 2, ${n})`,
 						v.split('-').pop(),
-						{ timeout: 15_000 }
+						{ timeout: 15_000 },
 					),
 			},
 		}
@@ -204,7 +213,7 @@ try {
 				await page.evaluate((t) => (window.__hmrToken = t), token)
 				const sig = def.signal(token).then(
 					() => null,
-					(e) => e
+					(e) => e,
 				)
 				const s = now()
 				fs.writeFileSync(FILES[name], def.edit(ORIGINAL[name], token))
@@ -214,7 +223,12 @@ try {
 				const kept = await page.evaluate((t) => window.__hmrToken === t, token).catch(() => false)
 				if (!kept) await waitReady(page, 30_000).catch(() => {})
 				const after = await shapeCount().catch(() => -1)
-				rows.push({ ms: err ? null : ms, failed: !!err, fullReload: !kept, shapeKept: canDraw ? after >= before && before > 0 : null })
+				rows.push({
+					ms: err ? null : ms,
+					failed: !!err,
+					fullReload: !kept,
+					shapeKept: canDraw ? after >= before && before > 0 : null,
+				})
 				await sleep(800)
 			}
 			result.hmr[name] = rows
@@ -233,7 +247,10 @@ try {
 		process.kill(-server.pid, 'SIGTERM')
 	} catch {}
 	result.loadavgEnd = os.loadavg()[0]
-	result.serverErrors = serverOut.split('\n').filter((l) => /error/i.test(l)).slice(0, 20)
+	result.serverErrors = serverOut
+		.split('\n')
+		.filter((l) => /error/i.test(l))
+		.slice(0, 20)
 	result.viteVersionLine = (serverOut.match(/VITE\s+v[\d.]+/) || [])[0]
 	result.serverHead = serverOut.slice(0, 600)
 	fs.writeFileSync(out, JSON.stringify(result, null, 2))

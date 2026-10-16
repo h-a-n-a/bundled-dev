@@ -79,7 +79,6 @@ const ssrOnly = (s: Record<'all' | 'noSsr', Summary>) => ({
   ) as Record<TestStatus, number>,
 })
 
-
 // "744/1057 tests passed, 34 todo, 279 waiting for triage" for the chart tooltip.
 function tooltipDetail(s: Pick<Summary, 'passed' | 'total' | 'statuses'>) {
   const gaps = (['fail', 'not-run', 'todo', 'triage'] as const)
@@ -103,7 +102,7 @@ export function App() {
   useEffect(() => {
     if (!latest) return
     let current = true
-    loadRun(latest.date).then((r) => current && setRun(r))
+    void loadRun(latest.date).then((r) => current && setRun(r))
     return () => {
       current = false
     }
@@ -132,16 +131,19 @@ export function App() {
       g.passed += f.passed
       g.total += f.total
       byPlayground.set(f.playground, g)
-      if (filter === 'failing' ? f.status === 'pass' || f.status === 'not-counted' : filter !== 'all' && f.status !== filter)
+      if (
+        filter === 'failing'
+          ? f.status === 'pass' || f.status === 'not-counted'
+          : filter !== 'all' && f.status !== filter
+      )
         continue
-      if (q && !f.file.toLowerCase().includes(q) && !f.tests.some((t) => t.name.toLowerCase().includes(q)))
-        continue
+      if (q && !f.file.toLowerCase().includes(q) && !f.tests.some((t) => t.name.toLowerCase().includes(q))) continue
       g.files.push(f)
     }
     // Most failing tests first: that is where the work is.
-    return [...byPlayground.values()].filter((g) => g.files.length > 0).sort(
-      (a, b) => b.total - b.passed - (a.total - a.passed) || a.playground.localeCompare(b.playground),
-    )
+    return [...byPlayground.values()]
+      .filter((g) => g.files.length > 0)
+      .sort((a, b) => b.total - b.passed - (a.total - a.passed) || a.playground.localeCompare(b.playground))
   }, [run, filter, query, showSsr])
 
   const allTests = useMemo(
@@ -149,10 +151,7 @@ export function App() {
     [run],
   )
   const ssrCount = useMemo(() => allTests?.filter((t) => t.ssr).length ?? 0, [allTests])
-  const tests = useMemo(
-    () => (gridScope === 'ssr' ? allTests?.filter((t) => t.ssr) : allTests),
-    [allTests, gridScope],
-  )
+  const tests = useMemo(() => (gridScope === 'ssr' ? allTests?.filter((t) => t.ssr) : allTests), [allTests, gridScope])
   const counts = useMemo(() => {
     const c = {} as Record<TestStatus, number>
     for (const { test } of tests ?? []) c[test.status] = (c[test.status] ?? 0) + 1
@@ -177,12 +176,17 @@ export function App() {
       <header className="header">
         <h1>Vite bundled dev compatibility</h1>
         <p className="lede">
-          Results from Vite's playground tests, run with <code>vite --experimentalBundle</code>. Only tests that apply to
-          bundled dev count. Each square below is one test case; the line chart tracks the pass rate across runs.
+          Results from Vite's playground tests, run with <code>vite --experimentalBundle</code>. Only tests that apply
+          to bundled dev count. Each square below is one test case; the line chart tracks the pass rate across runs.
         </p>
         <p className="meta">
           Latest run:{' '}
-          <strong>{new Date(info.date).toUTCString().replace(' GMT', ' UTC').replace(/:\d\d UTC/, ' UTC')}</strong>
+          <strong>
+            {new Date(info.date)
+              .toUTCString()
+              .replace(' GMT', ' UTC')
+              .replace(/:\d\d UTC/, ' UTC')}
+          </strong>
           {info.viteCommit && (
             <>
               {' · '}Vite{' '}
@@ -206,16 +210,8 @@ export function App() {
       </header>
 
       <section className="stats" aria-label="Summary">
-        <Stat
-          value={percent(rate(noSsr))}
-          label="Pass rate"
-          note={`${noSsr.passed} of ${noSsr.total} tests`}
-        />
-        <Stat
-          value={percent(rate(all))}
-          label="Pass rate with SSR"
-          note={`${all.passed} of ${all.total} tests`}
-        />
+        <Stat value={percent(rate(noSsr))} label="Pass rate" note={`${noSsr.passed} of ${noSsr.total} tests`} />
+        <Stat value={percent(rate(all))} label="Pass rate with SSR" note={`${all.passed} of ${all.total} tests`} />
         <Stat
           value={
             <>
@@ -230,9 +226,8 @@ export function App() {
       </section>
 
       <p className="not-counted">
-        Not counted: {all.statuses.unsupported} unsupported ·{' '}
-        {all.buildOnly} build-only · {all.everyMode} skipped in every mode · {all.ownServer} in non-SSR specs with their
-        own server
+        Not counted: {all.statuses.unsupported} unsupported · {all.buildOnly} build-only · {all.everyMode} skipped in
+        every mode · {all.ownServer} in non-SSR specs with their own server
       </p>
 
       <div className="section-head">
@@ -287,7 +282,13 @@ export function App() {
                     className={`dot dot-${test.status}`}
                     title={`${file.replace(/^playground\//, '')}\n${test.name}\n${TEST_STATUS[test.status].label}${
                       test.reason ? `: ${test.reason}` : ''
-                    }${issueList(test.issues).length ? `\n${issueList(test.issues).map((i) => i.label).join(', ')}` : ''}`}
+                    }${
+                      issueList(test.issues).length
+                        ? `\n${issueList(test.issues)
+                            .map((i) => i.label)
+                            .join(', ')}`
+                        : ''
+                    }`}
                   />
                 ))}
               </div>
@@ -381,25 +382,25 @@ export function App() {
         <section className="card how">
           <p>
             A GitHub Actions job runs every night. It checks out <a href={VITE_REPO}>vitejs/vite</a> main and runs the
-            playground tests three times: in bundled dev, in plain dev and in build. The bundled-dev skips in Vite's tests
-            stay as they are. Each test gets the result of the first rule that matches:
+            playground tests three times: in bundled dev, in plain dev and in build. The bundled-dev skips in Vite's
+            tests stay as they are. Each test gets the result of the first rule that matches:
           </p>
           <ol className="rules">
             <li>
               Bundled dev passed it: <strong>pass</strong>.
             </li>
             <li>
-              Bundled dev failed it, it is tagged <code>bundled-dev/todo</code>, or it was meant to run but has no result (a
-              hook failed): <strong>gap</strong>.
+              Bundled dev failed it, it is tagged <code>bundled-dev/todo</code>, or it was meant to run but has no
+              result (a hook failed): <strong>gap</strong>.
             </li>
             <li>
               Tagged <code>bundled-dev/unsupported</code>: <strong>not counted</strong>, by design.
             </li>
             <li>
-              Bundled dev skipped it without a tag, or its file is in <code>bundledDevExclude</code>, and plain dev runs it:{' '}
-              <strong>gap</strong>. A skip without a tag is <em>waiting for triage</em>: it still needs a{' '}
-              <code>bundled-dev/todo</code> or <code>bundled-dev/unsupported</code> tag. Some of these may turn out to be unsupported once they are tagged, so the rate can only
-              be too low.
+              Bundled dev skipped it without a tag, or its file is in <code>bundledDevExclude</code>, and plain dev runs
+              it: <strong>gap</strong>. A skip without a tag is <em>waiting for triage</em>: it still needs a{' '}
+              <code>bundled-dev/todo</code> or <code>bundled-dev/unsupported</code> tag. Some of these may turn out to
+              be unsupported once they are tagged, so the rate can only be too low.
             </li>
             <li>
               Plain dev does not run it either (build-only, Windows-only, or <code>test.skip</code>):{' '}
@@ -407,11 +408,11 @@ export function App() {
             </li>
           </ol>
           <p>
-            A spec whose own <code>serve.ts</code> never calls <code>startDefaultServe</code> does not turn on bundled dev:
-            the bundled-dev run runs it in plain dev. In an SSR spec its tests are <em>waiting for triage</em>: they have no
-            bundled-dev result yet, and an SSR app runs Vite inside its own server, so bundled dev has to work there. In any other spec the own server is only test setup,
-            so its tests are not counted. The pass rate is pass / (pass + gap). "Without SSR" leaves out every spec whose
-            path contains <code>ssr</code>.
+            A spec whose own <code>serve.ts</code> never calls <code>startDefaultServe</code> does not turn on bundled
+            dev: the bundled-dev run runs it in plain dev. In an SSR spec its tests are <em>waiting for triage</em>:
+            they have no bundled-dev result yet, and an SSR app runs Vite inside its own server, so bundled dev has to
+            work there. In any other spec the own server is only test setup, so its tests are not counted. The pass rate
+            is pass / (pass + gap). "Without SSR" leaves out every spec whose path contains <code>ssr</code>.
           </p>
           {run && run.fixes.length > 0 && (
             <>
@@ -430,8 +431,8 @@ export function App() {
       </details>
 
       <footer className="footer">
-        Built on the <a href="https://void.cloud/">Void</a> platform · Powered by{' '}
-        <a href="https://vite.dev/">Vite</a>'s bundled-dev mode in development mode{' '}
+        Built on the <a href="https://void.cloud/">Void</a> platform · Powered by <a href="https://vite.dev/">Vite</a>'s
+        bundled-dev mode in development mode{' '}
         <span role="img" aria-label="love">
           ❤️
         </span>
@@ -534,7 +535,9 @@ function FileRow({ file }: { file: FileResult }) {
                 </span>
                 <span className="test-name">
                   {t.name}
-                  {t.status !== 'pass' && t.status !== 'fail' && <em> · {TEST_STATUS[t.status].label.toLowerCase()}</em>}
+                  {t.status !== 'pass' && t.status !== 'fail' && (
+                    <em> · {TEST_STATUS[t.status].label.toLowerCase()}</em>
+                  )}
                   {t.reason && <span className="test-note">{t.reason}</span>}
                   {t.issues && <IssueLinks issues={t.issues} />}
                   {t.note && <span className="test-note">{t.note}</span>}

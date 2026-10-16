@@ -1,13 +1,7 @@
 // Shapes written by scripts/compare.mjs.
 import historyJson from '../../results/history.json'
 
-export type TestStatus =
-  | 'pass'
-  | 'fail'
-  | 'todo'
-  | 'not-run'
-  | 'triage'
-  | 'unsupported'
+export type TestStatus = 'pass' | 'fail' | 'todo' | 'not-run' | 'triage' | 'unsupported'
 export type FileStatus = 'pass' | 'partial' | 'fail' | 'not-counted'
 export type Scope = 'all' | 'noSsr'
 
@@ -70,9 +64,7 @@ export interface Run extends RunInfo {
   files: FileResult[]
 }
 
-export const history: RunInfo[] = (historyJson as RunInfo[]).toSorted((a, b) =>
-  a.date.localeCompare(b.date),
-)
+export const history: RunInfo[] = (historyJson as RunInfo[]).toSorted((a, b) => a.date.localeCompare(b.date))
 
 // Full runs are large, so each one is its own chunk, loaded when selected.
 const runs = import.meta.glob<Run>('../../results/runs/*.json', { import: 'default' })

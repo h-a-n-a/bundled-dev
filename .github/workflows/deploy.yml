@@ -22,27 +22,23 @@ jobs:
     # The repo must first be authorized once with `void github connect`.
     permissions:
       id-token: write
-    defaults:
-      run:
-        working-directory: site
     steps:
       - uses: actions/checkout@v5
-      - uses: pnpm/action-setup@v4
+      - uses: voidzero-dev/setup-vp@v1.21.2
         with:
-          package_json_file: site/package.json
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 24
-          cache: pnpm
-          cache-dependency-path: site/pnpm-lock.yaml
-      - run: pnpm install --frozen-lockfile
+          node-version-file: .node-version
+          cache: true
+          run-install: false
+      - run: vp install --frozen-lockfile
+      - run: vp check
       # Since void 0.26 the CLI has no default platform: it needs a saved connection to the
       # hosted platform (the one rolldown's docs deploy to). `--no-login` saves it without a
       # login, because the OIDC token above does the auth.
       - name: Deploy to Void
+        working-directory: site
         run: |
-          pnpm void connect "$VOID_API_URL" --no-login
-          pnpm void deploy --platform void --project "$VOID_PROJECT"
+          vp exec void connect "$VOID_API_URL" --no-login
+          vp exec void deploy --platform void --project "$VOID_PROJECT"
         env:
           VOID_API_URL: https://api.void.cloud
           VOID_PROJECT: bundled-dev

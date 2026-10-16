@@ -1,4 +1,4 @@
-import { defineConfig } from 'void/config';
+import { defineConfig } from 'void/config'
 
 export default defineConfig({
   worker: {
@@ -6,7 +6,7 @@ export default defineConfig({
   },
   inference: {
     appType: 'spa',
-    build: 'pnpm run build',
+    build: 'vp run build',
     outputDir: 'dist',
   },
-});
+})

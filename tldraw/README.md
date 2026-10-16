@@ -4,15 +4,15 @@
 
 ## Setup
 
-| Item | Value |
-|---|---|
-| App | tldraw `apps/examples` at `db1c86e` (2026-10-02). It imports the tldraw packages from source (`packages/*/package.json` → `./src/index.ts`). |
-| Vite | 8.3.3 |
-| rolldown | `c532f8106`, local release build: `main` at `d0e720345` (1.2.12 + 31 commits) + #11127 + #11126 |
-| Plain dev | `vite` |
-| Bundled dev | `vite --experimentalBundle`, no config change |
-| Browser | Google Chrome 154, headless, a new profile for every run |
-| Machine | Apple M4 Pro, macOS 26.6.2, Node 24.12.0 |
+| Item        | Value                                                                                                                                        |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| App         | tldraw `apps/examples` at `db1c86e` (2026-10-02). It imports the tldraw packages from source (`packages/*/package.json` → `./src/index.ts`). |
+| Vite        | 8.3.3                                                                                                                                        |
+| rolldown    | `c532f8106`, local release build: `main` at `d0e720345` (1.2.12 + 31 commits) + #11127 + #11126                                              |
+| Plain dev   | `vite`                                                                                                                                       |
+| Bundled dev | `vite --experimentalBundle`, no config change                                                                                                |
+| Browser     | Google Chrome 154, headless, a new profile for every run                                                                                     |
+| Machine     | Apple M4 Pro, macOS 26.6.2, Node 24.12.0                                                                                                     |
 
 Changes in the tldraw checkout (`pnpm-workspace.yaml`):
 
@@ -42,28 +42,30 @@ overrides:
 
 ## Results
 
-| Metric | Vite dev | Vite bundled dev | |
-|---|---|---|---|
-| Start-up to ready, cold cache | 1,579 ms | 1,284 ms | 1.2x faster |
-| Start-up to ready, warm cache | 1,435 ms | 1,291 ms | 1.1x faster |
-| Reload, 1st after load | 352 ms | 401 ms | 1.1x slower |
-| Reload, 2nd–10th | 319 ms | 182 ms | 1.8x faster |
-| First visit: `xkcd-dependency` | 1,792 ms | 497 ms | 3.6x faster |
-| First visit: `layer-panel` | 1,121 ms | 464 ms | 2.4x faster |
-| First visit: `rich-text-font-extensions` | 1,127 ms | 420 ms | 2.7x faster |
-| First visit: `cubic-bezier-shape` | 511 ms | 398 ms | 1.3x faster |
-| HMR: `BasicExample.tsx` | 131 ms | 68 ms | 1.9x faster |
-| HMR: `DefaultToolbar.tsx` * | 139 ms | 38 ms | 3.7x faster |
-| HMR: `Editor.ts` ** | 290 ms | 94 ms | 3.1x faster |
-| HMR: `styles.css` | 125 ms | 54 ms | 2.3x faster |
-| Requests, first load | 1,066 | 68 | 16x fewer |
-| Requests, reload | 1,048 | 49 | 21x fewer |
+| Metric                                   | Vite dev | Vite bundled dev |             |
+| ---------------------------------------- | -------- | ---------------- | ----------- |
+| Start-up to ready, cold cache            | 1,579 ms | 1,284 ms         | 1.2x faster |
+| Start-up to ready, warm cache            | 1,435 ms | 1,291 ms         | 1.1x faster |
+| Reload, 1st after load                   | 352 ms   | 401 ms           | 1.1x slower |
+| Reload, 2nd–10th                         | 319 ms   | 182 ms           | 1.8x faster |
+| First visit: `xkcd-dependency`           | 1,792 ms | 497 ms           | 3.6x faster |
+| First visit: `layer-panel`               | 1,121 ms | 464 ms           | 2.4x faster |
+| First visit: `rich-text-font-extensions` | 1,127 ms | 420 ms           | 2.7x faster |
+| First visit: `cubic-bezier-shape`        | 511 ms   | 398 ms           | 1.3x faster |
+| HMR: `BasicExample.tsx`                  | 131 ms   | 68 ms            | 1.9x faster |
+| HMR: `DefaultToolbar.tsx` *              | 139 ms   | 38 ms            | 3.7x faster |
+| HMR: `Editor.ts` **                      | 290 ms   | 94 ms            | 3.1x faster |
+| HMR: `styles.css`                        | 125 ms   | 54 ms            | 2.3x faster |
+| Requests, first load                     | 1,066    | 68               | 16x fewer   |
+| Requests, reload                         | 1,048    | 49               | 21x fewer   |
 
 \* Vite dev: the edit applies, but the UI then crashes and the canvas drawing is lost (25 of 25 edits). Bundled dev keeps it.
 
 \*\* Editing `Editor.ts` triggers a full page reload in both modes; the time is until the new code runs.
 
 ## Files
+
+From the repository root, workspace tasks are available as `vp run --filter @bundled-dev/tldraw <task>` (or `pnpm --filter @bundled-dev/tldraw <task>`). For example, `pnpm --filter @bundled-dev/tldraw summarize raw` prints the saved benchmark summary. Paths passed to these tasks are relative to `tldraw/`. The benchmark and rendering tasks still load Vite and Playwright from the external checkout selected by `TLDRAW_DIR`.
 
 - `perf.png`: the chart above.
 - `summary.json`: medians, ranges and p90 values computed from `raw/`.

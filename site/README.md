@@ -1,12 +1,21 @@
 # Test compatibility dashboard
 
-This site shows how many of Vite's playground tests that apply to bundled dev pass in bundled dev, with and without SSR specs. It is a Vite + React app, developed with bundled dev itself:
+This site shows how many of Vite's playground tests that apply to bundled dev pass in bundled dev, with and without SSR specs. It is a React app using [Vite+](https://viteplus.dev/), developed with bundled dev itself. Install dependencies from the repository root with Node.js 24, then run the dashboard from either the root or `site/`:
 
 ```sh
 pnpm install
-pnpm dev        # vite --experimentalBundle
-pnpm dev:plain  # vite
+pnpm dev        # vp dev --experimentalBundle
+pnpm dev:plain  # vp dev
+pnpm check     # formatting, linting and type checks
+pnpm build     # type check and production build
+pnpm preview   # preview the production build
 ```
+
+With the global `vp` CLI installed, use `vp install`, `vp check`, `vp run dev`, `vp run dev:plain`, and `vp run build`. `vp run dev` runs the bundled-dev script; `vp dev` starts plain dev. `vp run build` includes the TypeScript check from the build script. Without the global CLI, `pnpm exec vp` runs the pinned project toolchain.
+
+Formatting and linting are configured in the root `../vite.config.ts`; this package's `vite.config.ts` configures the app. There is no dashboard test suite; the nightly workflow below runs the tests in the separate upstream Vite checkout.
+
+`../patches/@voidzero-dev__vite-plus-core@1.3.0.patch` fixes bundled dev's runtime lookup in Vite+ 1.3.0 to use its included Rolldown runtime. Keep it until a Vite+ release fixes that lookup, then remove it when upgrading and verify that adding a run file still updates the page.
 
 The `Vite Tests` workflow (`../.github/workflows/vite-tests.yml`) runs every night:
 
@@ -30,19 +39,19 @@ node scripts/compare.mjs ../vite/bundled.json ../vite/plain.json ../vite/build.j
 
 Tests are matched across the three runs by spec file and full test name. Each test gets the status of the first rule that matches:
 
-| # | Rule | Status | In the rate |
-|---|---|---|---|
-| 1 | Bundled dev passed it | pass | yes, as a pass |
-| 2 | Bundled dev failed it | fail | yes, as a gap |
-| 3 | Tagged `bundled-dev/todo` | todo | yes, as a gap |
-| 4 | Bundled dev meant to run it but has no result (a hook failed) | not run | yes, as a gap |
-| 5 | Tagged `bundled-dev/unsupported` | unsupported | no, by design |
-| 6 | Bundled dev skipped it without a tag, and plain dev runs it | waiting for triage (`todo` or `unsupported`?) | yes, as a gap |
-| 7 | Not in the bundled-dev run (its spec file is in `bundledDevExclude`), and plain dev runs it | waiting for triage | yes, as a gap |
-| 8 | Plain dev does not run it either, and build runs it | build-only | no |
-| 9 | No run runs it | skipped in every mode | no |
-| – | Its spec has its own `serve.ts` that does not call `startDefaultServe`, and the spec is an SSR spec (applied after rules 1–9, except to `unsupported`) | waiting for triage | yes, as a gap |
-| – | The same, in a spec that is not an SSR spec | – | no |
+| #   | Rule                                                                                                                                                   | Status                                        | In the rate    |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- | -------------- |
+| 1   | Bundled dev passed it                                                                                                                                  | pass                                          | yes, as a pass |
+| 2   | Bundled dev failed it                                                                                                                                  | fail                                          | yes, as a gap  |
+| 3   | Tagged `bundled-dev/todo`                                                                                                                              | todo                                          | yes, as a gap  |
+| 4   | Bundled dev meant to run it but has no result (a hook failed)                                                                                          | not run                                       | yes, as a gap  |
+| 5   | Tagged `bundled-dev/unsupported`                                                                                                                       | unsupported                                   | no, by design  |
+| 6   | Bundled dev skipped it without a tag, and plain dev runs it                                                                                            | waiting for triage (`todo` or `unsupported`?) | yes, as a gap  |
+| 7   | Not in the bundled-dev run (its spec file is in `bundledDevExclude`), and plain dev runs it                                                            | waiting for triage                            | yes, as a gap  |
+| 8   | Plain dev does not run it either, and build runs it                                                                                                    | build-only                                    | no             |
+| 9   | No run runs it                                                                                                                                         | skipped in every mode                         | no             |
+| –   | Its spec has its own `serve.ts` that does not call `startDefaultServe`, and the spec is an SSR spec (applied after rules 1–9, except to `unsupported`) | waiting for triage                            | yes, as a gap  |
+| –   | The same, in a spec that is not an SSR spec                                                                                                            | –                                             | no             |
 
 An own-server spec never turns on bundled dev: the bundled-dev run runs it in plain dev. In an SSR spec, its tests are waiting for triage, a gap: they have no bundled-dev result yet, and an SSR app runs Vite inside its own server, so bundled dev has to work there. The first step is to turn on bundled dev in that spec's server. In any other spec (`cli`, `proxy-hmr`, `lib`, …), the own server is only test setup, so its tests do not count.
 

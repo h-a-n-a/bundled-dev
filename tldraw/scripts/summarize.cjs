@@ -1,6 +1,7 @@
 // usage: node summarize2.cjs <dir>
 const fs = require('fs')
 const path = require('path')
+const { stripVTControlCharacters } = require('node:util')
 const dir = process.argv[2]
 const load = (m, t) =>
 	fs
@@ -40,12 +41,16 @@ for (const m of ['plain', 'bundled']) {
 	const later = warm.flatMap((r) => r.reloadMs?.slice(1) ?? [])
 	o.reload2to10 = `median ${med(later)}, p90 ${q(later, 0.9)}, n=${later.length}`
 	o.otherPages = {}
-	for (const slug of Object.keys(warm[0]?.otherPages ?? {})) o.otherPages[slug] = fmt(warm.map((r) => r.otherPages?.[slug]))
+	for (const slug of Object.keys(warm[0]?.otherPages ?? {}))
+		o.otherPages[slug] = fmt(warm.map((r) => r.otherPages?.[slug]))
 	o.hmr = {}
 	for (const name of Object.keys(warm[0]?.hmr ?? {})) {
 		const rows = warm.flatMap((r) => r.hmr?.[name] ?? [])
 		o.hmr[name] = {
-			ms: `median ${med(rows.map((x) => x.ms))}, p90 ${q(rows.map((x) => x.ms), 0.9)}`,
+			ms: `median ${med(rows.map((x) => x.ms))}, p90 ${q(
+				rows.map((x) => x.ms),
+				0.9,
+			)}`,
 			edits: rows.length,
 			failed: rows.filter((x) => x.failed).length,
 			fullReload: rows.filter((x) => x.fullReload).length,
@@ -66,6 +71,16 @@ for (const m of ['plain', 'bundled']) {
 			errs[k] = (errs[k] || 0) + 1
 		}
 	o.errors = errs
-	o.serverErrors = [...new Set(all.flatMap((r) => r.serverErrors).map((l) => l.replace(/\x1b\[[0-9;]*m/g, '').replace(/^\S+ \S+ /, '').slice(0, 160)))].slice(0, 8)
+	o.serverErrors = [
+		...new Set(
+			all
+				.flatMap((r) => r.serverErrors)
+				.map((l) =>
+					stripVTControlCharacters(l)
+						.replace(/^\S+ \S+ /, '')
+						.slice(0, 160),
+				),
+		),
+	].slice(0, 8)
 }
 console.log(JSON.stringify(out, null, 2))

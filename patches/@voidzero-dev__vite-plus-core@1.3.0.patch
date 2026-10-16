@@ -1,0 +1,9 @@
+diff --git a/dist/vite/node/chunks/node.js b/dist/vite/node/chunks/node.js
+index a261aa825f95301042e5f57e0ac56b90b09d547a..8c44e9e50793fe1ddcbb5bf07ea2f17c028a9512 100644
+--- a/dist/vite/node/chunks/node.js
++++ b/dist/vite/node/chunks/node.js
+@@ -21926,3 +21926,3 @@
+ function rolldownDevRuntimeEntryPath() {
+-	return fileURLToPath(import.meta.resolve(ROLLDOWN_DEV_RUNTIME_ENTRY));
++	return fileURLToPath(import.meta.resolve("@voidzero-dev/vite-plus-core/rolldown/experimental/runtime"));
+ }

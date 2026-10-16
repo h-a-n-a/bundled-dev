@@ -79,7 +79,9 @@ const fixes = new Map(FIXES.map((f) => [`${f.file}\0${f.name}`, f]))
 const used = new Set()
 const notCounted = []
 const files = []
-for (const file of [...new Set([...bundled.keys(), ...plain.keys(), ...build.keys()])].sort()) {
+for (const file of [...new Set([...bundled.keys(), ...plain.keys(), ...build.keys()])].sort((a, b) =>
+  a < b ? -1 : a > b ? 1 : 0,
+)) {
   const runs = [bundled, plain, build].map((r) => r.get(file))
   const ownServer = runs.some((f) => f?.ownServer)
   const names = new Set(runs.flatMap((f) => (f ? [...f.tests.keys()] : [])))
@@ -150,9 +152,7 @@ function summarize(keep) {
     passed: fs.reduce((n, f) => n + f.passed, 0),
     files: counted.length,
     filesPassing: counted.filter((f) => f.status === 'pass').length,
-    statuses: Object.fromEntries(
-      [...COUNTED, 'unsupported'].map((s) => [s, count(s)]),
-    ),
+    statuses: Object.fromEntries([...COUNTED, 'unsupported'].map((s) => [s, count(s)])),
     buildOnly: left.filter((t) => t.status === 'build-only').length,
     everyMode: left.filter((t) => t.status === 'every-mode').length,
     ownServer: left.filter((t) => t.status === 'own-server').length,
