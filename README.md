@@ -19,7 +19,7 @@ With the global `vp` CLI, use `vp install`, `vp check`, `vp run dev`, and `vp ru
 
 - `site/` (`@bundled-dev/site`): the compatibility dashboard and its Void deployment config.
 - `tldraw/` (`@bundled-dev/tldraw`): benchmark scripts, with workspace tasks for `bench`, `bench:rounds`, `summarize`, and `render`.
-- `scripts/`: the upstream Vite test reporter and result comparison. Run `pnpm compare <bundled.json> <plain.json> <build.json> <results dir>`.
+- `scripts/`: the upstream Vite test runner with reruns, its reporter, and result comparison. Run `pnpm compare <bundled.json> <plain.json> <build.json> <results dir>`.
 
 The root lockfile and `pnpm-workspace.yaml` own dependency versions and patches. Recorded results and benchmark data are excluded from formatting. The nightly workflow checks out Vite separately in `vite/` and uses its own toolchain; it is excluded from this workspace and its checks. Both GitHub Actions workflows use `voidzero-dev/setup-vp` to set up the runtime and package manager.
 
