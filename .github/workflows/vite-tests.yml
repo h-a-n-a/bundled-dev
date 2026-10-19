@@ -56,26 +56,25 @@ jobs:
           pnpm playwright install chromium
           pnpm run build
 
-      # Failing tests are the data, so a non-zero exit must not stop the job.
       - name: Test bundled dev
         working-directory: vite
         env:
           VITE_TEST_BUNDLED_DEV: 1
           RESULTS_FILE: ${{ github.workspace }}/bundled.json
-        run: pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../scripts/reporter.mjs --reporter=dot || true
+        run: ../scripts/run-tests.sh 'bundled dev'
 
       - name: Test plain dev
         working-directory: vite
         env:
           RESULTS_FILE: ${{ github.workspace }}/plain.json
-        run: pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../scripts/reporter.mjs --reporter=dot || true
+        run: ../scripts/run-tests.sh 'plain dev'
 
       - name: Test build
         working-directory: vite
         env:
           VITE_TEST_BUILD: 1
           RESULTS_FILE: ${{ github.workspace }}/build.json
-        run: pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../scripts/reporter.mjs --reporter=dot || true
+        run: ../scripts/run-tests.sh 'build'
 
       - name: Compare
         run: |

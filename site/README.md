@@ -20,7 +20,7 @@ Formatting and linting are configured in the root `../vite.config.ts`; this pack
 The `Vite Tests` workflow (`../.github/workflows/vite-tests.yml`) runs every night:
 
 1. Checks out `vitejs/vite` main into `vite/` and builds it.
-2. Runs the playground tests three times: in bundled dev, in plain dev and in build. The bundled-dev skips in Vite's tests stay as they are. `../scripts/reporter.mjs` records each test's result and mode, and for a `bundled-dev/*` tag also its `meta.reason` and `meta.issues`.
+2. Runs the playground tests three times: in bundled dev, in plain dev and in build. The bundled-dev skips in Vite's tests stay as they are. `../scripts/run-tests.sh` runs each one, and when any test fails, it runs that whole suite again, up to 3 more times. The results keep the last run, and each failed run shows as a warning on the workflow run. `../scripts/reporter.mjs` records each test's result and mode, and for a `bundled-dev/*` tag also its `meta.reason` and `meta.issues`.
 3. `../scripts/compare.mjs` writes `../results/runs/<date>.json` and adds a summary row to `../results/history.json`. Both are kept forever.
 4. Commits `../results/` and deploys this site to Void (`../.github/workflows/deploy.yml`).
 
