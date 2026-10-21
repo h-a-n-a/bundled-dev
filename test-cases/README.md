@@ -183,7 +183,7 @@ Only PRs opened as part of this work, starting with #23680. The vitejs/vite PRs 
 2. If a PR is merged:
    - Set its State to `merged <date>` in "PRs per dir".
    - Update the dir's line in the checklist below if it changes (for example, "no tags left").
-   - When every skip of the dir is tagged or removed and all of its PRs are merged, shorten its line to `- [x] \`<dir>\` — <N> spec(s) · done`. Remaining `todo` or `unsupported` tags do not matter here. This is different from the issue checklist, which checks the box only when every remaining gap is by design.
+   - When every skip of the dir is tagged or removed and all of its PRs are merged, shorten its line to ``- [x] `<dir>` — <N> spec(s) · done``. Remaining `todo` or `unsupported` tags do not matter here. This is different from the issue checklist, which checks the box only when every remaining gap is by design.
    - Check that the next PR in the stack now targets the right base (`main` once everything below it is merged).
 3. Update the remote tracking (the two issue comments, see "Issue comments to update"):
    - **Checklist:** take the new numbers from `pnpm run test-serve-bundled playground/<dir>/` and `pnpm run test-serve playground/<dir>/` on an up-to-date `main`. Drop the "with #…" part once those fixes are merged. Check the box only when every remaining gap is by design.
