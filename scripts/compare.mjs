@@ -47,6 +47,12 @@ const FIXES = [
     status: 'n/a',
     note: 'The plain-dev copy of "…works in bundled dev".',
   },
+  {
+    file: 'playground/object-hooks/__tests__/object-hooks.spec.ts',
+    name: 'object hooks',
+    status: 'n/a',
+    note: 'Rolldown runs parallel hooks such as buildStart one at a time, so build and bundled dev both leave out this spec (vitejs/vite#23835).',
+  },
 ]
 
 // file -> test name -> tests with that name, in order
