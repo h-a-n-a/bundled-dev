@@ -64,62 +64,62 @@ For each test case:
    - Update both issue comments for the new case (see "Issue comments to update"): the playground's line in the checklist, and its gap in the details.
 4. If it passes, tick it and move on.
 
-- [ ] `default + named imports from cjs dep (react)`
-- [ ] `named imports from webpacked cjs (phoenix)`
-- [ ] `default import from webpacked cjs (clipboard)`
-- [ ] `default import from cjs with es-module-flag (dep-cjs-with-es-module-flag)`
-- [ ] `default import from cjs (cjs-dep-cjs-compiled-from-esm)`
-- [ ] `default import from cjs (cjs-dep-cjs-compiled-from-cjs)`
+- [x] `default + named imports from cjs dep (react)`
+- [x] `named imports from webpacked cjs (phoenix)`
+- [x] `default import from webpacked cjs (clipboard)`
+- [x] `default import from cjs with es-module-flag (dep-cjs-with-es-module-flag)`
+- [x] `default import from cjs (cjs-dep-cjs-compiled-from-esm)`
+- [x] `default import from cjs (cjs-dep-cjs-compiled-from-cjs)`
 - [ ] `named import injected into an optimized dep by a plugin (dep-with-injected-import)`
 - [ ] `dynamic imports from cjs dep (react)`
-- [ ] `dynamic named imports from webpacked cjs (phoenix)`
+- [x] `dynamic named imports from webpacked cjs (phoenix)`
 - [ ] `dynamic default import from webpacked cjs (clipboard)`
 - [ ] `dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-esm)`
 - [ ] `dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-cjs)`
 - [ ] `dynamic default import from cjs with es-module-flag (cjs-dynamic-dep-cjs-with-es-module-flag)`
-- [ ] `dynamic import from format-ambiguous importer respects __esModule flag (cjs-dynamic-importer-ambiguous)`
+- [x] `dynamic import from format-ambiguous importer respects __esModule flag (cjs-dynamic-importer-ambiguous)`
 - [ ] `dynamic import from explicit cjs importer uses node interop (cjs-dynamic-importer-cjs)`
-- [ ] `dedupe`
-- [ ] `cjs browser field (axios)`
-- [ ] `cjs browser field bare`
-- [ ] `dep from linked dep (lodash-es)`
-- [ ] `forced include`
-- [ ] `import * from optimized dep`
-- [ ] `import from dep with process.env.NODE_ENV`
-- [ ] `import from dep with .notjs files`
-- [ ] `Import from dependency which uses relative path which needs to be resolved by main field`
-- [ ] `dep with dynamic import`
+- [x] `dedupe`
+- [x] `cjs browser field (axios)`
+- [x] `cjs browser field bare`
+- [x] `dep from linked dep (lodash-es)`
+- [x] `forced include`
+- [x] `import * from optimized dep`
+- [x] `import from dep with process.env.NODE_ENV`
+- [x] `import from dep with .notjs files`
+- [x] `Import from dependency which uses relative path which needs to be resolved by main field`
+- [x] `dep with dynamic import`
 - [ ] `dep with optional peer dep`
 - [ ] `dep with optional peer dep submodule`
-- [ ] `dep with optional peer dep (cjs)`
+- [x] `dep with optional peer dep (cjs)`
 - [ ] `optimized CJS dep preserves fallback for excluded optional peer`
-- [ ] `dep with css import`
-- [ ] `CJS dep with css import`
-- [ ] `CJS dep requiring dep with css main field`
-- [ ] `externalize known non-js files in optimize included dep`
-- [ ] `vue + vuex`
+- [x] `dep with css import`
+- [x] `CJS dep with css import`
+- [x] `CJS dep requiring dep with css main field`
+- [x] `externalize known non-js files in optimize included dep`
+- [x] `vue + vuex`
 - [ ] `esbuild-plugin`
-- [ ] `import from hidden dir`
-- [ ] `import optimize-excluded package that imports optimized-included package`
-- [ ] `import aliased package with colon`
-- [ ] `import aliased package using absolute path`
-- [ ] `variable names are reused in different scripts`
-- [ ] `flatten id should generate correctly`
-- [ ] `non optimized module is not duplicated`
-- [ ] `optimized browser:false is empty without warning`
+- [x] `import from hidden dir`
+- [x] `import optimize-excluded package that imports optimized-included package`
+- [x] `import aliased package with colon`
+- [x] `import aliased package using absolute path`
+- [x] `variable names are reused in different scripts`
+- [x] `flatten id should generate correctly`
+- [x] `non optimized module is not duplicated`
+- [x] `optimized browser:false is empty without warning`
 - [ ] `error on builtin modules usage`
 - [ ] `pre bundle css require`
 - [ ] `no missing deps during build`
 - [ ] `name file limit is 170 characters`
 - [ ] `optimizeDeps config > supports include glob syntax`
-- [ ] `long file name should work`
+- [x] `long file name should work`
 - [ ] `warn on incompatible dependency`
-- [ ] `import the CommonJS external package that omits the js suffix`
+- [x] `import the CommonJS external package that omits the js suffix`
 - [ ] `external package name with asset extension`
 - [ ] `dependency with external sub-dependencies`
-- [ ] `discovers deep imports with custom html-like extensions during dep scan`
-- [ ] `virtual module with .vue extension does not error during scan`
-- [ ] `no dep scan error for virtual modules with html-like extensions`
+- [x] `discovers deep imports with custom html-like extensions during dep scan`
+- [x] `virtual module with .vue extension does not error during scan`
+- [x] `no dep scan error for virtual modules with html-like extensions`
 - [ ] `should fix relative worker paths in optimized dependencies`
 
 ### Bundled-dev bugs found in `optimize-deps`
