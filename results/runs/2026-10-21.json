@@ -1,40 +1,40 @@
 {
-  "date": "2026-10-21T07:28:28.870Z",
-  "viteCommit": "981f07fa4580fb88b333c4450431e4715d2a0b82",
+  "date": "2026-10-21T08:50:32.040Z",
+  "viteCommit": "6f2730eacae327cc2ce95c87509b7e7779c615e0",
   "rolldownVersion": "1.2.14",
-  "runUrl": "https://github.com/h-a-n-a/bundled-dev/actions/runs/39561833414",
+  "runUrl": "https://github.com/h-a-n-a/bundled-dev/actions/runs/39571837994",
   "summary": {
     "all": {
-      "total": 1043,
-      "passed": 768,
-      "files": 85,
-      "filesPassing": 43,
+      "total": 986,
+      "passed": 770,
+      "files": 84,
+      "filesPassing": 46,
       "statuses": {
-        "pass": 768,
+        "pass": 770,
         "fail": 0,
         "todo": 57,
         "not-run": 0,
-        "triage": 218,
-        "unsupported": 131
+        "triage": 159,
+        "unsupported": 189
       },
-      "buildOnly": 167,
+      "buildOnly": 166,
       "everyMode": 10,
       "ownServer": 14
     },
     "noSsr": {
-      "total": 945,
-      "passed": 766,
-      "files": 74,
-      "filesPassing": 42,
+      "total": 888,
+      "passed": 768,
+      "files": 73,
+      "filesPassing": 45,
       "statuses": {
-        "pass": 766,
+        "pass": 768,
         "fail": 0,
         "todo": 55,
         "not-run": 0,
-        "triage": 124,
-        "unsupported": 129
+        "triage": 65,
+        "unsupported": 187
       },
-      "buildOnly": 155,
+      "buildOnly": 154,
       "everyMode": 7,
       "ownServer": 14
     }
@@ -4543,9 +4543,9 @@
       "file": "playground/json/__tests__/csr/json-csr.spec.ts",
       "playground": "json",
       "ssr": false,
-      "total": 11,
+      "total": 10,
       "passed": 10,
-      "status": "partial",
+      "status": "pass",
       "tests": [
         {
           "name": "default import",
@@ -4573,7 +4573,9 @@
         },
         {
           "name": "fetch",
-          "status": "triage"
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
         },
         {
           "name": "?url",
@@ -4616,13 +4618,12 @@
       "playground": "legacy",
       "ssr": false,
       "total": 1,
-      "passed": 0,
-      "status": "fail",
+      "passed": 1,
+      "status": "pass",
       "tests": [
         {
           "name": "should have no 404s",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "status": "pass"
         }
       ]
     },
@@ -4631,8 +4632,8 @@
       "playground": "legacy",
       "ssr": false,
       "total": 10,
-      "passed": 9,
-      "status": "partial",
+      "passed": 10,
+      "status": "pass",
       "tests": [
         {
           "name": "should load the worker",
@@ -4644,7 +4645,7 @@
         },
         {
           "name": "import.meta.env.LEGACY",
-          "status": "triage"
+          "status": "pass"
         },
         {
           "name": "transpiles down iterators correctly",
@@ -4787,289 +4788,351 @@
       "file": "playground/optimize-deps/__tests__/optimize-deps.spec.ts",
       "playground": "optimize-deps",
       "ssr": false,
-      "total": 56,
+      "total": 0,
       "passed": 0,
-      "status": "fail",
+      "status": "not-counted",
       "tests": [
         {
-          "name": "default + named imports from cjs dep (react)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > default + named imports from cjs dep (react)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "named imports from webpacked cjs (phoenix)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > named imports from webpacked cjs (phoenix)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "default import from webpacked cjs (clipboard)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > default import from webpacked cjs (clipboard)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "default import from cjs with es-module-flag (dep-cjs-with-es-module-flag)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > default import from cjs with es-module-flag (dep-cjs-with-es-module-flag)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "default import from cjs (cjs-dep-cjs-compiled-from-esm)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > default import from cjs (cjs-dep-cjs-compiled-from-esm)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "default import from cjs (cjs-dep-cjs-compiled-from-cjs)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > default import from cjs (cjs-dep-cjs-compiled-from-cjs)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "named import injected into an optimized dep by a plugin (dep-with-injected-import)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > named import injected into an optimized dep by a plugin (dep-with-injected-import)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dynamic imports from cjs dep (react)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dynamic imports from cjs dep (react)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dynamic named imports from webpacked cjs (phoenix)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dynamic named imports from webpacked cjs (phoenix)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dynamic default import from webpacked cjs (clipboard)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dynamic default import from webpacked cjs (clipboard)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-esm)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-esm)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-cjs)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-cjs)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dynamic default import from cjs with es-module-flag (cjs-dynamic-dep-cjs-with-es-module-flag)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dynamic default import from cjs with es-module-flag (cjs-dynamic-dep-cjs-with-es-module-flag)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dynamic import from format-ambiguous importer respects __esModule flag (cjs-dynamic-importer-ambiguous)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dynamic import from format-ambiguous importer respects __esModule flag (cjs-dynamic-importer-ambiguous)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dynamic import from explicit cjs importer uses node interop (cjs-dynamic-importer-cjs)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dynamic import from explicit cjs importer uses node interop (cjs-dynamic-importer-cjs)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dedupe",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dedupe",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "cjs browser field (axios)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > cjs browser field (axios)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "cjs browser field bare",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > cjs browser field bare",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dep from linked dep (lodash-es)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dep from linked dep (lodash-es)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "forced include",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > forced include",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "import * from optimized dep",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > import * from optimized dep",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "import from dep with process.env.NODE_ENV",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > import from dep with process.env.NODE_ENV",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "import from dep with .notjs files",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > import from dep with .notjs files",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "Import from dependency which uses relative path which needs to be resolved by main field",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > Import from dependency which uses relative path which needs to be resolved by main field",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dep with dynamic import",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dep with dynamic import",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dep with optional peer dep",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dep with optional peer dep",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dep with optional peer dep submodule",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dep with optional peer dep submodule",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dep with optional peer dep (cjs)",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dep with optional peer dep (cjs)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "optimized CJS dep preserves fallback for excluded optional peer",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > optimized CJS dep preserves fallback for excluded optional peer",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dep with css import",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dep with css import",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "CJS dep with css import",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > CJS dep with css import",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "CJS dep requiring dep with css main field",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > CJS dep requiring dep with css main field",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "externalize known non-js files in optimize included dep",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > externalize known non-js files in optimize included dep",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "vue + vuex",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > vue + vuex",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "esbuild-plugin",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > esbuild-plugin",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "import from hidden dir",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > import from hidden dir",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "import optimize-excluded package that imports optimized-included package",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > import optimize-excluded package that imports optimized-included package",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "import aliased package with colon",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > import aliased package with colon",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "import aliased package using absolute path",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > import aliased package using absolute path",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "variable names are reused in different scripts",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > variable names are reused in different scripts",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "flatten id should generate correctly",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > flatten id should generate correctly",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "non optimized module is not duplicated",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > non optimized module is not duplicated",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "optimized browser:false is empty without warning",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > optimized browser:false is empty without warning",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "error on builtin modules usage",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > error on builtin modules usage",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "pre bundle css require",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > pre bundle css require",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "name file limit is 170 characters",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > no missing deps during build",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "optimizeDeps config > supports include glob syntax",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > name file limit is 170 characters",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "long file name should work",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > optimizeDeps config > supports include glob syntax",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "warn on incompatible dependency",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > long file name should work",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "import the CommonJS external package that omits the js suffix",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > warn on incompatible dependency",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "external package name with asset extension",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > import the CommonJS external package that omits the js suffix",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "dependency with external sub-dependencies",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > external package name with asset extension",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "discovers deep imports with custom html-like extensions during dep scan",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > dependency with external sub-dependencies",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "virtual module with .vue extension does not error during scan",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > discovers deep imports with custom html-like extensions during dep scan",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "no dep scan error for virtual modules with html-like extensions",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > virtual module with .vue extension does not error during scan",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         },
         {
-          "name": "should fix relative worker paths in optimized dependencies",
-          "status": "triage",
-          "note": "Its spec file is in bundledDevExclude."
+          "name": "optimize-deps > no dep scan error for virtual modules with html-like extensions",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > should fix relative worker paths in optimized dependencies",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
         }
       ]
     },
