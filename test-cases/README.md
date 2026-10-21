@@ -14,10 +14,10 @@ Goal: replace every `skipIf(isBundledDev)` and every `bundledDevExclude` entry w
 - Go one dir at a time. Agree on the tag and the reason for each case before editing.
 - If the skip comment does not say whether the skip is by design, ask before choosing a tag.
 - Treat `skipIf(isBundledDev && isWindows)` like any other skip: remove it, or replace it with a tag.
-- A tag cannot cancel `runIf` or `test.skip`. Turn `runIf(isServe && !isBundledDev)` into `runIf(isServe)` + tag.
+- A tag cannot cancel `runIf` or `test.skip`. Turn `runIf(isServe && !isBundledDev)` into `runIf(isServe)` + tag. This works only for a `todo` tag. A test-level `runIf` or `skipIf` gives the test `skip: false`, which cancels an `unsupported` tag. For an `unsupported` tag, use `describe.runIf(isServe)` around the test, or add `skip` to the options yourself: `{ ...tag, ...(isBuild ? { skip: true } : {}) }`.
 - A guard inside a test (`if (isBundled) return`, `if (!isBundledDev) { … }`, or similar) hides part of the test under bundled dev without a tag, so the report does not show the gap. Split the guarded part into its own test, placed right after the original, and tag it.
   - Name it after the original, plus what the split part checks (e.g. `linked css HMR`).
-  - If the guard also covers build (`isBundled`), add `runIf(isServe)` to the new test.
+  - If the guard also covers build (`isBundled`), add `runIf(isServe)` to the new test. For an `unsupported` tag, see the note above.
   - Example: `css` (vitejs/vite#23707).
 - A bundled-dev branch in the expected value (`isBundled ? /base64/ : '/nested/icon.png'`) is not a guard. Keep it, with no tag.
 - Never tag a block that is limited to another mode: a `todo` tag wins over `describe.runIf(false)`.
@@ -43,6 +43,83 @@ Goal: replace every `skipIf(isBundledDev)` and every `bundledDevExclude` entry w
 3. Agree on the tag and the reason for the case, then edit it.
 4. When the dir is done, tick it in the list below. Do not list its remaining gaps here: the two issue comments are the single source of truth for gaps. Then remind me to update the two issue comments (see "Issue comments to update"). Show me a draft of each change, and post only after I allow it.
 5. Record every PR of the dir in "PRs per dir": the tagging PR, and each fix PR that removes one of its tags.
+
+## `optimize-deps` triage
+
+The whole `optimize-deps` spec is `unsupported` under bundled dev. Go through its test cases one by one, so that a bundled-dev bug in one of them is not lost.
+
+To run a case under bundled dev, remove `skip: isBundledDev` from `clientOptimizerUnsupported` in `optimize-deps.spec.ts` on your machine only. Do not commit that change.
+
+```sh
+pnpm run test-serve-bundled playground/optimize-deps/ -t "<test name>"
+```
+
+For each test case:
+
+1. Find out whether it fails or passes under bundled dev.
+2. If it fails because it needs the dep optimizer, do nothing else. Tick it and move on.
+3. If it fails because of a bug in bundled dev:
+   - Copy the case to a different playground. Show me a draft of the copy first. This keeps the failure tracked, and decouples it from `optimize-deps`.
+   - Update both issue comments for the new case (see "Issue comments to update"): the playground's line in the checklist, and its gap in the details.
+4. If it passes, tick it and move on.
+
+- [ ] `default + named imports from cjs dep (react)`
+- [ ] `named imports from webpacked cjs (phoenix)`
+- [ ] `default import from webpacked cjs (clipboard)`
+- [ ] `default import from cjs with es-module-flag (dep-cjs-with-es-module-flag)`
+- [ ] `default import from cjs (cjs-dep-cjs-compiled-from-esm)`
+- [ ] `default import from cjs (cjs-dep-cjs-compiled-from-cjs)`
+- [ ] `named import injected into an optimized dep by a plugin (dep-with-injected-import)`
+- [ ] `dynamic imports from cjs dep (react)`
+- [ ] `dynamic named imports from webpacked cjs (phoenix)`
+- [ ] `dynamic default import from webpacked cjs (clipboard)`
+- [ ] `dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-esm)`
+- [ ] `dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-cjs)`
+- [ ] `dynamic default import from cjs with es-module-flag (cjs-dynamic-dep-cjs-with-es-module-flag)`
+- [ ] `dynamic import from format-ambiguous importer respects __esModule flag (cjs-dynamic-importer-ambiguous)`
+- [ ] `dynamic import from explicit cjs importer uses node interop (cjs-dynamic-importer-cjs)`
+- [ ] `dedupe`
+- [ ] `cjs browser field (axios)`
+- [ ] `cjs browser field bare`
+- [ ] `dep from linked dep (lodash-es)`
+- [ ] `forced include`
+- [ ] `import * from optimized dep`
+- [ ] `import from dep with process.env.NODE_ENV`
+- [ ] `import from dep with .notjs files`
+- [ ] `Import from dependency which uses relative path which needs to be resolved by main field`
+- [ ] `dep with dynamic import`
+- [ ] `dep with optional peer dep`
+- [ ] `dep with optional peer dep submodule`
+- [ ] `dep with optional peer dep (cjs)`
+- [ ] `optimized CJS dep preserves fallback for excluded optional peer`
+- [ ] `dep with css import`
+- [ ] `CJS dep with css import`
+- [ ] `CJS dep requiring dep with css main field`
+- [ ] `externalize known non-js files in optimize included dep`
+- [ ] `vue + vuex`
+- [ ] `esbuild-plugin`
+- [ ] `import from hidden dir`
+- [ ] `import optimize-excluded package that imports optimized-included package`
+- [ ] `import aliased package with colon`
+- [ ] `import aliased package using absolute path`
+- [ ] `variable names are reused in different scripts`
+- [ ] `flatten id should generate correctly`
+- [ ] `non optimized module is not duplicated`
+- [ ] `optimized browser:false is empty without warning`
+- [ ] `error on builtin modules usage`
+- [ ] `pre bundle css require`
+- [ ] `no missing deps during build`
+- [ ] `name file limit is 170 characters`
+- [ ] `optimizeDeps config > supports include glob syntax`
+- [ ] `long file name should work`
+- [ ] `warn on incompatible dependency`
+- [ ] `import the CommonJS external package that omits the js suffix`
+- [ ] `external package name with asset extension`
+- [ ] `dependency with external sub-dependencies`
+- [ ] `discovers deep imports with custom html-like extensions during dep scan`
+- [ ] `virtual module with .vue extension does not error during scan`
+- [ ] `no dep scan error for virtual modules with html-like extensions`
+- [ ] `should fix relative worker paths in optimized dependencies`
 
 ## Issue comments to update
 
@@ -83,10 +160,12 @@ Only PRs opened as part of this work, starting with #23680. All PRs are in vitej
 | `fs-serve`              | #23742 | tags | `test/bundled-dev-skip-tags-fs-serve`              | tags the `matrix` describe as `unsupported` (sapphi-red in #23246: bundled dev does not serve single files); passes the 8.3 skip with `skipIf`, because a `{ skip }` option overrides the tag                                                                                                                                                                                                                                                             | merged 2026-10-15 |
 | `glob-import`           | #23743 | tags | `test/bundled-dev-skip-tags-glob-import`           | tags the 3 add/remove-file HMR tests with one shared `todo` (`globFileAddRemoveTodo`: the `hotUpdate` hook works only for Rolldown's Rust plugins and stays off behind `experimental.devMode.hotUpdate` until the JS-side adapter lands; vitejs/vite#22956, rolldown/rolldown#10065)                                                                                                                                                                      | merged 2026-10-15 |
 | `hmr`                   | #23788 | tags | `test/bundled-dev-skip-tags-hmr`                   | tags 20 of the 26 skips (17 `todo`, 3 `unsupported`); un-skips 6 with no tag (`delete file should not break hmr` asserts the bundled-dev values, and its fixture removes the click listener in `dispose`); adds a build-error recovery test (`todo`); `css-style/index.html` becomes a build input; `import.meta.hot?.accept` uses `gotoLatestBuild`; splits the link check out of `backend-integration`'s `preserve the base in CSS HMR` (`unsupported`) | merged 2026-10-16 |
-| `js-sourcemap`          | #23796 | tags | `test/bundled-dev-skip-tags-js-sourcemap`          | tags the 5 skips as `unsupported`: 2 share the `fs-serve` single-file reason, 3 share the `environment-react-ssr` dep-optimizer reason                                                                                                                                                                                                                                                                                                                    | open              |
+| `js-sourcemap`          | #23796 | tags | `test/bundled-dev-skip-tags-js-sourcemap`          | tags the 5 skips as `unsupported`: 2 share the `fs-serve` single-file reason, 3 share the `environment-react-ssr` dep-optimizer reason                                                                                                                                                                                                                                                                                                                    | merged 2026-10-20 |
 | `json`                  | #23801 | tags | `test/bundled-dev-skip-tags-json`                  | tags `fetch` as `unsupported` with the `fs-serve` single-file reason                                                                                                                                                                                                                                                                                                                                                                                      | open              |
 | `legacy`                | #23831 | tags | `test/bundled-dev-skip-tags-legacy`                | un-skips `import.meta.env.LEGACY` (fixed by #23713) and removes the `legacy-chunk-importmap.spec.ts` exclude entry (fixed by #23685); no tags                                                                                                                                                                                                                                                                                                             | open              |
 | `object-hooks`          | #23835 | tags | `test/bundled-dev-skip-tags-object-hooks`          | moves `object-hooks.spec.ts` from `bundledDevExclude` to build's exclude, which now applies to `isBundled` (Rolldown runs parallel hooks such as `buildStart` one at a time)                                                                                                                                                                                                                                                                              | open              |
+| `optimize-deps`         | #23857 | tags | `test/bundled-dev-skip-tags-optimize-deps`         | marks the whole spec as `unsupported` (one `describe` with the tag, the reason, and `skip: isBundledDev`, because a test-level `runIf(isServe)` cancels a tag's skip); removes the `bundledDevExclude` entry                                                                                                                                                                                                                                              | open              |
+| `optimize-deps`         | #23858 | fix  | `fix/bundled-dev-browser-external-cjs`             | bundled environments get the CommonJS stub for Node built-ins (`isBuild: options.isBuild \|\| partialEnv.config.isBundled`), so a named import such as `import { readFileSync } from 'node:fs'` no longer fails with `MISSING_EXPORT`; adds two `resolve` playground tests                                                                                                                                                                                | open              |
 
 ## When I ask you to check the PRs
 
@@ -102,7 +181,7 @@ Only PRs opened as part of this work, starting with #23680. All PRs are in vitej
    - Show me the drafts, and post only after I allow it.
 4. If a PR was closed without merging, tell me. Do not change anything for it.
 
-## Dirs with bundled-dev skips (25)
+## Dirs with bundled-dev skips (23)
 
 Counts are from `main` @ `8a4c19cfc`: 141 skip sites and 5 excluded spec files.
 
@@ -113,17 +192,15 @@ Counts are from `main` @ `8a4c19cfc`: 141 skip sites and 5 excluded spec files.
 - [x] `css` — 6 specs · 1 skip + 4 guards · vitejs/vite#23707 · `tests.ts` is shared by `css.spec.ts` and `lightningcss.spec.ts`, so each tag counts twice · `postcss-plugins-different-dir` starts its own plain dev server (not covered, left as is) · issue comments: 97/107 (10 todo)
 - [x] `dynamic-import` — 1 spec · done
 - [x] `env` — 1 spec · done
-- [x] `environment-react-ssr` — 1 spec · 2 skips + `basic` (never asserted, so it passed without hydration) · vitejs/vite#23740 · `deps reload` split into client and ssr tests · issue comments: 1/5 (plain dev 5/5)
 - [x] `forward-console` — 1 spec · done
 - [x] `fs-serve` — 3 specs · 1 skip (the `matrix` describe in the shared `commonTests.ts`, about 60 tests per spec) · vitejs/vite#23742 · issue comments: 56/172
 - [x] `glob-import` — 1 spec · 3 skips · vitejs/vite#23743 · `no hmr for adding/removing files` passes under bundled dev without checking anything (bundled dev never requests `dir/index.js`), left as is · `follow symlinks same reference` failed locally in every mode on 2026-10-13, also without the change · issue comments: 22/25 (unchanged)
 - [x] `hmr` — 1 spec · 26 skips · vitejs/vite#23788 · 20 tagged (17 `todo`, 3 `unsupported`), 6 un-skipped with no tag (`not loaded dynamic import` now edits real code; `css-style/index.html` became a build input; 3 "stray reload" claims did not reproduce; `delete file should not break hmr` asserts the bundled-dev values after sapphi-red's review: no reload on deleting an unused file, and the fixture removes its click listener in `dispose`, which it leaked on every re-run in both modes) · 1 new test (`restoring a deleted file that is still imported hot updates`, `todo`) · `backend-integration`: the link check of `preserve the base in CSS HMR` split out, `unsupported` with the same reason as the 2 link-swap tests · `import.meta.hot?.accept` now opens its page with `gotoLatestBuild`: after case 15's edit the output is stale, so plain `page.goto` landed on the fallback page and the edit right after it could be dropped (3 failures in 26 runs; 0 in 60 runs with `gotoLatestBuild`) · issue comments: 40/61 (plain dev 61/61)
-- [ ] `hmr-ssr` — 1 spec · excluded: `hmr-ssr.spec.ts`
 - [x] `js-sourcemap` — 1 spec · 5 skips · vitejs/vite#23796 · all 5 `unsupported` (2 fetch a single project file, 3 need the client dep optimizer) · `js`, `ts`, `… path traversal in node_modules` keep their `isBundledDev` branch (it runs its own checks against the entry chunk map, so it is not a guard) · issue comments: 4/9 (unchanged)
 - [x] `json` — 1 spec · 1 skip · vitejs/vite#23801 · `fetch` is `unsupported` with the `fs-serve` single-file reason (sapphi-red in #23246: no equivalent usage in bundled dev) · issue comments: 10/11 (was 11/11; the details item now says "marked as expected in #23246")
 - [x] `legacy` — 8 specs · 1 skip + 1 excluded spec · vitejs/vite#23831 · both run with no tag: #23713 fixed `import.meta.env.LEGACY`, and #23685 fixed `legacy-chunk-importmap.spec.ts` (it uses `build.chunkImportMap`, like `chunk-importmap`) · the other 6 specs run only in build · issue comments: 13/13 (was 12/13)
 - [x] `object-hooks` — 1 spec · vitejs/vite#23835 · excluded in build and bundled dev (`isBundled`): Rolldown runs `buildStart` for one plugin after another, so the fixture's `sequential` asserts fail and the build stops · the transform `order` check is not run under Rolldown, because that build failure comes first · issue comments: 0/1 (box now checked)
-- [ ] `optimize-deps` — 1 spec · excluded: `optimize-deps.spec.ts`
+- [x] `optimize-deps` — 1 spec · vitejs/vite#23857 · the whole spec is `unsupported` · each test case is triaged in "`optimize-deps` triage" above
 - [ ] `optimize-deps-no-discovery` — 1 spec · 1 skip
 - [ ] `resolve` — 3 specs · 1 skip
 - [ ] `tailwind` — 1 spec · 4 skips
@@ -132,7 +209,7 @@ Counts are from `main` @ `8a4c19cfc`: 141 skip sites and 5 excluded spec files.
 - [ ] `tsconfig-json-load-error` — 1 spec · 2 skips (+1 bundled-dev-only test)
 - [ ] `worker` — 7 specs · 40 skips
 
-## Dirs with no bundled-dev skip (50)
+## Dirs with no bundled-dev skip (40)
 
 Check each one for skips that use another form (e.g. an early `return` or `if (isBundledDev)` around an assertion).
 
@@ -173,6 +250,21 @@ Check each one for skips that use another form (e.g. an early `return` or `if (i
 - [ ] `proxy-bypass` — 1 spec
 - [ ] `proxy-hmr` — 1 spec
 - [ ] `resolve-tsconfig-paths` — 1 spec
+- [ ] `tailwind-sourcemap` — 1 spec
+- [ ] `tsconfig-json` — 1 spec
+- [ ] `wasm` — 1 spec
+
+## SSR dirs (12)
+
+Dirs whose name contains `ssr`, the same rule the dashboard uses for its SSR scope.
+
+With bundled-dev skips:
+
+- [x] `environment-react-ssr` — 1 spec · 2 skips + `basic` (never asserted, so it passed without hydration) · vitejs/vite#23740 · `deps reload` split into client and ssr tests · issue comments: 1/5 (plain dev 5/5)
+- [ ] `hmr-ssr` — 1 spec · excluded: `hmr-ssr.spec.ts`
+
+With no bundled-dev skip. Check each one for skips that use another form, as above:
+
 - [ ] `ssr` — 1 spec
 - [ ] `ssr-alias` — 1 spec
 - [ ] `ssr-conditions` — 1 spec
@@ -183,9 +275,6 @@ Check each one for skips that use another form (e.g. an early `return` or `if (i
 - [ ] `ssr-resolve` — 1 spec
 - [ ] `ssr-wasm` — 1 spec
 - [ ] `ssr-webworker` — 1 spec
-- [ ] `tailwind-sourcemap` — 1 spec
-- [ ] `tsconfig-json` — 1 spec
-- [ ] `wasm` — 1 spec
 
 ## Not test dirs
 
