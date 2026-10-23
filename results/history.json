@@ -588,40 +588,40 @@
     }
   },
   {
-    "date": "2026-10-23T07:31:50.074Z",
-    "viteCommit": "67c965b1df64249bceb747037e87d22f75b3e471",
+    "date": "2026-10-23T07:42:29.583Z",
+    "viteCommit": "ac67ede773f4cfee32b6cef4fbcadd072f26f248",
     "rolldownVersion": "1.2.15",
-    "runUrl": "https://github.com/h-a-n-a/bundled-dev/actions/runs/39917017434",
+    "runUrl": "https://github.com/h-a-n-a/bundled-dev/actions/runs/39919285419",
     "summary": {
       "all": {
-        "total": 992,
-        "passed": 775,
+        "total": 1000,
+        "passed": 777,
         "files": 83,
-        "filesPassing": 46,
+        "filesPassing": 45,
         "statuses": {
-          "pass": 775,
+          "pass": 777,
           "fail": 0,
-          "todo": 57,
+          "todo": 63,
           "not-run": 0,
           "triage": 160,
-          "unsupported": 189
+          "unsupported": 181
         },
         "buildOnly": 167,
         "everyMode": 11,
         "ownServer": 14
       },
       "noSsr": {
-        "total": 892,
-        "passed": 773,
+        "total": 900,
+        "passed": 775,
         "files": 72,
-        "filesPassing": 45,
+        "filesPassing": 44,
         "statuses": {
-          "pass": 773,
+          "pass": 775,
           "fail": 0,
-          "todo": 55,
+          "todo": 61,
           "not-run": 0,
           "triage": 64,
-          "unsupported": 187
+          "unsupported": 179
         },
         "buildOnly": 154,
         "everyMode": 8,

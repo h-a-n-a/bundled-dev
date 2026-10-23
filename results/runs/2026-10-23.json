@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-23T07:31:50.074Z",
-  "viteCommit": "67c965b1df64249bceb747037e87d22f75b3e471",
+  "date": "2026-10-23T07:42:29.583Z",
+  "viteCommit": "ac67ede773f4cfee32b6cef4fbcadd072f26f248",
   "rolldownVersion": "1.2.15",
-  "runUrl": "https://github.com/h-a-n-a/bundled-dev/actions/runs/39917017434",
+  "runUrl": "https://github.com/h-a-n-a/bundled-dev/actions/runs/39919285419",
   "summary": {
     "all": {
-      "total": 992,
-      "passed": 775,
+      "total": 1000,
+      "passed": 777,
       "files": 83,
-      "filesPassing": 46,
+      "filesPassing": 45,
       "statuses": {
-        "pass": 775,
+        "pass": 777,
         "fail": 0,
-        "todo": 57,
+        "todo": 63,
         "not-run": 0,
         "triage": 160,
-        "unsupported": 189
+        "unsupported": 181
       },
       "buildOnly": 167,
       "everyMode": 11,
       "ownServer": 14
     },
     "noSsr": {
-      "total": 892,
-      "passed": 773,
+      "total": 900,
+      "passed": 775,
       "files": 72,
-      "filesPassing": 45,
+      "filesPassing": 44,
       "statuses": {
-        "pass": 773,
+        "pass": 775,
         "fail": 0,
-        "todo": 55,
+        "todo": 61,
         "not-run": 0,
         "triage": 64,
-        "unsupported": 187
+        "unsupported": 179
       },
       "buildOnly": 154,
       "everyMode": 8,
@@ -2096,9 +2096,9 @@
       "file": "playground/dynamic-import/__tests__/dynamic-import.spec.ts",
       "playground": "dynamic-import",
       "ssr": false,
-      "total": 27,
-      "passed": 27,
-      "status": "pass",
+      "total": 35,
+      "passed": 29,
+      "status": "partial",
       "tests": [
         {
           "name": "should load literal dynamic import",
@@ -2206,6 +2206,80 @@
         },
         {
           "name": "dynamic import syntax parsing",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > plain module.exports object",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > webpack UMD",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > compiled from ESM, with the __esModule flag",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > compiled from CJS",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > module.exports object with the __esModule flag",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > from an explicit CJS importer uses node interop",
+          "status": "todo",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep from an ambiguous importer respects the __esModule flag",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic named import from an ESM dep",
           "status": "pass"
         }
       ]
@@ -4833,54 +4907,6 @@
         },
         {
           "name": "optimize-deps > named import injected into an optimized dep by a plugin (dep-with-injected-import)",
-          "status": "unsupported",
-          "tag": "unsupported",
-          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
-        },
-        {
-          "name": "optimize-deps > dynamic imports from cjs dep (react)",
-          "status": "unsupported",
-          "tag": "unsupported",
-          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
-        },
-        {
-          "name": "optimize-deps > dynamic named imports from webpacked cjs (phoenix)",
-          "status": "unsupported",
-          "tag": "unsupported",
-          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
-        },
-        {
-          "name": "optimize-deps > dynamic default import from webpacked cjs (clipboard)",
-          "status": "unsupported",
-          "tag": "unsupported",
-          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
-        },
-        {
-          "name": "optimize-deps > dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-esm)",
-          "status": "unsupported",
-          "tag": "unsupported",
-          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
-        },
-        {
-          "name": "optimize-deps > dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-cjs)",
-          "status": "unsupported",
-          "tag": "unsupported",
-          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
-        },
-        {
-          "name": "optimize-deps > dynamic default import from cjs with es-module-flag (cjs-dynamic-dep-cjs-with-es-module-flag)",
-          "status": "unsupported",
-          "tag": "unsupported",
-          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
-        },
-        {
-          "name": "optimize-deps > dynamic import from format-ambiguous importer respects __esModule flag (cjs-dynamic-importer-ambiguous)",
-          "status": "unsupported",
-          "tag": "unsupported",
-          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
-        },
-        {
-          "name": "optimize-deps > dynamic import from explicit cjs importer uses node interop (cjs-dynamic-importer-cjs)",
           "status": "unsupported",
           "tag": "unsupported",
           "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
