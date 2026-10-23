@@ -57,11 +57,22 @@ pnpm run test-serve-bundled playground/optimize-deps/ -t "<test name>"
 For each test case:
 
 1. Find out whether it fails or passes under bundled dev.
-2. If it fails because it needs the dep optimizer, do nothing else. Tick it and move on.
+2. If it fails because it needs the dep optimizer, find out which part needs it:
+   - The behavior it checks is the optimizer itself (its metadata, its config, its logs): do nothing else. Tick it and move on.
+   - Only the setup needs it, but the behavior it checks also exists under bundled dev. For example, a fixture plugin matches `.vite/deps` ids, but the code it adds can appear in any bundle (`dep-with-injected-import`). A bug in that behavior would stay hidden, so:
+     1. On your machine only, change the setup so that it works without the optimizer, the way bundled dev handles that code. Keep the behavior the same.
+     2. Run the case again, and go to step 3 or 4 with the result.
 3. If it fails because of a bug in bundled dev:
+   - Before copying, search the other playgrounds for a test that already covers the same behavior. If one exists, use it and do not copy.
    - Copy the case to a different playground. Show me a draft of the copy first. This keeps the failure tracked, and decouples it from `optimize-deps`.
+   - Make the copy right away, even when a fix is in progress. Tag it `todo`, and remove the tag once the fix is released in Vite. In the second argument, put the tracking issue, or the fix PR when there is no issue. Example: vitejs/vite#23877, made before rolldown/rolldown#11020 landed.
+   - Then compare the copy with the original in `optimize-deps`:
+     - If they are identical (in plain dev, the copy also runs the same dep optimizer code), remove the original from `optimize-deps`, in the same PR as the copy. Example: the dynamic-import cases in vitejs/vite#23877.
+     - If the original also checks something that only `optimize-deps` gives it (its config, its metadata, a real package that the copy replaces in a way that matters), keep the original.
    - Add a row to "Bundled-dev bugs found in `optimize-deps`".
    - Update both issue comments for the new case (see "Issue comments to update"): the playground's line in the checklist, and its gap in the details.
+   - Until the copy is tagged, keep the case unticked and add a note after it: ` — bundled-dev bug · fix in <PR> · <what is left>`.
+   - Once the copy is tagged (`todo` or `unsupported`), tick the case here.
 4. If it passes, tick it and move on.
 
 - [x] `default + named imports from cjs dep (react)`
@@ -70,15 +81,15 @@ For each test case:
 - [x] `default import from cjs with es-module-flag (dep-cjs-with-es-module-flag)`
 - [x] `default import from cjs (cjs-dep-cjs-compiled-from-esm)`
 - [x] `default import from cjs (cjs-dep-cjs-compiled-from-cjs)`
-- [ ] `named import injected into an optimized dep by a plugin (dep-with-injected-import)`
-- [ ] `dynamic imports from cjs dep (react)`
+- [x] `named import injected into an optimized dep by a plugin (dep-with-injected-import)`
+- [x] `dynamic imports from cjs dep (react)`
 - [x] `dynamic named imports from webpacked cjs (phoenix)`
-- [ ] `dynamic default import from webpacked cjs (clipboard)`
-- [ ] `dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-esm)`
-- [ ] `dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-cjs)`
-- [ ] `dynamic default import from cjs with es-module-flag (cjs-dynamic-dep-cjs-with-es-module-flag)`
+- [x] `dynamic default import from webpacked cjs (clipboard)`
+- [x] `dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-esm)`
+- [x] `dynamic default import from cjs (cjs-dynamic-dep-cjs-compiled-from-cjs)`
+- [x] `dynamic default import from cjs with es-module-flag (cjs-dynamic-dep-cjs-with-es-module-flag)`
 - [x] `dynamic import from format-ambiguous importer respects __esModule flag (cjs-dynamic-importer-ambiguous)`
-- [ ] `dynamic import from explicit cjs importer uses node interop (cjs-dynamic-importer-cjs)`
+- [x] `dynamic import from explicit cjs importer uses node interop (cjs-dynamic-importer-cjs)`
 - [x] `dedupe`
 - [x] `cjs browser field (axios)`
 - [x] `cjs browser field bare`
@@ -89,8 +100,8 @@ For each test case:
 - [x] `import from dep with .notjs files`
 - [x] `Import from dependency which uses relative path which needs to be resolved by main field`
 - [x] `dep with dynamic import`
-- [ ] `dep with optional peer dep`
-- [ ] `dep with optional peer dep submodule`
+- [ ] `dep with optional peer dep` — bundled-dev bug · fix in rolldown/rolldown#11276 · copy it to `resolve`
+- [ ] `dep with optional peer dep submodule` — bundled-dev bug · fix in rolldown/rolldown#11276 · copy it to `resolve`
 - [x] `dep with optional peer dep (cjs)`
 - [ ] `optimized CJS dep preserves fallback for excluded optional peer`
 - [x] `dep with css import`
@@ -129,6 +140,8 @@ One row per bug found during triage. What breaks, its priority and its effort be
 | Bug                                                             | Found by                                                                                             | Copied to                                                                                                              | PRs                                        | State                                           |
 | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ----------------------------------------------- |
 | A named import from a Node built-in fails with `MISSING_EXPORT` | the whole page: `import { Buffer } from 'buffer'` in `index.html`, and `dep-with-builtin-module-esm` | `resolve`: `named import from a Node built-in does not break the build`, `reading a named import from a Node built-in` | vitejs/vite#23858, rolldown/rolldown#11260 | #23858 waits for a Rolldown release with #11260 |
+| Lazy compilation loses the `default` export of a dynamically imported CommonJS module (vitejs/vite#23558) | the 6 failing dynamic-import cases: `react`, `clipboard`, `cjs-dynamic-dep-cjs-compiled-from-esm`, `cjs-dynamic-dep-cjs-compiled-from-cjs`, `cjs-dynamic-dep-cjs-with-es-module-flag`, `cjs-dynamic-importer-cjs` | `dynamic-import`: the `dynamic import of a CommonJS dep` describe (6 tests, `todo`; small local fixtures replace `react` and `clipboard`) | vitejs/vite#23877 (tests), rolldown/rolldown#11020 (fix) | #23877 open (draft); remove the `todo` once #11020 is released in Vite |
+| An `import()` of an optional peer dep that is not installed is left as an external import, so the browser cannot load it (`Failed to resolve module specifier '__vite-optional-peer-dep:…'`). Lazy compilation resolves the first resolve result again, and no plugin resolves that id. A `\0` virtual module imported only through `import()` breaks the same way | `dep with optional peer dep`, `dep with optional peer dep submodule` | not copied yet | rolldown/rolldown#11276 (fix, stacked on rolldown/rolldown#11000) | fix in progress; #11276 is a draft and waits for #11000; the Vite copy is next |
 
 ## Issue comments to update
 
@@ -176,6 +189,8 @@ Only PRs opened as part of this work, starting with #23680. The vitejs/vite PRs 
 | `optimize-deps`         | #23857                  | tags | `test/bundled-dev-skip-tags-optimize-deps`         | marks the whole spec as `unsupported` (one `describe` with the tag, the reason, and `skip: isBundledDev`, because a test-level `runIf(isServe)` cancels a tag's skip); removes the `bundledDevExclude` entry                                                                                                                                                                                                                                              | merged 2026-10-21 |
 | `optimize-deps`         | #23858                  | fix  | `fix/bundled-dev-browser-external-cjs`             | bundled environments get the CommonJS stub for Node built-ins (`isBuild: options.isBuild \|\| partialEnv.config.isBundled`), so a named import such as `import { readFileSync } from 'node:fs'` no longer fails with `MISSING_EXPORT`; adds two `resolve` playground tests                                                                                                                                                                                | open              |
 | `optimize-deps`         | rolldown/rolldown#11260 | fix  | `fix/vite-resolve-is-bundled`                      | adds an `isBundled` resolve option to Rolldown's Vite resolve plugin. It picks the CommonJS stub for Node built-ins in place of `isBuild`, so #23858 can pass `isBundled` and keep `isBuild` for build-only behavior                                                                                                                                                                                                                                      | open              |
+| `optimize-deps`         | #23877                  | tags | `test/bundled-dev-lazy-cjs-dynamic-import`         | copies the 6 dynamic-import cases that fail under bundled dev into `dynamic-import`, with small local CJS fixtures in place of `react` and `clipboard`; one `describe` tagged `todo` (vitejs/vite#23558, fixed by rolldown/rolldown#11020); also moves the 2 passing dynamic-import cases (the ambiguous CJS importer, and phoenix as a small ESM dep) with no tag; removes all 8 originals from `optimize-deps`, because the copies run the same optimizer interop in plain dev. Based on `main`, not on the row above | open              |
+| `optimize-deps`         | rolldown/rolldown#11276 | fix  | `fix-lazy-keep-resolved-id`                        | the lazy compilation plugin keeps the first resolve result of each lazy entry and reuses it when the fetched proxy imports the real module, so ids that do not resolve to themselves (`\0` virtual ids, `__vite-optional-peer-dep:…`) are not left external. Stacked on rolldown/rolldown#11000, not on `main` | open (draft) |
 
 ## When I ask you to check the PRs
 
