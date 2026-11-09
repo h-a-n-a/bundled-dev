@@ -1,0 +1,5848 @@
+{
+  "date": "2026-11-09T09:41:55.803Z",
+  "viteCommit": "825c00e272e5309fbafd01c9a539b9d82f0c71ce",
+  "rolldownVersion": "1.2.16",
+  "runUrl": "https://github.com/h-a-n-a/bundled-dev/actions/runs/42594617862",
+  "summary": {
+    "all": {
+      "total": 947,
+      "passed": 898,
+      "files": 90,
+      "filesPassing": 82,
+      "statuses": {
+        "pass": 898,
+        "fail": 0,
+        "todo": 0,
+        "not-run": 0,
+        "triage": 49,
+        "unsupported": 136
+      },
+      "buildOnly": 0,
+      "everyMode": 179,
+      "ownServer": 20
+    },
+    "noSsr": {
+      "total": 864,
+      "passed": 864,
+      "files": 78,
+      "filesPassing": 78,
+      "statuses": {
+        "pass": 864,
+        "fail": 0,
+        "todo": 0,
+        "not-run": 0,
+        "triage": 0,
+        "unsupported": 134
+      },
+      "buildOnly": 0,
+      "everyMode": 146,
+      "ownServer": 20
+    }
+  },
+  "fixes": [
+    {
+      "file": "playground/hmr-full-bundle-mode/__tests__/hmr-full-bundle-mode.spec.ts",
+      "name": "chained invalidate in an import cycle settles",
+      "status": "todo",
+      "note": "A bundled-dev test that test.skip hides in every mode (rolldown/rolldown#10340)."
+    },
+    {
+      "file": "playground/assets-sanitize/__tests__/assets-sanitize.spec.ts",
+      "name": "importing asset with special char in filename works in dev",
+      "status": "n/a",
+      "note": "The plain-dev copy of \"…works in bundled dev\"."
+    },
+    {
+      "file": "playground/object-hooks/__tests__/object-hooks.spec.ts",
+      "name": "object hooks",
+      "status": "n/a",
+      "note": "Rolldown runs parallel hooks such as buildStart one at a time, so build and bundled dev both leave out this spec (vitejs/vite#23835)."
+    }
+  ],
+  "files": [
+    {
+      "file": "playground/alias/__tests__/alias.spec.ts",
+      "playground": "alias",
+      "ssr": false,
+      "total": 10,
+      "passed": 10,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "fs",
+          "status": "pass"
+        },
+        {
+          "name": "fs directory",
+          "status": "pass"
+        },
+        {
+          "name": "regex",
+          "status": "pass"
+        },
+        {
+          "name": "dependency",
+          "status": "pass"
+        },
+        {
+          "name": "js via script src",
+          "status": "pass"
+        },
+        {
+          "name": "css via link",
+          "status": "pass"
+        },
+        {
+          "name": "optimized dep",
+          "status": "pass"
+        },
+        {
+          "name": "aliased module",
+          "status": "pass"
+        },
+        {
+          "name": "url conflict alias",
+          "status": "pass"
+        },
+        {
+          "name": "custom resolver",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets-sanitize/__tests__/assets-sanitize.spec.ts",
+      "playground": "assets-sanitize",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "importing asset with special char in filename works in build",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/assets.spec.ts",
+      "playground": "assets",
+      "ssr": false,
+      "total": 93,
+      "passed": 93,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`?url` CSS skips the CSS pipeline and is inlined as raw bytes, so its relative `url()` gives a 404",
+          "issues": {
+            "vite": [
+              22863
+            ]
+          }
+        },
+        {
+          "name": "should not warn about VITE_ASSET tokens in image-set",
+          "status": "pass"
+        },
+        {
+          "name": "should get a 404 when using incorrect case",
+          "status": "pass"
+        },
+        {
+          "name": "should fallback to index.html when accessing non-existent html file",
+          "status": "pass"
+        },
+        {
+          "name": "injected scripts > @vite/client",
+          "status": "pass"
+        },
+        {
+          "name": "injected scripts > html-proxy",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public (json)",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public (js)",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public (ts)",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public (mts)",
+          "status": "pass"
+        },
+        {
+          "name": "file URL emitted by an external plugin > replaces the preliminary hash",
+          "status": "pass"
+        },
+        {
+          "name": "file URL emitted by an external plugin > loads the emitted chunk",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > encoded",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with base64",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with gradient",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with multiple descriptor",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with multiple descriptor as inline style",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set and url exist at the same time.",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > base64 inline",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > no base64 inline for modulepreload links",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > no base64 inline for preload and prefetch links",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > no base64 inline for icon and manifest links",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > preinlined SVG",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > generated paths in CSS",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > url() with svg",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set() with svg",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > url() with svg in .css?url",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`?url` CSS skips the CSS pipeline and is inlined as raw bytes, so the svg in its `url()` is not inlined",
+          "issues": {
+            "vite": [
+              22863
+            ]
+          }
+        },
+        {
+          "name": "image > src",
+          "status": "pass"
+        },
+        {
+          "name": "image > src inline",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset (public)",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset (mixed)",
+          "status": "pass"
+        },
+        {
+          "name": "meta > og image",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > url with an alias",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "Unknown extension assets import",
+          "status": "pass"
+        },
+        {
+          "name": "Unknown extension assets import with ?inline",
+          "status": "pass"
+        },
+        {
+          "name": "Asset matched by a relative path in assetsInclude import",
+          "status": "pass"
+        },
+        {
+          "name": "Asset matched by a relative path in assetsInclude import with ?inline",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?no-inline svg import",
+          "status": "pass"
+        },
+        {
+          "name": "?no-inline svg import -- multiple postfix",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "?inline png import",
+          "status": "pass"
+        },
+        {
+          "name": "?inline public png import",
+          "status": "pass"
+        },
+        {
+          "name": "?inline public json import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import on css",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`?url` CSS skips the CSS pipeline and is inlined as raw bytes, instead of being emitted as a CSS file",
+          "issues": {
+            "vite": [
+              22863
+            ]
+          }
+        },
+        {
+          "name": "unicode url > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "encodeURI > img src with encodeURI",
+          "status": "pass"
+        },
+        {
+          "name": "encodeURI > img srcset with encodeURI",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(\"@/...\", import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(\"/...\", import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(\"data:...\", import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url) without extension",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`./${dynamic}?abc`, import.meta.url)",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "new URL(`./${1 === 0 ? static : dynamic}?abc`, import.meta.url)",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "new URL(/* @vite-ignore */ 'non-existent', import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url) (multiline)",
+          "status": "pass"
+        },
+        {
+          "name": "manifest",
+          "status": "pass"
+        },
+        {
+          "name": "css and assets in css in build watch > css will not be lost and css does not contain undefined",
+          "status": "pass"
+        },
+        {
+          "name": "css and assets in css in build watch > old file is removed when the content changes",
+          "status": "pass"
+        },
+        {
+          "name": "css and assets in css in build watch > import module.css",
+          "status": "pass"
+        },
+        {
+          "name": "css and assets in css in build watch > import with raw query",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "pass"
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        },
+        {
+          "name": "url() contains file in publicDir, in <style> tag",
+          "status": "pass"
+        },
+        {
+          "name": "url() contains file in publicDir, as inline style",
+          "status": "pass"
+        },
+        {
+          "name": "should not rewrite non-relative urls in html",
+          "status": "pass"
+        },
+        {
+          "name": "assets inside <noscript> is rewrote",
+          "status": "pass"
+        },
+        {
+          "name": "assets inside <template> is rewrote",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/encoded-base/assets-encoded-base.spec.ts",
+      "playground": "assets",
+      "ssr": false,
+      "total": 35,
+      "passed": 35,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "loads the emitted worker",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "pass"
+        },
+        {
+          "name": "index.css URLs > use base URL for asset URL",
+          "status": "pass"
+        },
+        {
+          "name": "index.css URLs > preserve postfix query/hash",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import on css",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`non-existent`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "pass"
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/relative-base/assets-relative-base.spec.ts",
+      "playground": "assets",
+      "ssr": false,
+      "total": 36,
+      "passed": 36,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "loads the emitted worker",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > nested manual chunks",
+          "status": "pass"
+        },
+        {
+          "name": "index.css URLs > relative asset URL",
+          "status": "pass"
+        },
+        {
+          "name": "index.css URLs > preserve postfix query/hash",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import on css",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`non-existent`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "pass"
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/runtime-base/assets-runtime-base.spec.ts",
+      "playground": "assets",
+      "ssr": false,
+      "total": 35,
+      "passed": 35,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "loads the emitted worker",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "pass"
+        },
+        {
+          "name": "index.css URLs > relative asset URL",
+          "status": "pass"
+        },
+        {
+          "name": "index.css URLs > preserve postfix query/hash",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import on css",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`non-existent`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "pass"
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/assets/__tests__/url-base/assets-url-base.spec.ts",
+      "playground": "assets",
+      "ssr": false,
+      "total": 35,
+      "passed": 35,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw js from /public",
+          "status": "pass"
+        },
+        {
+          "name": "raw references from /public > load raw css from /public",
+          "status": "pass"
+        },
+        {
+          "name": "import-expression from simple script",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > relative",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > typeof asset import",
+          "status": "pass"
+        },
+        {
+          "name": "loads the emitted worker",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > fonts",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set relative",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set without the url() call",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with var",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > image-set with mix",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > relative in @import",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > absolute",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > from /public",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > multiple urls on the same line",
+          "status": "pass"
+        },
+        {
+          "name": "css url() references > aliased",
+          "status": "pass"
+        },
+        {
+          "name": "index.css URLs > use base URL for asset URL",
+          "status": "pass"
+        },
+        {
+          "name": "index.css URLs > preserve postfix query/hash",
+          "status": "pass"
+        },
+        {
+          "name": "image > srcset",
+          "status": "pass"
+        },
+        {
+          "name": "svg fragments > img url",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > via css url()",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "bundled dev drops the postfix (`?query` / `#fragment`) from emitted asset URLs"
+        },
+        {
+          "name": "svg fragments > from js import",
+          "status": "pass"
+        },
+        {
+          "name": "?raw import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import",
+          "status": "pass"
+        },
+        {
+          "name": "?url import on css",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(..., import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`${dynamic}`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "new URL(`non-existent`, import.meta.url)",
+          "status": "pass"
+        },
+        {
+          "name": "inline style test",
+          "status": "pass"
+        },
+        {
+          "name": "html import word boundary",
+          "status": "pass"
+        },
+        {
+          "name": "relative path in html asset",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/backend-integration/__tests__/backend-integration.spec.ts",
+      "playground": "backend-integration",
+      "ssr": false,
+      "total": 5,
+      "passed": 5,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "asset imports from js > file outside root",
+          "status": "pass"
+        },
+        {
+          "name": "build > manifest",
+          "status": "pass"
+        },
+        {
+          "name": "build > CSS imported from JS entry should have a non-nested chunk name",
+          "status": "pass"
+        },
+        {
+          "name": "build > entrypoint assets should not generate empty JS file",
+          "status": "pass"
+        },
+        {
+          "name": "serve > preserve the base in CSS HMR link href",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev turns a `<link rel=\"stylesheet\">` to a project CSS file (without `media` or `disabled`) into a CSS import, served as a `<style>` injected by a JS module, so there is no `<link>` tag to swap on a CSS edit; the edit still hot updates in place"
+        }
+      ]
+    },
+    {
+      "file": "playground/base-conflict/__tests__/base-conflict.spec.ts",
+      "playground": "base-conflict",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "absolute imports keep base prefix",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/base/__tests__/base.spec.ts",
+      "playground": "base",
+      "ssr": false,
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "serves the base root as index.html",
+          "status": "pass"
+        },
+        {
+          "name": "404s a path that only shares a partial segment with the base",
+          "status": "pass"
+        },
+        {
+          "name": "404s a path outside the base",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/build-old/__tests__/build-old.spec.ts",
+      "playground": "build-old",
+      "ssr": false,
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "syntax preserve > import.meta.url",
+          "status": "pass"
+        },
+        {
+          "name": "syntax preserve > dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "syntax is lowered > private field",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/chunk-importmap/__tests__/chunk-importmap.spec.ts",
+      "playground": "chunk-importmap",
+      "ssr": false,
+      "total": 12,
+      "passed": 12,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "index js",
+          "status": "pass"
+        },
+        {
+          "name": "importmap",
+          "status": "pass"
+        },
+        {
+          "name": "static js",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic js",
+          "status": "pass"
+        },
+        {
+          "name": "static css",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic css",
+          "status": "pass"
+        },
+        {
+          "name": "direct dynamic css",
+          "status": "pass"
+        },
+        {
+          "name": "shared pure css chunk",
+          "status": "pass"
+        },
+        {
+          "name": "worker",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic.css uses a stable import map specifier",
+          "status": "pass"
+        },
+        {
+          "name": "direct-dynamic.css uses a stable import map specifier",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/csp/__tests__/csp.spec.ts",
+      "playground": "csp",
+      "ssr": false,
+      "total": 9,
+      "passed": 9,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "linked css",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
+        },
+        {
+          "name": "inline style tag",
+          "status": "pass"
+        },
+        {
+          "name": "imported css",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
+        },
+        {
+          "name": "dynamic css",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
+        },
+        {
+          "name": "script tag",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
+        },
+        {
+          "name": "dynamic js",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
+        },
+        {
+          "name": "inline js",
+          "status": "pass"
+        },
+        {
+          "name": "nonce attributes are not repeated",
+          "status": "pass"
+        },
+        {
+          "name": "meta[property=csp-nonce] is injected",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-codesplit/__tests__/css-codesplit-consistent.spec.ts",
+      "playground": "css-codesplit",
+      "ssr": false,
+      "total": 5,
+      "passed": 5,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "css-codesplit build > should be consistent with same content",
+          "status": "pass"
+        },
+        {
+          "name": "css-codesplit build > should be consistent with same content",
+          "status": "pass"
+        },
+        {
+          "name": "css-codesplit build > should be consistent with same content",
+          "status": "pass"
+        },
+        {
+          "name": "css-codesplit build > should be consistent with same content",
+          "status": "pass"
+        },
+        {
+          "name": "css-codesplit build > should be consistent with same content",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-codesplit/__tests__/css-codesplit.spec.ts",
+      "playground": "css-codesplit",
+      "ssr": false,
+      "total": 9,
+      "passed": 9,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load all stylesheets",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with inline",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with module",
+          "status": "pass"
+        },
+        {
+          "name": "style order should be consistent when style tag is inserted by JS",
+          "status": "pass"
+        },
+        {
+          "name": "build > should remove empty chunk",
+          "status": "pass"
+        },
+        {
+          "name": "build > should remove empty chunk, HTML without JS",
+          "status": "pass"
+        },
+        {
+          "name": "build > should generate correct manifest",
+          "status": "pass"
+        },
+        {
+          "name": "build > manifest should not reference a deduplicated css file that does not exist",
+          "status": "pass"
+        },
+        {
+          "name": "build > should not mark a css chunk with ?url and normal import as pure css chunk",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-lightningcss-root/__tests__/css-lightningcss-root.spec.ts",
+      "playground": "css-lightningcss-root",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "url dependency",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-lightningcss/__tests__/css-lightningcss.spec.ts",
+      "playground": "css-lightningcss",
+      "ssr": false,
+      "total": 13,
+      "passed": 13,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "linked css",
+          "status": "pass"
+        },
+        {
+          "name": "css import from js",
+          "status": "pass"
+        },
+        {
+          "name": "@import external css",
+          "status": "pass"
+        },
+        {
+          "name": "css modules",
+          "status": "pass"
+        },
+        {
+          "name": "inline css modules",
+          "status": "pass"
+        },
+        {
+          "name": "minify css",
+          "status": "pass"
+        },
+        {
+          "name": "minify inline style",
+          "status": "pass"
+        },
+        {
+          "name": "escapes closing style tags in inline CSS",
+          "status": "pass"
+        },
+        {
+          "name": "does not run the visitor again during minify",
+          "status": "pass"
+        },
+        {
+          "name": "css with external url",
+          "status": "pass"
+        },
+        {
+          "name": "nested css with relative asset",
+          "status": "pass"
+        },
+        {
+          "name": "aliased asset",
+          "status": "pass"
+        },
+        {
+          "name": "preinlined SVG",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-no-codesplit/__tests__/css-no-codesplit.spec.ts",
+      "playground": "css-no-codesplit",
+      "ssr": false,
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load all stylesheets",
+          "status": "pass"
+        },
+        {
+          "name": "build > should remove empty chunk",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-sourcemap/__tests__/css-sourcemap.spec.ts",
+      "playground": "css-sourcemap",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should not output sourcemap warning (#4939)",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-sourcemap/__tests__/lib-entry/css-sourcemap-lib-entry.spec.ts",
+      "playground": "css-sourcemap",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "css lib entry > remove useless js sourcemap",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css-sourcemap/__tests__/lightningcss/lightningcss.spec.ts",
+      "playground": "css-sourcemap",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should not output sourcemap warning (#4939)",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css/__tests__/css.spec.ts",
+      "playground": "css",
+      "ssr": false,
+      "total": 55,
+      "passed": 55,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "imported css",
+          "status": "pass"
+        },
+        {
+          "name": "linked css",
+          "status": "pass"
+        },
+        {
+          "name": "css import from js",
+          "status": "pass"
+        },
+        {
+          "name": "css import asset with space",
+          "status": "pass"
+        },
+        {
+          "name": "postcss config",
+          "status": "pass"
+        },
+        {
+          "name": "postcss plugin that injects url()",
+          "status": "pass"
+        },
+        {
+          "name": "sass",
+          "status": "pass"
+        },
+        {
+          "name": "less",
+          "status": "pass"
+        },
+        {
+          "name": "less-plugin",
+          "status": "pass"
+        },
+        {
+          "name": "stylus",
+          "status": "pass"
+        },
+        {
+          "name": "css modules",
+          "status": "pass"
+        },
+        {
+          "name": "css modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "sass modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "css modules w/ sass",
+          "status": "pass"
+        },
+        {
+          "name": "less modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "inline css modules",
+          "status": "pass"
+        },
+        {
+          "name": "@charset hoist",
+          "status": "pass"
+        },
+        {
+          "name": "layers",
+          "status": "pass"
+        },
+        {
+          "name": "@import external css",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ style entry",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ style export mapping",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency that @import another dependency",
+          "status": "pass"
+        },
+        {
+          "name": "@import scss dependency that has @import with a css extension pointing to another dependency",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass entry",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export mapping",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export mapping (deep)",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export wildcard to `_partial.scss`",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/out package scss",
+          "status": "pass"
+        },
+        {
+          "name": "async chunk",
+          "status": "pass"
+        },
+        {
+          "name": "treeshaken async chunk",
+          "status": "pass"
+        },
+        {
+          "name": "PostCSS dir-dependency",
+          "status": "pass"
+        },
+        {
+          "name": "import dependency includes css import",
+          "status": "pass"
+        },
+        {
+          "name": "URL separation",
+          "status": "pass"
+        },
+        {
+          "name": "inlined",
+          "status": "pass"
+        },
+        {
+          "name": "inlined-code",
+          "status": "pass"
+        },
+        {
+          "name": "minify css",
+          "status": "pass"
+        },
+        {
+          "name": "?url",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`?url` CSS skips the CSS pipeline and is inlined as raw bytes, so PostCSS does not run on it",
+          "issues": {
+            "vite": [
+              22863
+            ]
+          }
+        },
+        {
+          "name": "?raw",
+          "status": "pass"
+        },
+        {
+          "name": "import css in less",
+          "status": "pass"
+        },
+        {
+          "name": "relative path rewritten in Less's data-uri",
+          "status": "pass"
+        },
+        {
+          "name": "PostCSS source.input.from includes query",
+          "status": "pass"
+        },
+        {
+          "name": "aliased css has content",
+          "status": "pass"
+        },
+        {
+          "name": "resolve imports field in CSS",
+          "status": "pass"
+        },
+        {
+          "name": "warning can be suppressed by esbuild.logOverride",
+          "status": "pass"
+        },
+        {
+          "name": "sugarss",
+          "status": "pass"
+        },
+        {
+          "name": "async css order",
+          "status": "pass"
+        },
+        {
+          "name": "async css order with css modules",
+          "status": "pass"
+        },
+        {
+          "name": "@import scss",
+          "status": "pass"
+        },
+        {
+          "name": "preprocessor imported from css resolves relative imports",
+          "status": "pass"
+        },
+        {
+          "name": "manual chunk path",
+          "status": "pass"
+        },
+        {
+          "name": "CSS modules should be treeshaken if not used",
+          "status": "pass"
+        },
+        {
+          "name": "Scoped CSS via cssScopeTo should be treeshaken",
+          "status": "pass"
+        },
+        {
+          "name": "Scoped CSS should have a correct order",
+          "status": "pass"
+        },
+        {
+          "name": "empty CSS files should generate .css assets, not .js assets",
+          "status": "pass"
+        },
+        {
+          "name": "postcss plugin that injects url() at OnceExit",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css/__tests__/lightningcss/lightningcss.spec.ts",
+      "playground": "css",
+      "ssr": false,
+      "total": 54,
+      "passed": 54,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "imported css",
+          "status": "pass"
+        },
+        {
+          "name": "linked css",
+          "status": "pass"
+        },
+        {
+          "name": "css import from js",
+          "status": "pass"
+        },
+        {
+          "name": "css import asset with space",
+          "status": "pass"
+        },
+        {
+          "name": "postcss config",
+          "status": "pass"
+        },
+        {
+          "name": "postcss plugin that injects url()",
+          "status": "pass"
+        },
+        {
+          "name": "sass",
+          "status": "pass"
+        },
+        {
+          "name": "less",
+          "status": "pass"
+        },
+        {
+          "name": "less-plugin",
+          "status": "pass"
+        },
+        {
+          "name": "stylus",
+          "status": "pass"
+        },
+        {
+          "name": "css modules",
+          "status": "pass"
+        },
+        {
+          "name": "css modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "sass modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "css modules w/ sass",
+          "status": "pass"
+        },
+        {
+          "name": "less modules composes/from path resolving",
+          "status": "pass"
+        },
+        {
+          "name": "inline css modules",
+          "status": "pass"
+        },
+        {
+          "name": "@charset hoist",
+          "status": "pass"
+        },
+        {
+          "name": "layers",
+          "status": "pass"
+        },
+        {
+          "name": "@import external css",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ style entry",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ style export mapping",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency that @import another dependency",
+          "status": "pass"
+        },
+        {
+          "name": "@import scss dependency that has @import with a css extension pointing to another dependency",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass entry",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export mapping",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export mapping (deep)",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/ sass export wildcard to `_partial.scss`",
+          "status": "pass"
+        },
+        {
+          "name": "@import dependency w/out package scss",
+          "status": "pass"
+        },
+        {
+          "name": "async chunk",
+          "status": "pass"
+        },
+        {
+          "name": "treeshaken async chunk",
+          "status": "pass"
+        },
+        {
+          "name": "PostCSS dir-dependency",
+          "status": "pass"
+        },
+        {
+          "name": "import dependency includes css import",
+          "status": "pass"
+        },
+        {
+          "name": "URL separation",
+          "status": "pass"
+        },
+        {
+          "name": "inlined",
+          "status": "pass"
+        },
+        {
+          "name": "inlined-code",
+          "status": "pass"
+        },
+        {
+          "name": "minify css",
+          "status": "pass"
+        },
+        {
+          "name": "?url",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`?url` CSS skips the CSS pipeline and is inlined as raw bytes, so PostCSS does not run on it",
+          "issues": {
+            "vite": [
+              22863
+            ]
+          }
+        },
+        {
+          "name": "?raw",
+          "status": "pass"
+        },
+        {
+          "name": "import css in less",
+          "status": "pass"
+        },
+        {
+          "name": "relative path rewritten in Less's data-uri",
+          "status": "pass"
+        },
+        {
+          "name": "PostCSS source.input.from includes query",
+          "status": "pass"
+        },
+        {
+          "name": "aliased css has content",
+          "status": "pass"
+        },
+        {
+          "name": "resolve imports field in CSS",
+          "status": "pass"
+        },
+        {
+          "name": "warning can be suppressed by esbuild.logOverride",
+          "status": "pass"
+        },
+        {
+          "name": "sugarss",
+          "status": "pass"
+        },
+        {
+          "name": "async css order",
+          "status": "pass"
+        },
+        {
+          "name": "async css order with css modules",
+          "status": "pass"
+        },
+        {
+          "name": "@import scss",
+          "status": "pass"
+        },
+        {
+          "name": "preprocessor imported from css resolves relative imports",
+          "status": "pass"
+        },
+        {
+          "name": "manual chunk path",
+          "status": "pass"
+        },
+        {
+          "name": "CSS modules should be treeshaken if not used",
+          "status": "pass"
+        },
+        {
+          "name": "Scoped CSS via cssScopeTo should be treeshaken",
+          "status": "pass"
+        },
+        {
+          "name": "Scoped CSS should have a correct order",
+          "status": "pass"
+        },
+        {
+          "name": "empty CSS files should generate .css assets, not .js assets",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css/__tests__/no-css-minify/css-no-css-minify.spec.ts",
+      "playground": "css",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "no css minify > js minified but css not minified",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css/__tests__/same-file-name/css-same-file-name.spec.ts",
+      "playground": "css",
+      "ssr": false,
+      "total": 5,
+      "passed": 5,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "css files has same basename > emit file name should consistent",
+          "status": "pass"
+        },
+        {
+          "name": "css files has same basename > emit file name should consistent",
+          "status": "pass"
+        },
+        {
+          "name": "css files has same basename > emit file name should consistent",
+          "status": "pass"
+        },
+        {
+          "name": "css files has same basename > emit file name should consistent",
+          "status": "pass"
+        },
+        {
+          "name": "css files has same basename > emit file name should consistent",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/css/__tests__/sass-modern-compiler-build/sass-modern-compiler.spec.ts",
+      "playground": "css",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "sass modern compiler build multiple entries",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/data-uri/__tests__/data-uri.spec.ts",
+      "playground": "data-uri",
+      "ssr": false,
+      "total": 4,
+      "passed": 4,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "plain",
+          "status": "pass"
+        },
+        {
+          "name": "base64",
+          "status": "pass"
+        },
+        {
+          "name": "svg data uri minify",
+          "status": "pass"
+        },
+        {
+          "name": "should compile away the import for build",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/define/__tests__/define.spec.ts",
+      "playground": "define",
+      "ssr": false,
+      "total": 6,
+      "passed": 6,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "string",
+          "status": "pass"
+        },
+        {
+          "name": "ignores constants in string literals",
+          "status": "pass"
+        },
+        {
+          "name": "replaces constants in template literal expressions",
+          "status": "pass"
+        },
+        {
+          "name": "replace constants on import.meta.env when it is a invalid json",
+          "status": "pass"
+        },
+        {
+          "name": "optional values are detected by pattern properly",
+          "status": "pass"
+        },
+        {
+          "name": "env import with query parameters works correctly",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/dynamic-import-inline/__tests__/dynamic-import-inline.spec.ts",
+      "playground": "dynamic-import-inline",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "don't warn when codeSplitting is set to false",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/dynamic-import/__tests__/dynamic-import.spec.ts",
+      "playground": "dynamic-import",
+      "ssr": false,
+      "total": 37,
+      "passed": 37,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load literal dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "should load full dynamic import from public",
+          "status": "pass"
+        },
+        {
+          "name": "should load data URL of `blob:`",
+          "status": "pass"
+        },
+        {
+          "name": "should load data URL of `data:`",
+          "status": "pass"
+        },
+        {
+          "name": "should have same reference on static and dynamic js import, .mxd",
+          "status": "pass"
+        },
+        {
+          "name": "should have same reference on static and dynamic js import, .mxd2",
+          "status": "pass"
+        },
+        {
+          "name": "should have same reference on static and dynamic js import, .mxdjson",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with css",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars ignored",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with double slash ignored",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars multiline",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars alias",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars subpath imports",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars raw",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars url",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with vars worker",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with css in package",
+          "status": "pass"
+        },
+        {
+          "name": "should work with load ../ and itself directory",
+          "status": "pass"
+        },
+        {
+          "name": "should work with load ../ and contain itself directory",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import with await in the argument",
+          "status": "pass"
+        },
+        {
+          "name": "should load css of nested dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "should handle object rest destructuring of a dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "should work a load path that contains parentheses.",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import treeshaken log",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import syntax parsing",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import treeshaken file",
+          "status": "pass"
+        },
+        {
+          "name": "should not preload for non-analyzable urls",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > plain module.exports object",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > webpack UMD",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > compiled from ESM, with the __esModule flag",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > compiled from CJS",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > module.exports object with the __esModule flag",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep > from an explicit CJS importer uses node interop",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "lazy compilation loses the `default` export of a dynamically imported CommonJS module",
+          "issues": {
+            "vite": [
+              23558
+            ]
+          }
+        },
+        {
+          "name": "dynamic import of a CommonJS dep from an ambiguous importer respects the __esModule flag",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic named import from an ESM dep",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/env-nested/__tests__/env-nested.spec.ts",
+      "playground": "env-nested",
+      "ssr": false,
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "mode",
+          "status": "pass"
+        },
+        {
+          "name": "mode file override",
+          "status": "pass"
+        },
+        {
+          "name": "should not load parent .env file",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/env/__tests__/env.spec.ts",
+      "playground": "env",
+      "ssr": false,
+      "total": 16,
+      "passed": 16,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "base",
+          "status": "pass"
+        },
+        {
+          "name": "mode",
+          "status": "pass"
+        },
+        {
+          "name": "dev",
+          "status": "pass"
+        },
+        {
+          "name": "prod",
+          "status": "pass"
+        },
+        {
+          "name": "custom",
+          "status": "pass"
+        },
+        {
+          "name": "custom in template literal expression",
+          "status": "pass"
+        },
+        {
+          "name": "custom-prefix",
+          "status": "pass"
+        },
+        {
+          "name": "mode file override",
+          "status": "pass"
+        },
+        {
+          "name": "inline variables",
+          "status": "pass"
+        },
+        {
+          "name": "define",
+          "status": "pass"
+        },
+        {
+          "name": "NODE_ENV",
+          "status": "pass"
+        },
+        {
+          "name": "expand",
+          "status": "pass"
+        },
+        {
+          "name": "ssr",
+          "status": "pass"
+        },
+        {
+          "name": "env object",
+          "status": "pass"
+        },
+        {
+          "name": "env object in template literal expression",
+          "status": "pass"
+        },
+        {
+          "name": "ignores import.meta.env in string literals",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/environment-react-ssr/__tests__/environment-react-ssr.spec.ts",
+      "playground": "environment-react-ssr",
+      "ssr": true,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "basic",
+          "status": "pass",
+          "tag": "todo",
+          "reason": "`server.transformIndexHtml` currently returns HTML that points at the source files, not at the files bundled dev produces; how it should work in bundled dev is not decided yet, e.g. return the HTML that the build HTML plugin emits as `index.html` in `bundledDev.memoryFiles`",
+          "issues": {
+            "vite": [
+              20374
+            ]
+          }
+        },
+        {
+          "name": "pre-bundling > client",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "pre-bundling > deps reload (client)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        }
+      ]
+    },
+    {
+      "file": "playground/extensions/__tests__/extensions.spec.ts",
+      "playground": "extensions",
+      "ssr": false,
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "not contain `.mjs`",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/external/__tests__/external.spec.ts",
+      "playground": "external",
+      "ssr": false,
+      "total": 4,
+      "passed": 4,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "importmap",
+          "status": "pass"
+        },
+        {
+          "name": "should have default exports",
+          "status": "pass"
+        },
+        {
+          "name": "build > should externalize imported packages",
+          "status": "pass"
+        },
+        {
+          "name": "build > should externalize required packages",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/fs-serve/__tests__/base/fs-serve-base.spec.ts",
+      "playground": "fs-serve",
+      "ssr": false,
+      "total": 6,
+      "passed": 6,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "matrix > safe fetch (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch in subdir (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch in subdir (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with special characters (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with special characters (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with special characters 2 (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with special characters 2 (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch imported (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch imported with query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe WASM import (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe WASM import (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe JSON fetch (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch outside root (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters (#8498) (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters (#8498) (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters 2 (#8498) (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters 2 (#8498) (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch raw query import (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch raw query import (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root 1 (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root 2 (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with ?url query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with ?url query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch ?.svg?import (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch ?.svg?import (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch .svg?import (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch .svg?import (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline wasm init (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline wasm init (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with vite wasm instance query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with relative path after query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with relative path after query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied env casing (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied env casing (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with raw query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with raw query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with url query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with url query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with inline query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with inline query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied env with ?.svg?.wasm?init (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied env with ?.svg?.wasm?init (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with import and raw query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with import and raw query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with vite wasm instance query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with vite wasm instance query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with NTFS ADS suffix (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with NTFS ADS suffix (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with 8.3 short name (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with 8.3 short name (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "fetch > serve with configured headers",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > fetch HTML file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > fetch with allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > fetch HTML file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > fetch with non-allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "preview HTML > unsafe HTML fetch",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/fs-serve/__tests__/fs-serve.spec.ts",
+      "playground": "fs-serve",
+      "ssr": false,
+      "total": 6,
+      "passed": 6,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "matrix > safe fetch (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch in subdir (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch in subdir (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with special characters (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with special characters (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with special characters 2 (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch with special characters 2 (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch imported (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > safe fetch imported with query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe WASM import (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe WASM import (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe JSON fetch (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe HTML fetch outside root (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters (#8498) (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters (#8498) (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters 2 (#8498) (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with special characters 2 (#8498) (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch raw query import (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch raw query import (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root 1 (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch raw import raw outside root 2 (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with ?url query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with ?url query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch ?.svg?import (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch ?.svg?import (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch .svg?import (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch .svg?import (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline wasm init (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch import inline wasm init (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with vite wasm instance query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with relative path after query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > unsafe fetch with relative path after query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied env casing (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied env casing (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with raw query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with raw query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with url query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with url query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with inline query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with inline query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied env with ?.svg?.wasm?init (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied env with ?.svg?.wasm?init (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with import and raw query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with import and raw query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with vite wasm instance query (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with vite wasm instance query (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with NTFS ADS suffix (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with NTFS ADS suffix (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with 8.3 short name (normal)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "matrix > denied .env with 8.3 short name (/@fs/)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "fetch > serve with configured headers",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > fetch HTML file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > allowed for same origin > fetch with allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > fetch HTML file",
+          "status": "pass"
+        },
+        {
+          "name": "cross origin > denied for different origin > fetch with non-allowed hosts",
+          "status": "pass"
+        },
+        {
+          "name": "preview HTML > unsafe HTML fetch",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/glob-import/__tests__/glob-import.spec.ts",
+      "playground": "glob-import",
+      "ssr": false,
+      "total": 21,
+      "passed": 21,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should work",
+          "status": "pass"
+        },
+        {
+          "name": "import glob raw",
+          "status": "pass"
+        },
+        {
+          "name": "import property access",
+          "status": "pass"
+        },
+        {
+          "name": "import relative glob raw",
+          "status": "pass"
+        },
+        {
+          "name": "unassigned import processes",
+          "status": "pass"
+        },
+        {
+          "name": "import glob in package",
+          "status": "pass"
+        },
+        {
+          "name": "follow symlinks",
+          "status": "pass"
+        },
+        {
+          "name": "follow symlinks same reference",
+          "status": "pass"
+        },
+        {
+          "name": "alias exclusion",
+          "status": "pass"
+        },
+        {
+          "name": "array pattern with exclusions",
+          "status": "pass"
+        },
+        {
+          "name": "array pattern with sibling directories sharing a prefix",
+          "status": "pass"
+        },
+        {
+          "name": "tree-shake eager css",
+          "status": "pass"
+        },
+        {
+          "name": "escapes special chars in globs without mangling user supplied glob suffix",
+          "status": "pass"
+        },
+        {
+          "name": "escape literal parenthesis in glob pattern",
+          "status": "pass"
+        },
+        {
+          "name": "subpath imports",
+          "status": "pass"
+        },
+        {
+          "name": "subpath imports (sub dir)",
+          "status": "pass"
+        },
+        {
+          "name": "#alias imports",
+          "status": "pass"
+        },
+        {
+          "name": "import base glob raw",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.glob and dynamic import vars transformations should be visible to post transform plugins",
+          "status": "pass"
+        },
+        {
+          "name": "caseSensitiveMatch option",
+          "status": "pass"
+        },
+        {
+          "name": "absolute base with files outside of root",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/hmr-full-bundle-mode/__tests__/hmr-full-bundle-mode.spec.ts",
+      "playground": "hmr-full-bundle-mode",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should render",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/hmr-ssr/__tests__/hmr-ssr.spec.ts",
+      "playground": "hmr-ssr",
+      "ssr": true,
+      "total": 30,
+      "passed": 30,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "self accept with different entry point formats > accepts if entry point is relative to root ./unresolved.ts",
+          "status": "pass"
+        },
+        {
+          "name": "self accept with different entry point formats > accepts if entry point is relative to root ./unresolved",
+          "status": "pass"
+        },
+        {
+          "name": "self accept with different entry point formats > accepts if entry point is relative to root /unresolved",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > the callback is called with the new version the module",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > stops HMR bubble on dependency change",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > accepts itself and refreshes on change",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > accepts itself and refreshes on 2nd change",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when all used exports are accepted > does not accept itself anymore after acceptedExports change",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to dep",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to self > with named exports",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > does not stop the HMR bubble on change to self > with default export",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > doesn't reload if files not in the entrypoint importers chain is changed > does not full reload",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > when some used exports are not accepted > doesn't reload if files not in the entrypoint importers chain is changed > does not update",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > accepts itself when imported for side effects only (no bindings imported)",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > acceptExports([]) > accepts itself if no exports are imported",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > acceptExports([]) > doesn't accept itself if any of its exports is imported",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > import * from ... > accepts itself if all its exports are accepted",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > import * from ... > doesn't accept itself if one export is not accepted",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > dynamic import(...) > accepts itself if all its exports are accepted",
+          "status": "pass"
+        },
+        {
+          "name": "acceptExports > indiscriminate imports: import * > dynamic import(...) > doesn't accept itself if one export is not accepted",
+          "status": "pass"
+        },
+        {
+          "name": "handle virtual module updates",
+          "status": "pass"
+        },
+        {
+          "name": "invalidate virtual module",
+          "status": "pass"
+        },
+        {
+          "name": "should hmr when file is deleted and restored",
+          "status": "pass"
+        },
+        {
+          "name": "delete file should not break hmr",
+          "status": "pass"
+        },
+        {
+          "name": "deleted file should trigger dispose and prune callbacks",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.hot?.accept",
+          "status": "pass"
+        },
+        {
+          "name": "hmr works for self-accepted module within circular imported files",
+          "status": "pass"
+        },
+        {
+          "name": "hmr should not reload if no accepted within circular imported files",
+          "status": "pass"
+        },
+        {
+          "name": "not inlined assets HMR",
+          "status": "pass"
+        },
+        {
+          "name": "inlined assets HMR",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/hmr/__tests__/hmr.spec.ts",
+      "playground": "hmr",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should render",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/html/__tests__/html.spec.ts",
+      "playground": "html",
+      "ssr": false,
+      "total": 56,
+      "passed": 56,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "main > pre transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > string transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > tags transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > combined transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > server only transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > build only transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > conditional transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > body prepend/append transform",
+          "status": "pass"
+        },
+        {
+          "name": "main > css",
+          "status": "pass"
+        },
+        {
+          "name": "main > preserve comments",
+          "status": "pass"
+        },
+        {
+          "name": "main > external paths works with vite-ignore attribute",
+          "status": "pass"
+        },
+        {
+          "name": "main > external paths by rolldownOptions.external works",
+          "status": "pass"
+        },
+        {
+          "name": "nested > pre transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > string transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > tags transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > combined transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > server only transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > build only transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > conditional transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > body prepend/append transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested > css",
+          "status": "pass"
+        },
+        {
+          "name": "nested > relative path in html asset",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > pre transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > string transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > tags transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > combined transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > server only transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > build only transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > conditional transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > body prepend/append transform",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > css",
+          "status": "pass"
+        },
+        {
+          "name": "nested w/ query > relative path in html asset",
+          "status": "pass"
+        },
+        {
+          "name": "build > scriptAsync > script is async",
+          "status": "pass"
+        },
+        {
+          "name": "build > scriptMixed > script is mixed",
+          "status": "pass"
+        },
+        {
+          "name": "build > zeroJS > zeroJS",
+          "status": "pass"
+        },
+        {
+          "name": "build > inline entry > is inlined",
+          "status": "pass"
+        },
+        {
+          "name": "build > inline entry > is not inlined",
+          "status": "pass"
+        },
+        {
+          "name": "build > inline entry > execution order when inlined",
+          "status": "pass"
+        },
+        {
+          "name": "build > inline entry > execution order when not inlined",
+          "status": "pass"
+        },
+        {
+          "name": "noHead > noHead tags injection",
+          "status": "pass"
+        },
+        {
+          "name": "noBody > noBody tags injection",
+          "status": "pass"
+        },
+        {
+          "name": "Unicode path > direct access",
+          "status": "pass"
+        },
+        {
+          "name": "Unicode path > spa fallback",
+          "status": "pass"
+        },
+        {
+          "name": "link with props > separate links with different media props",
+          "status": "pass"
+        },
+        {
+          "name": "Valid HTML > valid HTML is parsed",
+          "status": "pass"
+        },
+        {
+          "name": "env > env works",
+          "status": "pass"
+        },
+        {
+          "name": "importmap > importmap should be prepended",
+          "status": "pass"
+        },
+        {
+          "name": "side-effects > console.log is not tree-shaken",
+          "status": "pass"
+        },
+        {
+          "name": "special character > should fetch html proxy",
+          "status": "pass"
+        },
+        {
+          "name": "relative input > passing relative path to rolldownOptions.input works",
+          "status": "pass"
+        },
+        {
+          "name": "html serve behavior",
+          "status": "pass"
+        },
+        {
+          "name": "html fallback works non browser accept header",
+          "status": "pass"
+        },
+        {
+          "name": "escape html attribute",
+          "status": "pass"
+        },
+        {
+          "name": "invalidate inline proxy module on reload",
+          "status": "pass"
+        },
+        {
+          "name": "HTML tag removal > removes adjacent module-script tags (#23819)",
+          "status": "pass"
+        },
+        {
+          "name": "HTML tag removal > removes adjacent stylesheet tags (#23819)",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/import-attribute/__tests__/import-attribute.spec.ts",
+      "playground": "import-attribute",
+      "ssr": false,
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "from source code",
+          "status": "pass"
+        },
+        {
+          "name": "from dependency",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/js-sourcemap/__tests__/js-sourcemap.spec.ts",
+      "playground": "js-sourcemap",
+      "ssr": false,
+      "total": 8,
+      "passed": 8,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "build tests > should not output sourcemap warning (#4939)",
+          "status": "pass"
+        },
+        {
+          "name": "build tests > sourcemap is correct when preload information is injected",
+          "status": "pass"
+        },
+        {
+          "name": "build tests > sourcemap file field is consistent (#20853)",
+          "status": "pass"
+        },
+        {
+          "name": "build tests > __vite__mapDeps injected after banner",
+          "status": "pass"
+        },
+        {
+          "name": "build tests > no unused __vite__mapDeps",
+          "status": "pass"
+        },
+        {
+          "name": "build tests > sourcemap is correct when using object as \"define\" value",
+          "status": "pass"
+        },
+        {
+          "name": "build tests > correct sourcemap during ssr dev when using object as \"define\" value",
+          "status": "pass"
+        },
+        {
+          "name": "build tests > source and sourcemap contain matching debug IDs",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/json/__tests__/csr/json-csr.spec.ts",
+      "playground": "json",
+      "ssr": false,
+      "total": 10,
+      "passed": 10,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "default import",
+          "status": "pass"
+        },
+        {
+          "name": "named import",
+          "status": "pass"
+        },
+        {
+          "name": "deep import",
+          "status": "pass"
+        },
+        {
+          "name": "named deep import",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "dynamic import, named",
+          "status": "pass"
+        },
+        {
+          "name": "fetch",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev serves only the bundle output and the public directory, never a single project file"
+        },
+        {
+          "name": "?url",
+          "status": "pass"
+        },
+        {
+          "name": "?raw",
+          "status": "pass"
+        },
+        {
+          "name": "require(json) returns object without default export",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/chunk-importmap/legacy-chunk-importmap.spec.ts",
+      "playground": "legacy",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/client-and-ssr/legacy-client-legacy-ssr-sequential-builds.spec.ts",
+      "playground": "legacy",
+      "ssr": true,
+      "total": 2,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "client-legacy-ssr-sequential-builds > should work",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "client-legacy-ssr-sequential-builds > import.meta.env.MODE",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/legacy.spec.ts",
+      "playground": "legacy",
+      "ssr": false,
+      "total": 18,
+      "passed": 18,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load the worker",
+          "status": "pass"
+        },
+        {
+          "name": "should work",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.env.LEGACY",
+          "status": "pass"
+        },
+        {
+          "name": "transpiles down iterators correctly",
+          "status": "pass"
+        },
+        {
+          "name": "async generator",
+          "status": "pass"
+        },
+        {
+          "name": "wraps with iife",
+          "status": "pass"
+        },
+        {
+          "name": "generates assets",
+          "status": "pass"
+        },
+        {
+          "name": "correctly emits styles",
+          "status": "pass"
+        },
+        {
+          "name": "should load dynamic import with css",
+          "status": "pass"
+        },
+        {
+          "name": "asset url",
+          "status": "pass"
+        },
+        {
+          "name": "build > should generate correct manifest",
+          "status": "pass"
+        },
+        {
+          "name": "build > should minify legacy chunks",
+          "status": "pass"
+        },
+        {
+          "name": "build > should not use newer syntax when minifying legacy chunks",
+          "status": "pass"
+        },
+        {
+          "name": "build > should emit css file",
+          "status": "pass"
+        },
+        {
+          "name": "build > includes structuredClone polyfill which is supported after core-js v3",
+          "status": "pass"
+        },
+        {
+          "name": "build > should generate legacy sourcemap file",
+          "status": "pass"
+        },
+        {
+          "name": "build > should have only modern entry files guarded",
+          "status": "pass"
+        },
+        {
+          "name": "build > should not include preload helper in legacy chunks",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/modern-target/legacy-modern-target.spec.ts",
+      "playground": "legacy",
+      "ssr": false,
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load and execute the JS file",
+          "status": "pass"
+        },
+        {
+          "name": "build > modern polyfill chunk respects modernTargets",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/no-polyfills-no-systemjs/legacy-no-polyfills-no-systemjs.spec.ts",
+      "playground": "legacy",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "includes only a single script tag",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/no-polyfills/legacy-no-polyfills.spec.ts",
+      "playground": "legacy",
+      "ssr": false,
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should load and execute the JS file",
+          "status": "pass"
+        },
+        {
+          "name": "includes a script tag for SystemJS",
+          "status": "pass"
+        },
+        {
+          "name": "does not emit modulepreload links for legacy-only output",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/ssr/legacy-ssr.spec.ts",
+      "playground": "legacy",
+      "ssr": true,
+      "total": 2,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "legacy-ssr > should work",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "legacy-ssr > import.meta.env.LEGACY",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        }
+      ]
+    },
+    {
+      "file": "playground/legacy/__tests__/watch/legacy-styles-only-entry-watch.spec.ts",
+      "playground": "legacy",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "rebuilds styles only entry on change",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/minify/__tests__/minify.spec.ts",
+      "playground": "minify",
+      "ssr": false,
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "no minifySyntax",
+          "status": "pass"
+        },
+        {
+          "name": "minifies inline style with esbuild",
+          "status": "pass"
+        },
+        {
+          "name": "escapes closing style tags with esbuild",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/multiple-entrypoints/__tests__/multiple-entrypoints.spec.ts",
+      "playground": "multiple-entrypoints",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have css applied on second dynamic import",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/nested-deps/__tests__/nested-deps.spec.ts",
+      "playground": "nested-deps",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "handle nested package",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/optimize-deps-no-discovery/__tests__/optimize-deps-no-discovery.spec.ts",
+      "playground": "optimize-deps-no-discovery",
+      "ssr": false,
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "optimized dep",
+          "status": "pass"
+        },
+        {
+          "name": "vue + vuex",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/optimize-deps/__tests__/optimize-deps.spec.ts",
+      "playground": "optimize-deps",
+      "ssr": false,
+      "total": 41,
+      "passed": 41,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "optimize-deps > default + named imports from cjs dep (react)",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > named imports from webpacked cjs (phoenix)",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > default import from webpacked cjs (clipboard)",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > default import from cjs with es-module-flag (dep-cjs-with-es-module-flag)",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > default import from cjs (cjs-dep-cjs-compiled-from-esm)",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > default import from cjs (cjs-dep-cjs-compiled-from-cjs)",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > named import injected into an optimized dep by a plugin (dep-with-injected-import)",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > dedupe",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > cjs browser field (axios)",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > cjs browser field bare",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > dep from linked dep (lodash-es)",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > forced include",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > import * from optimized dep",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > import from dep with process.env.NODE_ENV",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > import from dep with subpath imports (#) conditions",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > import from dep with .notjs files",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > Import from dependency which uses relative path which needs to be resolved by main field",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > dep with dynamic import",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > dep with optional peer dep",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > dep with optional peer dep submodule",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > dep with optional peer dep (cjs)",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > optimized CJS dep preserves fallback for excluded optional peer",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > dep with css import",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > CJS dep with css import",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > CJS dep requiring dep with css main field",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > externalize known non-js files in optimize included dep",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > vue + vuex",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > esbuild-plugin",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > import from hidden dir",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > import optimize-excluded package that imports optimized-included package",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > import aliased package with colon",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > import aliased package using absolute path",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > variable names are reused in different scripts",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > flatten id should generate correctly",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > non optimized module is not duplicated",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > optimized browser:false is empty without warning",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > error on builtin modules usage",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > pre bundle css require",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > no missing deps during build",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > name file limit is 170 characters",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > optimizeDeps config > supports include glob syntax",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > long file name should work",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > warn on incompatible dependency",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > import the CommonJS external package that omits the js suffix",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > external package name with asset extension",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > dependency with external sub-dependencies",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > discovers deep imports with custom html-like extensions during dep scan",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > virtual module with .vue extension does not error during scan",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > no dep scan error for virtual modules with html-like extensions",
+          "status": "unsupported",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        },
+        {
+          "name": "optimize-deps > should fix relative worker paths in optimized dependencies",
+          "status": "pass",
+          "tag": "unsupported",
+          "reason": "bundled dev has no dep optimizer for the client environment, so there is no client `.vite/deps` metadata"
+        }
+      ]
+    },
+    {
+      "file": "playground/preload/__tests__/preload-disabled/preload-disabled.spec.ts",
+      "playground": "preload",
+      "ssr": false,
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "build > dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "build > dynamic import with comments",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/preload/__tests__/preload.spec.ts",
+      "playground": "preload",
+      "ssr": false,
+      "total": 5,
+      "passed": 5,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "build > dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "build > dynamic import with comments",
+          "status": "pass"
+        },
+        {
+          "name": "build > does not re-preload a chunk already preloaded by the HTML",
+          "status": "pass"
+        },
+        {
+          "name": "build > removes load/error listeners once the preload link settles",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/preload/__tests__/resolve-deps/preload-resolve-deps.spec.ts",
+      "playground": "preload",
+      "ssr": false,
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "build > dynamic import",
+          "status": "pass"
+        },
+        {
+          "name": "build > dynamic import with comments",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/preserve-symlinks/__tests__/preserve-symlinks.spec.ts",
+      "playground": "preserve-symlinks",
+      "ssr": false,
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should have no 404s",
+          "status": "pass"
+        },
+        {
+          "name": "not-preserve-symlinks",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/proxy-bypass/__tests__/proxy-bypass.spec.ts",
+      "playground": "proxy-bypass",
+      "ssr": false,
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "proxy-bypass",
+          "status": "pass"
+        },
+        {
+          "name": "async-proxy-bypass",
+          "status": "pass"
+        },
+        {
+          "name": "async-proxy-bypass-with-error",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/resolve-tsconfig-paths/__tests__/resolve.spec.ts",
+      "playground": "resolve-tsconfig-paths",
+      "ssr": false,
+      "total": 9,
+      "passed": 9,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "import from .ts",
+          "status": "pass"
+        },
+        {
+          "name": "import from .js",
+          "status": "pass"
+        },
+        {
+          "name": "import using # prefixed path",
+          "status": "pass"
+        },
+        {
+          "name": "fallback works",
+          "status": "pass"
+        },
+        {
+          "name": "nested tsconfig.json & references / include works",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.glob resolves tsconfig paths",
+          "status": "pass"
+        },
+        {
+          "name": "css @import resolves tsconfig paths",
+          "status": "pass"
+        },
+        {
+          "name": "sass @use resolves tsconfig paths",
+          "status": "pass"
+        },
+        {
+          "name": "less @import does not resolve tsconfig paths (unsupported)",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/resolve/__tests__/mainfields-custom-first/resolve-mainfields-custom-first.spec.ts",
+      "playground": "resolve",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "resolve.mainFields.custom-first",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/resolve/__tests__/resolve.spec.ts",
+      "playground": "resolve",
+      "ssr": false,
+      "total": 64,
+      "passed": 64,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "bom import",
+          "status": "pass"
+        },
+        {
+          "name": "deep import",
+          "status": "pass"
+        },
+        {
+          "name": "exports and a nested package scope with a different type",
+          "status": "pass"
+        },
+        {
+          "name": "entry with exports field",
+          "status": "pass"
+        },
+        {
+          "name": "deep import with exports field",
+          "status": "pass"
+        },
+        {
+          "name": "deep import with query with exports field",
+          "status": "pass"
+        },
+        {
+          "name": "deep import with exports field + exposed dir",
+          "status": "pass"
+        },
+        {
+          "name": "deep import with exports field + mapped dir",
+          "status": "pass"
+        },
+        {
+          "name": "exports read from the root package.json",
+          "status": "pass"
+        },
+        {
+          "name": "deep import with exports and legacy fallback",
+          "status": "pass"
+        },
+        {
+          "name": "Respect exports field env key priority",
+          "status": "pass"
+        },
+        {
+          "name": "Respect production/development conditionals",
+          "status": "pass"
+        },
+        {
+          "name": "Respect exports to take precedence over mainFields",
+          "status": "pass"
+        },
+        {
+          "name": "import and require resolve using module condition",
+          "status": "pass"
+        },
+        {
+          "name": "implicit dir/index.js",
+          "status": "pass"
+        },
+        {
+          "name": "implicit dir/index.js vs explicit file",
+          "status": "pass"
+        },
+        {
+          "name": "nested extension",
+          "status": "pass"
+        },
+        {
+          "name": "exact extension vs. duplicated (.js.js)",
+          "status": "pass"
+        },
+        {
+          "name": "don't add extension to directory name (./dir-with-ext.js/index.js)",
+          "status": "pass"
+        },
+        {
+          "name": "a ts module can import another ts module using its corresponding js file name",
+          "status": "pass"
+        },
+        {
+          "name": "a js module can import another ts module using its corresponding js file name",
+          "status": "pass"
+        },
+        {
+          "name": "filename with dot",
+          "status": "pass"
+        },
+        {
+          "name": "absolute path",
+          "status": "pass"
+        },
+        {
+          "name": "file url",
+          "status": "pass"
+        },
+        {
+          "name": "browser field",
+          "status": "pass"
+        },
+        {
+          "name": "access property of browser:false module",
+          "status": "pass"
+        },
+        {
+          "name": "named import from a Node built-in does not break the build",
+          "status": "pass"
+        },
+        {
+          "name": "reading a named import from a Node built-in",
+          "status": "pass"
+        },
+        {
+          "name": "Resolve browser field even if module field exists",
+          "status": "pass"
+        },
+        {
+          "name": "css entry",
+          "status": "pass"
+        },
+        {
+          "name": "monorepo linked dep",
+          "status": "pass"
+        },
+        {
+          "name": "plugin resolved virtual file",
+          "status": "pass"
+        },
+        {
+          "name": "plugin resolved virtual file that has import",
+          "status": "pass"
+        },
+        {
+          "name": "plugin resolved custom virtual file",
+          "status": "pass"
+        },
+        {
+          "name": "virtual file with URL scheme should not be rewritten (#20803)",
+          "status": "pass"
+        },
+        {
+          "name": "resolve inline package",
+          "status": "pass"
+        },
+        {
+          "name": "resolve.extensions",
+          "status": "pass"
+        },
+        {
+          "name": "resolve.mainFields",
+          "status": "pass"
+        },
+        {
+          "name": "resolve.mainFields.browser-first",
+          "status": "pass"
+        },
+        {
+          "name": "resolve.conditions",
+          "status": "pass"
+        },
+        {
+          "name": "resolve package that contains # in path",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving top level with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving same level with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving nested path with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving star with imports filed",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving star with $$ in filename with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving slash with imports filed",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving from other package with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving with query with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving dot-prefixed directory with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving #/ root alias pattern with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving ## prefixed pattern with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving key containing # with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving key containing ? with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving with hash postfix with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving #hash?query with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving #mid#hash#fragment?query with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolving #question?mark?query#fragment with imports field",
+          "status": "pass"
+        },
+        {
+          "name": "Resolve doesn't interrupt page request with trailing query and .css",
+          "status": "pass"
+        },
+        {
+          "name": "resolve non-normalized absolute path",
+          "status": "pass"
+        },
+        {
+          "name": "Resolve doesn't interrupt page request that clashes with local project package.json",
+          "status": "pass"
+        },
+        {
+          "name": "public dir is not copied",
+          "status": "pass"
+        },
+        {
+          "name": "import utf8-bom package",
+          "status": "pass"
+        },
+        {
+          "name": "sideEffects field glob pattern is respected",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/resolve/__tests__/sass-node-builtin-clash/resolve-sass-node-builtin-clash.spec.ts",
+      "playground": "resolve",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "sass @use with node builtin name does not panic",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-alias/__tests__/ssr-alias.spec.ts",
+      "playground": "ssr-alias",
+      "ssr": true,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "build",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-conditions/__tests__/ssr-conditions.spec.ts",
+      "playground": "ssr-conditions",
+      "ssr": true,
+      "total": 2,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "ssr.resolve.conditions affect non-externalized imports during ssr",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "ssr.resolve settings do not affect non-ssr imports",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-deps/__tests__/ssr-deps.spec.ts",
+      "playground": "ssr-deps",
+      "ssr": true,
+      "total": 18,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "msg should be encrypted",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg read by fs/promises",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from primitive export",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from TS transpiled exports",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from Object.assign exports",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from forwarded exports",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from define properties exports",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from define property exports",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from only object assigned exports",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from no external cjs",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from optimized with nested external",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from optimized cjs with nested external",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from external using external entry",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from linked no external",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "msg from linked no external",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "import css library",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "import css library",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "optimize-deps-nested-include",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-pug/__tests__/ssr-pug.spec.ts",
+      "playground": "ssr-pug",
+      "ssr": true,
+      "total": 2,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "injected inline scripts > no injected inline scripts are present",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "injected inline scripts > injected script proxied correctly",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-resolve/__tests__/ssr-resolve.spec.ts",
+      "playground": "ssr-resolve",
+      "ssr": true,
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "correctly resolve entrypoints",
+          "status": "pass"
+        },
+        {
+          "name": "node builtins should not be bundled if not used",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-wasm/__tests__/ssr-wasm.spec.ts",
+      "playground": "ssr-wasm",
+      "ssr": true,
+      "total": 7,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "should work when inlined",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "should work when output",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "should not contain wasm file when inlined",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "should contain and reference wasm file when output",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "direct wasm import",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "direct wasm import should contain and reference wasm file",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "direct wasm import with wasm imports",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr-webworker/__tests__/ssr-webworker.spec.ts",
+      "playground": "ssr-webworker",
+      "ssr": true,
+      "total": 9,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "/",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "supports resolve.conditions",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "respects browser export",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "supports nodejs_compat",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "supports requiring an external node builtin from CommonJS",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "warns when automatically externalizing a node builtin",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "build output does not contain createRequire",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "converts a CommonJS require for an installed Node builtin package to an import",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "codeSplitting: false",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        }
+      ]
+    },
+    {
+      "file": "playground/ssr/__tests__/ssr.spec.ts",
+      "playground": "ssr",
+      "ssr": true,
+      "total": 7,
+      "passed": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "name": "circular dependencies modules doesn't throw",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "circular import doesn't throw (1)",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "circular import doesn't throw (2)",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "deadlock doesn't happen for static imports",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "deadlock doesn't happen for dynamic imports",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "import.meta.resolve is supported",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        },
+        {
+          "name": "import.meta.main is supported",
+          "status": "triage",
+          "note": "Its spec starts its own server, which does not turn on bundled dev yet."
+        }
+      ]
+    },
+    {
+      "file": "playground/tailwind-sourcemap/__tests__/tailwind-sourcemap.spec.ts",
+      "playground": "tailwind-sourcemap",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should not output sourcemap warning (#4939)",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/tailwind-v3/__test__/tailwind-v3.spec.ts",
+      "playground": "tailwind-v3",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should render",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/tailwind/__test__/tailwind.spec.ts",
+      "playground": "tailwind",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should render",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/transform-plugin/__tests__/base/transform-plugin.spec.ts",
+      "playground": "transform-plugin",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should re-run transform when dependencies are edited",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/transform-plugin/__tests__/transform-plugin.spec.ts",
+      "playground": "transform-plugin",
+      "ssr": false,
+      "total": 3,
+      "passed": 3,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "module type should be supported",
+          "status": "pass"
+        },
+        {
+          "name": "lazy hook filter should be applied",
+          "status": "pass"
+        },
+        {
+          "name": "should re-run transform when dependencies are edited",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/tsconfig-json-load-error/__tests__/tsconfig-json-load-error.spec.ts",
+      "playground": "tsconfig-json-load-error",
+      "ssr": false,
+      "total": 2,
+      "passed": 2,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "build > should throw an error on build",
+          "status": "pass"
+        },
+        {
+          "name": "build > should not output files to dist",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/tsconfig-json/__tests__/tsconfig-json.spec.ts",
+      "playground": "tsconfig-json",
+      "ssr": false,
+      "total": 5,
+      "passed": 5,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should respected each `tsconfig.json`s compilerOptions",
+          "status": "pass"
+        },
+        {
+          "name": "transformWithEsbuild > merge tsconfigRaw object",
+          "status": "pass"
+        },
+        {
+          "name": "transformWithEsbuild > overwrite tsconfigRaw string",
+          "status": "pass"
+        },
+        {
+          "name": "transformWithEsbuild > verbatimModuleSyntax",
+          "status": "pass"
+        },
+        {
+          "name": "transformWithEsbuild > experimentalDecorators",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/wasm/__tests__/wasm.spec.ts",
+      "playground": "wasm",
+      "ssr": false,
+      "total": 11,
+      "passed": 11,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "should work when inlined",
+          "status": "pass"
+        },
+        {
+          "name": "should work when output",
+          "status": "pass"
+        },
+        {
+          "name": "init function returns WebAssembly.Instance",
+          "status": "pass"
+        },
+        {
+          "name": "?url",
+          "status": "pass"
+        },
+        {
+          "name": "should work when wasm in worker",
+          "status": "pass"
+        },
+        {
+          "name": "direct wasm import",
+          "status": "pass"
+        },
+        {
+          "name": "direct wasm import with wasm imports",
+          "status": "pass"
+        },
+        {
+          "name": "direct wasm import unwraps exported WebAssembly.Global",
+          "status": "pass"
+        },
+        {
+          "name": "wasm importing a global from another wasm",
+          "status": "pass"
+        },
+        {
+          "name": "wasm reading a mutable global mutated by another wasm",
+          "status": "pass"
+        },
+        {
+          "name": "wasm using js-string builtins and imported string constants",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/es/worker-es.spec.ts",
+      "playground": "worker",
+      "ssr": false,
+      "total": 24,
+      "passed": 24,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "normal",
+          "status": "pass"
+        },
+        {
+          "name": "named",
+          "status": "pass"
+        },
+        {
+          "name": "TS output",
+          "status": "pass"
+        },
+        {
+          "name": "inlined",
+          "status": "pass"
+        },
+        {
+          "name": "named inlined",
+          "status": "pass"
+        },
+        {
+          "name": "import meta url",
+          "status": "pass"
+        },
+        {
+          "name": "unicode inlined",
+          "status": "pass"
+        },
+        {
+          "name": "shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "named shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "inline shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "worker emitted and import.meta.url in nested worker (serve)",
+          "status": "pass"
+        },
+        {
+          "name": "deeply nested workers",
+          "status": "pass"
+        },
+        {
+          "name": "build > inlined code generation",
+          "status": "pass"
+        },
+        {
+          "name": "build > worker emitted and import.meta.url in nested worker (build)",
+          "status": "pass"
+        },
+        {
+          "name": "build > dead-code-eliminated worker asset is not emitted",
+          "status": "pass"
+        },
+        {
+          "name": "module worker",
+          "status": "pass"
+        },
+        {
+          "name": "classic worker",
+          "status": "pass"
+        },
+        {
+          "name": "emit chunk",
+          "status": "pass"
+        },
+        {
+          "name": "url query worker",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.glob in worker",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.glob with eager in worker",
+          "status": "pass"
+        },
+        {
+          "name": "require json in worker",
+          "status": "pass"
+        },
+        {
+          "name": "self reference worker",
+          "status": "pass"
+        },
+        {
+          "name": "self reference url worker",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/iife/worker-iife.spec.ts",
+      "playground": "worker",
+      "ssr": false,
+      "total": 19,
+      "passed": 19,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "normal",
+          "status": "pass"
+        },
+        {
+          "name": "named",
+          "status": "pass"
+        },
+        {
+          "name": "TS output",
+          "status": "pass"
+        },
+        {
+          "name": "inlined",
+          "status": "pass"
+        },
+        {
+          "name": "named inlined",
+          "status": "pass"
+        },
+        {
+          "name": "shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "named shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "inline shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "build > inlined code generation",
+          "status": "pass"
+        },
+        {
+          "name": "build > worker emitted and import.meta.url in nested worker (build)",
+          "status": "pass"
+        },
+        {
+          "name": "build > should not emit worker manifest",
+          "status": "pass"
+        },
+        {
+          "name": "module worker",
+          "status": "pass"
+        },
+        {
+          "name": "classic worker",
+          "status": "pass"
+        },
+        {
+          "name": "url query worker",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.glob eager in worker",
+          "status": "pass"
+        },
+        {
+          "name": "require json in worker",
+          "status": "pass"
+        },
+        {
+          "name": "self reference worker",
+          "status": "pass"
+        },
+        {
+          "name": "self reference url worker",
+          "status": "pass"
+        },
+        {
+          "name": "self reference url worker in dependency",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/relative-base-iife/worker-relative-base-iife.spec.ts",
+      "playground": "worker",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "asset url",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/relative-base/worker-relative-base.spec.ts",
+      "playground": "worker",
+      "ssr": false,
+      "total": 16,
+      "passed": 16,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "normal",
+          "status": "pass"
+        },
+        {
+          "name": "named",
+          "status": "pass"
+        },
+        {
+          "name": "TS output",
+          "status": "pass"
+        },
+        {
+          "name": "shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "named shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "inline shared worker",
+          "status": "pass"
+        },
+        {
+          "name": "worker emitted and import.meta.url in nested worker (serve)",
+          "status": "pass"
+        },
+        {
+          "name": "build > inlined code generation",
+          "status": "pass"
+        },
+        {
+          "name": "build > worker emitted and import.meta.url in nested worker (build)",
+          "status": "pass"
+        },
+        {
+          "name": "module worker",
+          "status": "pass"
+        },
+        {
+          "name": "classic worker",
+          "status": "pass"
+        },
+        {
+          "name": "emit chunk",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.glob in worker",
+          "status": "pass"
+        },
+        {
+          "name": "import.meta.glob with eager in worker",
+          "status": "pass"
+        },
+        {
+          "name": "self reference worker",
+          "status": "pass"
+        },
+        {
+          "name": "self reference url worker",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/sourcemap-hidden/worker-sourcemap-hidden.spec.ts",
+      "playground": "worker",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "build > sourcemap generation for web workers",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/sourcemap-inline/worker-sourcemap-inline.spec.ts",
+      "playground": "worker",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "build > sourcemap generation for web workers",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "file": "playground/worker/__tests__/sourcemap/worker-sourcemap.spec.ts",
+      "playground": "worker",
+      "ssr": false,
+      "total": 1,
+      "passed": 1,
+      "status": "pass",
+      "tests": [
+        {
+          "name": "build > sourcemap generation for web workers",
+          "status": "pass"
+        }
+      ]
+    }
+  ]
+}
