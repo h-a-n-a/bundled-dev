@@ -28,9 +28,9 @@ To run it locally against a Vite checkout next to this repo, from the repo root:
 
 ```sh
 cd ../vite
-VITE_TEST_BUNDLED_DEV=1 RESULTS_FILE=$PWD/bundled.json pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../bundled-dev/scripts/reporter.mjs
-RESULTS_FILE=$PWD/plain.json pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../bundled-dev/scripts/reporter.mjs
-VITE_TEST_BUILD=1 RESULTS_FILE=$PWD/build.json pnpm exec vitest run -c vitest.config.e2e.ts --reporter=../bundled-dev/scripts/reporter.mjs
+RESULTS_FILE=$PWD/bundled.json pnpm exec vitest run -c vitest.config.e2e.ts --project serve-bundled --reporter=../bundled-dev/scripts/reporter.mjs
+RESULTS_FILE=$PWD/plain.json pnpm exec vitest run -c vitest.config.e2e.ts --project serve --reporter=../bundled-dev/scripts/reporter.mjs
+RESULTS_FILE=$PWD/build.json pnpm exec vitest run -c vitest.config.e2e.ts --project build --reporter=../bundled-dev/scripts/reporter.mjs
 cd ../bundled-dev
 node scripts/compare.mjs ../vite/bundled.json ../vite/plain.json ../vite/build.json results
 ```

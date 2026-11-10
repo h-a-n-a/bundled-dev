@@ -1,6 +1,6 @@
 // usage: node compare.mjs <bundled.json> <plain.json> <build.json> <results dir>
-// Inputs are reporter.mjs outputs of the same Vite playground tests, run with
-// `VITE_TEST_BUNDLED_DEV=1`, with plain `vite`, and with `VITE_TEST_BUILD=1`.
+// Inputs are reporter.mjs outputs of the same Vite playground tests, run as the
+// `serve-bundled`, `serve` and `build` projects of Vite's vitest.config.e2e.ts.
 // Run metadata comes from env: VITE_COMMIT, ROLLDOWN_VERSION, RUN_URL.
 // Writes <results dir>/runs/<date>.json and adds the run's summary to
 // <results dir>/history.json, which the dashboard loads up front.

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# usage: run-tests.sh <mode name>, from the Vite checkout, with RESULTS_FILE set.
+# usage: run-tests.sh <mode>, from the Vite checkout, with RESULTS_FILE set.
+# <mode> is a project in Vite's vitest.config.e2e.ts: serve, serve-bundled or build.
+# Without --project, vitest runs all three modes and mixes their results.
 # Runs Vite's playground tests. When any test fails, the whole suite runs again,
 # up to 3 more times, and RESULTS_FILE keeps the last run. The whole suite runs
 # again, not only the failed test, because each spec file starts one server and
@@ -12,7 +14,7 @@ reporter="$(cd "$(dirname "$0")" && pwd)/reporter.mjs"
 max_reruns=3
 
 for ((run = 1; run <= max_reruns + 1; run++)); do
-  if pnpm exec vitest run -c vitest.config.e2e.ts --reporter="$reporter" --reporter=dot; then
+  if pnpm exec vitest run -c vitest.config.e2e.ts --project "$mode" --reporter="$reporter" --reporter=dot; then
     exit 0
   fi
   if ((run <= max_reruns)); then
